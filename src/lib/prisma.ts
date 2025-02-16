@@ -5,6 +5,12 @@ declare global {
   var prisma: PrismaClient | undefined;
 }
 
+// If prisma is already initialized (for development), reuse it
 export const client = globalThis.prisma || new PrismaClient();
 
-if (process.env.NODE_ENV !== "production") globalThis.prisma = client;
+// Assign the client to globalThis in development to reuse the same instance
+if (process.env.NODE_ENV !== "production") {
+  globalThis.prisma = client;
+}
+
+export default client;

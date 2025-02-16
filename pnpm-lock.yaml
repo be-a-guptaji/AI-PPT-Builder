@@ -17,8 +17,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(react-hook-form@7.54.2(react@19.0.0))
       "@prisma/client":
-        specifier: 5.22.0
-        version: 5.22.0
+        specifier: 6.3.1
+        version: 6.3.1(prisma@6.3.1(typescript@5.7.3))(typescript@5.7.3)
       "@radix-ui/react-accordion":
         specifier: ^1.2.3
         version: 1.2.3(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -153,7 +153,7 @@ importers:
         version: 3.0.1
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.0.0)
+        version: 1.0.7(tailwindcss@4.0.6)
       vaul:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -166,7 +166,7 @@ importers:
         version: 3.2.0
       "@tailwindcss/postcss":
         specifier: ^4.0.0
-        version: 4.0.0
+        version: 4.0.6
       "@types/node":
         specifier: ^20
         version: 20.17.19
@@ -191,9 +191,12 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
         version: 0.6.11(prettier@3.5.1)
+      prisma:
+        specifier: 6.3.1
+        version: 6.3.1(typescript@5.7.3)
       tailwindcss:
         specifier: ^4.0.0
-        version: 4.0.0
+        version: 4.0.6
       typescript:
         specifier: ^5
         version: 5.7.3
@@ -685,17 +688,50 @@ packages:
       }
     engines: { node: ">=12.4.0" }
 
-  "@prisma/client@5.22.0":
+  "@prisma/client@6.3.1":
     resolution:
       {
-        integrity: sha512-M0SVXfyHnQREBKxCgyo7sffrKttwE6R8PMq330MIUF0pTwjUhLbW84pFDlf06B27XyCR++VtjugEnIHdr07SVA==,
+        integrity: sha512-ARAJaPs+eBkemdky/XU3cvGRl+mIPHCN2lCXsl5Vlb0E2gV+R6IN7aCI8CisRGszEZondwIsW9Iz8EJkTdykyA==,
       }
-    engines: { node: ">=16.13" }
+    engines: { node: ">=18.18" }
     peerDependencies:
       prisma: "*"
+      typescript: ">=5.1.0"
     peerDependenciesMeta:
       prisma:
         optional: true
+      typescript:
+        optional: true
+
+  "@prisma/debug@6.3.1":
+    resolution:
+      {
+        integrity: sha512-RrEBkd+HLZx+ydfmYT0jUj7wjLiS95wfTOSQ+8FQbvb6vHh5AeKfEPt/XUQ5+Buljj8hltEfOslEW57/wQIVeA==,
+      }
+
+  "@prisma/engines-version@6.3.0-17.acc0b9dd43eb689cbd20c9470515d719db10d0b0":
+    resolution:
+      {
+        integrity: sha512-R/ZcMuaWZT2UBmgX3Ko6PAV3f8//ZzsjRIG1eKqp3f2rqEqVtCv+mtzuH2rBPUC9ujJ5kCb9wwpxeyCkLcHVyA==,
+      }
+
+  "@prisma/engines@6.3.1":
+    resolution:
+      {
+        integrity: sha512-sXdqEVLyGAJ5/iUoG/Ea5AdHMN71m6PzMBWRQnLmhhOejzqAaEr8rUd623ql6OJpED4s/U4vIn4dg1qkF7vGag==,
+      }
+
+  "@prisma/fetch-engine@6.3.1":
+    resolution:
+      {
+        integrity: sha512-HOf/0umOgt+/S2xtZze+FHKoxpVg4YpVxROr6g2YG09VsI3Ipyb+rGvD6QGbCqkq5NTWAAZoOGNL+oy7t+IhaQ==,
+      }
+
+  "@prisma/get-platform@6.3.1":
+    resolution:
+      {
+        integrity: sha512-AYLq6Hk9xG73JdLWJ3Ip9Wg/vlP7xPvftGBalsPzKDOHr/ImhwJ09eS8xC2vNT12DlzGxhfk8BkL0ve2OriNhQ==,
+      }
 
   "@radix-ui/number@1.1.0":
     resolution:
@@ -1793,10 +1829,10 @@ packages:
       }
     engines: { node: ">= 10" }
 
-  "@tailwindcss/postcss@4.0.0":
+  "@tailwindcss/postcss@4.0.6":
     resolution:
       {
-        integrity: sha512-lI2bPk4TvwavHdehjr5WiC6HnZ59hacM6ySEo4RM/H7tsjWd8JpqiNW9ThH7rO/yKtrn4mGBoXshpvn8clXjPg==,
+        integrity: sha512-noTaGPHjGCXTCc487TWnfAEN0VMjqDAecssWDOsfxV2hFrcZR0AHthX7IdY/0xHTg/EtpmIPdssddlZ5/B7JnQ==,
       }
 
   "@types/d3-array@3.2.1":
@@ -2841,6 +2877,14 @@ packages:
       }
     engines: { node: ">= 0.4" }
 
+  fsevents@2.3.3:
+    resolution:
+      {
+        integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==,
+      }
+    engines: { node: ^8.16.0 || ^10.6.0 || >=11.0.0 }
+    os: [darwin]
+
   function-bind@1.1.2:
     resolution:
       {
@@ -3802,6 +3846,19 @@ packages:
     engines: { node: ">=14" }
     hasBin: true
 
+  prisma@6.3.1:
+    resolution:
+      {
+        integrity: sha512-JKCZWvBC3enxk51tY4TWzS4b5iRt4sSU1uHn2I183giZTvonXaQonzVtjLzpOHE7qu9MxY510kAtFGJwryKe3Q==,
+      }
+    engines: { node: ">=18.18" }
+    hasBin: true
+    peerDependencies:
+      typescript: ">=5.1.0"
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   prop-types@15.8.1:
     resolution:
       {
@@ -4300,12 +4357,6 @@ packages:
       }
     peerDependencies:
       tailwindcss: ">=3.0.0 || insiders"
-
-  tailwindcss@4.0.0:
-    resolution:
-      {
-        integrity: sha512-ULRPI3A+e39T7pSaf1xoi58AqqJxVCLg8F/uM5A3FadUbnyDTgltVnXJvdkTjwCOGA6NazqHVcwPJC5h2vRYVQ==,
-      }
 
   tailwindcss@4.0.6:
     resolution:
@@ -4806,7 +4857,32 @@ snapshots:
 
   "@nolyfill/is-core-module@1.0.39": {}
 
-  "@prisma/client@5.22.0": {}
+  "@prisma/client@6.3.1(prisma@6.3.1(typescript@5.7.3))(typescript@5.7.3)":
+    optionalDependencies:
+      prisma: 6.3.1(typescript@5.7.3)
+      typescript: 5.7.3
+
+  "@prisma/debug@6.3.1": {}
+
+  "@prisma/engines-version@6.3.0-17.acc0b9dd43eb689cbd20c9470515d719db10d0b0":
+    {}
+
+  "@prisma/engines@6.3.1":
+    dependencies:
+      "@prisma/debug": 6.3.1
+      "@prisma/engines-version": 6.3.0-17.acc0b9dd43eb689cbd20c9470515d719db10d0b0
+      "@prisma/fetch-engine": 6.3.1
+      "@prisma/get-platform": 6.3.1
+
+  "@prisma/fetch-engine@6.3.1":
+    dependencies:
+      "@prisma/debug": 6.3.1
+      "@prisma/engines-version": 6.3.0-17.acc0b9dd43eb689cbd20c9470515d719db10d0b0
+      "@prisma/get-platform": 6.3.1
+
+  "@prisma/get-platform@6.3.1":
+    dependencies:
+      "@prisma/debug": 6.3.1
 
   "@radix-ui/number@1.1.0": {}
 
@@ -5659,14 +5735,14 @@ snapshots:
       "@tailwindcss/oxide-win32-arm64-msvc": 4.0.6
       "@tailwindcss/oxide-win32-x64-msvc": 4.0.6
 
-  "@tailwindcss/postcss@4.0.0":
+  "@tailwindcss/postcss@4.0.6":
     dependencies:
       "@alloc/quick-lru": 5.2.0
       "@tailwindcss/node": 4.0.6
       "@tailwindcss/oxide": 4.0.6
       lightningcss: 1.29.1
       postcss: 8.5.2
-      tailwindcss: 4.0.0
+      tailwindcss: 4.0.6
 
   "@types/d3-array@3.2.1": {}
 
@@ -6088,7 +6164,7 @@ snapshots:
   dot-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.8.1
+      tslib: 2.4.1
 
   dunder-proto@1.0.1:
     dependencies:
@@ -6469,6 +6545,9 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
+  fsevents@2.3.3:
+    optional: true
+
   function-bind@1.1.2: {}
 
   function.prototype.name@1.1.8:
@@ -6805,7 +6884,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.4.1
 
   lucide-react@0.475.0(react@19.0.0):
     dependencies:
@@ -6877,7 +6956,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.8.1
+      tslib: 2.4.1
 
   object-assign@4.1.1: {}
 
@@ -6980,6 +7059,13 @@ snapshots:
       prettier: 3.5.1
 
   prettier@3.5.1: {}
+
+  prisma@6.3.1(typescript@5.7.3):
+    dependencies:
+      "@prisma/engines": 6.3.1
+    optionalDependencies:
+      fsevents: 2.3.3
+      typescript: 5.7.3
 
   prop-types@15.8.1:
     dependencies:
@@ -7250,7 +7336,7 @@ snapshots:
   snake-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.8.1
+      tslib: 2.4.1
 
   snakecase-keys@8.0.1:
     dependencies:
@@ -7344,11 +7430,9 @@ snapshots:
 
   tailwind-merge@3.0.1: {}
 
-  tailwindcss-animate@1.0.7(tailwindcss@4.0.0):
+  tailwindcss-animate@1.0.7(tailwindcss@4.0.6):
     dependencies:
-      tailwindcss: 4.0.0
-
-  tailwindcss@4.0.0: {}
+      tailwindcss: 4.0.6
 
   tailwindcss@4.0.6: {}
 

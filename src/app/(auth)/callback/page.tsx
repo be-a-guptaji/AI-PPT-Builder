@@ -4,16 +4,13 @@ import { redirect } from "next/navigation";
 const AuthCallBackPage = async () => {
   const auth = await onAuthenticateUser();
 
+  // Handle the response and redirect accordingly
   if (auth.status === 200 || auth.status === 201) {
-    return redirect("/dashboard");
-  } else if (
-    auth.status === 403 ||
-    auth.status === 401 ||
-    auth.status === 400 ||
-    auth.status === 500
-  ) {
-    return redirect("/sign-in");
+    // Redirect to the dashboard if authentication is successful
+    redirect("/dashboard");
   }
+
+  redirect("/sign-in");
 };
 
 export default AuthCallBackPage;

@@ -9,6 +9,7 @@ export const onAuthenticateUser = async () => {
       return { status: 403 };
     }
 
+    // Check if the user already exists in the database
     const userExists = await client.user.findUnique({
       where: {
         clerkId: user.id,
@@ -29,6 +30,7 @@ export const onAuthenticateUser = async () => {
       };
     }
 
+    // If the user doesn't exist, create a new user
     const newUser = await client.user.create({
       data: {
         clerkId: user.id,
