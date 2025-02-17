@@ -8,27 +8,28 @@ import {
     SidebarHeader,
     SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { Project, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import React from "react";
 import NavMain from "./nav-main";
 import { data } from "@/lib/constant";
 import RecentOpen from "./recent-open";
 import NavFooter from "./nav-footer";
+import { recentProjectsProp } from "@/lib/types";
 
 const AppSidebar = ({
     recentProjects,
     user,
     ...props
-}: { recentProjects: Project[] } & { user: User } & React.ComponentProps<
-        typeof Sidebar
-    >) => {
+}: { recentProjects: recentProjectsProp } & {
+    user: User;
+} & React.ComponentProps<typeof Sidebar>) => {
     return (
         <Sidebar
             collapsible="icon"
             className="max-w-[212px] bg-background/10"
             {...props}
         >
-            <SidebarHeader className="pt-6 px-3 pb-0">
+            <SidebarHeader className="pt-6 px-2 pb-0">
                 <SidebarMenuButton
                     size={"lg"}
                     className="data-[state=open]:text-sidebar-accent-foreground"
@@ -46,7 +47,7 @@ const AppSidebar = ({
                     </span>
                 </SidebarMenuButton>
             </SidebarHeader>
-            <SidebarContent className="px-3 mt-10 gap-y-6">
+            <SidebarContent className="px-2 mt-10 gap-y-6">
                 <NavMain items={data.navMain} />
                 <RecentOpen recentProjects={recentProjects} />
             </SidebarContent>

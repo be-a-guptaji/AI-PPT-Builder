@@ -34,7 +34,7 @@ const NavMain = ({
                         <SidebarMenuButton
                             asChild
                             tooltip={item.title}
-                            className={`${pathname.includes(item.url) && "bg-muted"}`}
+                            className={`${pathname.includes(item.url) && "bg-black/30 dark:bg-white/20"} cursor-pointer hover:bg-black/10 dark:hover:bg-white/10`}
                         >
                             <div className="flex items-center gap-4">
                                 <item.icon className="text-lg" />

@@ -2,30 +2,39 @@
 
 import * as React from "react";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
-
+import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-function Switch({
-    className,
-    ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root>) {
-    return (
-        <SwitchPrimitive.Root
-            data-slot="switch"
+const Switch = React.forwardRef<
+    React.ElementRef<typeof SwitchPrimitive.Root>,
+    React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root>
+>(({ className, ...props }, ref) => (
+    <SwitchPrimitive.Root
+        className={cn(
+            "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors duration-300 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input relative",
+            className
+        )}
+        {...props}
+        ref={ref}
+    >
+        <Sun
             className={cn(
-                "peer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 inline-flex h-5 w-9 shrink-0 items-center rounded-full border-2 border-transparent shadow-xs transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-hidden focus-visible:outline-1 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:focus-visible:ring-0",
-                className
+                "size-4 absolute z-50 top-[10px] right-[12px] transition-opacity fill-black duration-300 ease-in-out",
+                "data-[state=checked]:opacity-100 data-[state=unchecked]:opacity-0 data-[state=checked]:fill-white data-[state=unchecked]:fill-black data-[state=checked]:stroke-gray-600 data-[state=unchecked]:stroke-white"
             )}
-            {...props}
-        >
-            <SwitchPrimitive.Thumb
-                data-slot="switch-thumb"
-                className={cn(
-                    "bg-background pointer-events-none block size-4 rounded-full ring-0 shadow-lg transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0"
-                )}
-            />
-        </SwitchPrimitive.Root>
-    );
-}
+        />
+        <SwitchPrimitive.Thumb
+            className={cn(
+                "pointer-events-none block size-7 rounded-full bg-background shadow-lg ring-0 transition-transform duration-300 ease-in-out data-[state=checked]:translate-x-[39px] data-[state=unchecked]:translate-x-0"
+            )}
+        />
+        <Moon
+            className={cn(
+                "size-4 absolute z-50 top-[10px] left-[10px] stroke-gray-600 fill-white transition-opacity duration-300 ease-in-out",
+                "data-[state=checked]:opacity-100 data-[state=unchecked]:opacity-0"
+            )}
+        />
+    </SwitchPrimitive.Root>
+));
 
-export { Switch };
+export default Switch;

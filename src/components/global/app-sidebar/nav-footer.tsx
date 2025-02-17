@@ -8,13 +8,11 @@ import {
 } from "@/components/ui/sidebar";
 import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
 import { User } from "@prisma/client";
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
     const { isLoaded, isSignedIn, user } = useUser();
     const [loading, setLoading] = useState(false);
-    const router = useRouter();
 
     const handleUpgradeing = async () => {
         setLoading(true);
@@ -29,7 +27,7 @@ const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
             <SidebarMenuItem>
                 <div className="flex flex-col gap-y-6 items-start group-data-[collapsible=icon]:hover">
                     {!prismaUser.subscription && (
-                        <div className="flex flex-col items-start p-2 pb-3 gap-4 bg-white/5 rounded-xl">
+                        <div className="flex flex-col items-start p-2 pb-3 gap-4 dark:bg-white/5 rounded-xl group-data-[collapsible=icon]:hidden bg-black/10">
                             <div className="flex flex-col items-start gap-1">
                                 <p className="text-base font-bold">
                                     Get{" "}
@@ -56,7 +54,7 @@ const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
                     <SignedIn>
                         <SidebarMenuButton
                             size={"lg"}
-                            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground hover:bg-black/10 dark:hover:bg-white/10"
                         >
                             <UserButton />
                             <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
