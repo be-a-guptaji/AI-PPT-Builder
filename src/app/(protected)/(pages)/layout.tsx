@@ -20,7 +20,8 @@ const layout = async ({ children }: { children: React.ReactNode }) => {
                 user={checkUser.user}
             />
             <SidebarInset>
-                <UpperInfobar user={checkUser.user}>{children}</UpperInfobar>
+                <UpperInfobar user={checkUser.user} />
+                {children}
             </SidebarInset>
         </SidebarProvider>
     );
