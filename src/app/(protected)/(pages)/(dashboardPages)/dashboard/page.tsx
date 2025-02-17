@@ -11,7 +11,7 @@ const DashboardPage = async () => {
                     <h1 className="text-2xl font-semibold dark:text-primary backdrop-blur-lg">
                         Projects
                     </h1>
-                    <p className="text-base font-normal dark:text-secondary">
+                    <p className="text-base font-normal dark:text-secondary-foreground/50">
                         All of your work in one place
                     </p>
                 </div>

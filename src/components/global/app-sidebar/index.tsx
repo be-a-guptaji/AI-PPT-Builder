@@ -13,6 +13,7 @@ import React from "react";
 import NavMain from "./nav-main";
 import { data } from "@/lib/constant";
 import RecentOpen from "./recent-open";
+import NavFooter from "./nav-footer";
 
 const AppSidebar = ({
     recentProjects,
@@ -24,7 +25,7 @@ const AppSidebar = ({
     return (
         <Sidebar
             collapsible="icon"
-            className="max-w-[212px] bg-background-90"
+            className="max-w-[212px] bg-background/10"
             {...props}
         >
             <SidebarHeader className="pt-6 px-3 pb-0">
@@ -49,7 +50,9 @@ const AppSidebar = ({
                 <NavMain items={data.navMain} />
                 <RecentOpen recentProjects={recentProjects} />
             </SidebarContent>
-            <SidebarFooter />
+            <SidebarFooter>
+                <NavFooter prismaUser={user} />
+            </SidebarFooter>
         </Sidebar>
     );
 };

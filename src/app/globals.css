@@ -150,3 +150,12 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.bg-kraton-gradient {
+    background: linear-gradient(180deg, #f55c7a 0%, #f6bc66 100%);
+}
+
+.border-kraton {
+    border: 1px solid transparent;
+    border-image: linear-gradient(180deg, #f55c7a 0%, #f6bc66 100%) 1;
+}
