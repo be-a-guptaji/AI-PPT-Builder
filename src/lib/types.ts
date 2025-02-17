@@ -1,5 +1,3 @@
-import { Project } from "@prisma/client";
-
 export interface Slide {
     id: string;
     slideName: string;
@@ -55,10 +53,4 @@ export interface ContentItem {
     language?: string;
     bgColor?: string;
     isTransparent?: boolean;
-}
-
-export interface recentProjectsProp {
-    data?: Project[] | undefined;
-    status?: number;
-    error?: string;
 }

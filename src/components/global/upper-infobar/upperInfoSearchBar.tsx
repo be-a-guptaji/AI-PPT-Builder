@@ -5,7 +5,7 @@ import React from "react";
 
 const SearchBar = () => {
     return (
-        <div className="min-w-[60%] relative flex items-center border rounded-full bg-primary/10 focus-within:outline-1">
+        <div className="min-w-[60%] relative flex items-center border rounded-full bg-primary/10 focus-within:outline-1 w-full">
             <Button
                 type="submit"
                 size={"sm"}

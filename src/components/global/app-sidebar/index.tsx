@@ -8,19 +8,18 @@ import {
     SidebarHeader,
     SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { User } from "@prisma/client";
+import { Project, User } from "@prisma/client";
 import React from "react";
 import NavMain from "./navMain";
 import { data } from "@/lib/constant";
 import RecentOpen from "./recentOpen";
 import NavFooter from "./navFooter";
-import { recentProjectsProp } from "@/lib/types";
 
 const AppSidebar = ({
     recentProjects,
     user,
     ...props
-}: { recentProjects: recentProjectsProp } & {
+}: { recentProjects: Project[] } & {
     user: User;
 } & React.ComponentProps<typeof Sidebar>) => {
     return (

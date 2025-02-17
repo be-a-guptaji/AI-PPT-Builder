@@ -13,13 +13,9 @@ import { JsonValue } from "@prisma/client/runtime/library";
 import { toast } from "sonner";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { recentProjectsProp } from "@/lib/types";
+import { Project } from "@prisma/client";
 
-const RecentOpen = ({
-    recentProjects,
-}: {
-    recentProjects: recentProjectsProp;
-}) => {
+const RecentOpen = ({ recentProjects }: { recentProjects: Project[] }) => {
     const router = useRouter();
     const { setSlides } = useSlideStore();
 
@@ -39,39 +35,37 @@ const RecentOpen = ({
 
     return (
         <>
-            {recentProjects &&
-                recentProjects.data &&
-                recentProjects.data.length > 0 && (
-                    <SidebarGroup>
-                        <SidebarGroupLabel className="cursor-default">
-                            Recently Opened
-                        </SidebarGroupLabel>
-                        <SidebarMenu>
-                            {recentProjects?.data?.map((project) => (
-                                <SidebarMenuItem key={project.id}>
-                                    <SidebarMenuButton
-                                        asChild
-                                        tooltip={project.title}
-                                        className="hover:bg-primary/7"
+            {recentProjects && recentProjects.length > 0 && (
+                <SidebarGroup>
+                    <SidebarGroupLabel className="cursor-default">
+                        Recently Opened
+                    </SidebarGroupLabel>
+                    <SidebarMenu>
+                        {recentProjects?.map((project) => (
+                            <SidebarMenuItem key={project.id}>
+                                <SidebarMenuButton
+                                    asChild
+                                    tooltip={project.title}
+                                    className="hover:bg-primary/7"
+                                >
+                                    <Button
+                                        variant={"link"}
+                                        onClick={() =>
+                                            handleClick(
+                                                project.id,
+                                                project.slides
+                                            )
+                                        }
+                                        className="text-xs items-center justify-start cursor-pointer"
                                     >
-                                        <Button
-                                            variant={"link"}
-                                            onClick={() =>
-                                                handleClick(
-                                                    project.id,
-                                                    project.slides
-                                                )
-                                            }
-                                            className="text-xs items-center justify-start cursor-pointer"
-                                        >
-                                            <span>{project.title}</span>
-                                        </Button>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroup>
-                )}
+                                        <span>{project.title}</span>
+                                    </Button>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                        ))}
+                    </SidebarMenu>
+                </SidebarGroup>
+            )}
         </>
     );
 };

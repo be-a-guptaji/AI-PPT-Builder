@@ -1,9 +1,12 @@
-import React from 'react'
+import { Project } from "@prisma/client";
+import React from "react";
 
-const Projects = () => {
-  return (
-    <div>Projects</div>
-  )
-}
+type ProjectsProps = {
+    projects: Project[];
+};
 
-export default Projects
+const Projects = ({ projects }: ProjectsProps) => {
+    return <div>Projects</div>;
+};
+
+export default Projects;

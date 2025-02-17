@@ -16,7 +16,7 @@ const layout = async ({ children }: { children: React.ReactNode }) => {
     return (
         <SidebarProvider>
             <AppSidebar
-                recentProjects={recentProjects || []}
+                recentProjects={recentProjects?.data || []}
                 user={checkUser.user}
             />
             <SidebarInset>
