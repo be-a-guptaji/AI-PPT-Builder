@@ -29,7 +29,6 @@ const RecentOpen = ({ recentProjects }: { recentProjects: Project[] }) => {
         }
 
         setSlides(JSON.parse(JSON.stringify(slides)));
-
         router.push(`/presentation/${projectId}`);
     };
 
