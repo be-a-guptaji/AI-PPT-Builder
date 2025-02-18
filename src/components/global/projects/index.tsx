@@ -24,7 +24,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                     createdAt={project.createdAt.toString()}
                     isDeleted={project.isDeleted}
                     slideData={project.slides}
-                    src={project.thumbnail || "/slide.webp"}
+                    themeName={project.themeName}
                 />
             ))}
         </motion.div>

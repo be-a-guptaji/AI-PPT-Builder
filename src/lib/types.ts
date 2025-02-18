@@ -14,16 +14,18 @@ export type ContentType =
     | "paragraph"
     | "image"
     | "table"
-    | "tableOfContents"
     | "multiColumn"
     | "blank"
     | "imageAndText"
     | "heading1"
     | "heading2"
     | "heading3"
-    | "heading4"
     | "title"
+    | "heading4"
+    | "table"
     | "blockquote"
+    | "numberedList"
+    | "bulletedList"
     | "code"
     | "link"
     | "quote"
@@ -31,9 +33,10 @@ export type ContentType =
     | "calloutBox"
     | "todoList"
     | "bulletList"
-    | "numberedList"
     | "codeBlock"
-    | "customButton";
+    | "customButton"
+    | "table"
+    | "tableOfContents";
 
 export interface ContentItem {
     id: string;
