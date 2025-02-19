@@ -161,5 +161,3 @@ export const deleteProject = async (projectId: string) => {
         };
     }
 };
-
-

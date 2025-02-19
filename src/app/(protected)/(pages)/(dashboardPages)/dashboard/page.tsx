@@ -1,6 +1,5 @@
 import { getAllProjects } from "@/actions/projects";
 import NotFound from "@/components/global/not-found";
-import ProjectCard from "@/components/global/project-card";
 import Projects from "@/components/global/projects";
 import React from "react";
 

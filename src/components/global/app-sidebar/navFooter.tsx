@@ -54,7 +54,7 @@ const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
                     <SignedIn>
                         <SidebarMenuButton
                             size={"lg"}
-                            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground hover:bg-black/10 dark:hover:bg-white/10"
+                            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground hover:bg-black/10 dark:hover:bg-white/10 border-2"
                         >
                             <UserButton />
                             <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">

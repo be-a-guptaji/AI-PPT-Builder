@@ -26,7 +26,7 @@ export function timeAgo(timeStamp: string) {
         const count = Math.floor(differenceInSeconds / interval.value);
 
         if (count >= 1) {
-            return `Created ${count} ${interval.label} ago`;
+            return `${count} ${interval.label} ago`;
         }
     }
 
