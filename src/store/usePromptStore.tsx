@@ -13,8 +13,8 @@ type Prompt = {
 
 type PromptStore = {
     page: Page;
-    setPage: (page: Page) => void;
     prompts: Prompt[] | [];
+    setPage: (page: Page) => void;
     addPrompts: (prompt: Prompt) => void;
     removePrompt: (id: string) => void;
 };

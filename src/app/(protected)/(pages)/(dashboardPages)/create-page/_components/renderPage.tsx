@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 import usePromptStore from "@/store/usePromptStore";
 import CreatePage from "./create-page/createPage";
-import CreateAI from "./generate-ai/createAI";
+import CreateAI from "./generate-ai/creativeAI";
+import ScratchPage from "./scratch/scratchPage";
 
 const RenderPage = () => {
     const router = useRouter();
@@ -21,16 +22,20 @@ const RenderPage = () => {
         }
     };
 
+    const handleBack = () => {
+        setPage("create");
+    };
+
     const renderStep = () => {
         switch (page) {
             case "create":
                 return <CreatePage onSelectOption={handleSelectOption} />;
 
             case "creative-ai":
-                return <CreateAI />;
+                return <CreateAI onBack={handleBack} />;
 
             case "create-scratch":
-                return <></>;
+                return <ScratchPage onBack={handleBack} />;
 
             default:
                 return null;

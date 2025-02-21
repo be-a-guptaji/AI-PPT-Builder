@@ -4,16 +4,17 @@ import { persist } from "zustand/middleware";
 
 type CreativeAIStore = {
     outlines: OutlineCard[] | [];
+    currentAIPrompt: string;
     addMultipleOutlines: (outlines: OutlineCard[] | []) => void;
     addOutline: (outline: OutlineCard) => void;
-    createAIPrompt: string;
     setCurrentAIPrompt: (prompt: string) => void;
+    resetOutlines: () => void;
 };
 
 const useCreativeAIStore = create<CreativeAIStore>()(
     persist(
         (set) => ({
-            createAIPrompt: "",
+            currentAIPrompt: "",
             outlines: [],
             addMultipleOutlines: (outlines: OutlineCard[] | []) => {
                 set(() => ({
@@ -25,7 +26,12 @@ const useCreativeAIStore = create<CreativeAIStore>()(
             },
             setCurrentAIPrompt: (prompt: string) => {
                 set(() => ({
-                    createAIPrompt: prompt,
+                    currentAIPrompt: prompt,
+                }));
+            },
+            resetOutlines: () => {
+                set(() => ({
+                    outlines: [],
                 }));
             },
         }),

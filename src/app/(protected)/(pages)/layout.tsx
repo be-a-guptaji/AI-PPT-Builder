@@ -19,7 +19,7 @@ const layout = async ({ children }: { children: React.ReactNode }) => {
                 recentProjects={recentProjects?.data || []}
                 user={checkUser.user}
             />
-            <SidebarInset>
+            <SidebarInset className="overflow-hidden">
                 <UpperInfobar user={checkUser.user} />
                 <div className="p-4">{children}</div>
             </SidebarInset>
