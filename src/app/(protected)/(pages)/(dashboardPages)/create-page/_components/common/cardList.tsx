@@ -11,7 +11,6 @@ type CardListProps = {
     editingCard: string | null;
     selectedCard: string | null;
     editText: string | null;
-    addOutline?: (card: OutlineCard) => void;
     onEditChange: (value: string) => void;
     onCardSelect: (cardId: string) => void;
     onCardDoubleClick: (cardId: string, title: string) => void;
@@ -27,7 +26,6 @@ const CardList = ({
     editingCard,
     selectedCard,
     addMultipleOutlines,
-    addOutline,
     onEditChange,
     onCardDoubleClick,
     onCardSelect,

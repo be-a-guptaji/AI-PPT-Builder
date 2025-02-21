@@ -28,7 +28,7 @@ type ScratchPageProps = {
 
 const ScratchPage = ({ onBack }: ScratchPageProps) => {
     const router = useRouter();
-    const [editText, setEditText] = useState("");
+    const [editText, setEditText] = useState<string>("");
     const [editingCard, setEditingCard] = useState<string | null>(null);
     const [selectedCard, setSelectedCard] = useState<string | null>(null);
     const { outlines, addMultipleOutlines, addOutline, resetOutlines } =
@@ -172,7 +172,6 @@ const ScratchPage = ({ onBack }: ScratchPageProps) => {
             </motion.div>
             <CardList
                 outlines={outlines}
-                addOutline={addOutline}
                 addMultipleOutlines={addMultipleOutlines}
                 editingCard={editingCard}
                 selectedCard={selectedCard}
