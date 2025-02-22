@@ -24,8 +24,8 @@ const usePromptStore = create<PromptStore>()(
         persist(
             (set) => ({
                 page: "create",
-                setPage: (page: Page) => set({ page }),
                 prompts: [],
+                setPage: (page: Page) => set({ page }),
                 addPrompts: (prompt: Prompt) =>
                     set((state) => ({
                         prompts: [prompt, ...state.prompts],

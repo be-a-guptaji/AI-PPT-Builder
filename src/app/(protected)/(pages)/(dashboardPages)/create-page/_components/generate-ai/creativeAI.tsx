@@ -27,22 +27,20 @@ const CreateAI = ({ onBack }: Props) => {
     const [editingCard, setEditingCard] = useState<string | null>(null);
     const [isGenerating, setIsGenerating] = useState(false);
     const [selectedCard, setSelectedCard] = useState<string | null>(null);
-    const [editingText, setEditingText] = useState<string | null>(null);
     const {
         currentAIPrompt,
         outlines,
         setCurrentAIPrompt,
-        addOutline,
-        resetOutlines,
         addMultipleOutlines,
+        resetCurrentAIPrompt,
+        resetOutlines,
     } = useCreativeAIStore();
-    const { prompts, addPrompts } = usePromptStore();
+    const { addPrompts } = usePromptStore();
     const { setProject } = useSlideStore();
 
     const resetCards = () => {
         setEditingCard(null);
         setSelectedCard(null);
-        setEditingText("");
 
         setCurrentAIPrompt("");
         resetOutlines();
@@ -155,7 +153,11 @@ const CreateAI = ({ onBack }: Props) => {
             animate="visible"
         >
             <Button
-                onClick={onBack}
+                onClick={() => {
+                    resetCurrentAIPrompt();
+                    resetOutlines();
+                    onBack();
+                }}
                 variant={"outline"}
                 className="mb-4 cursor-pointer"
             >
