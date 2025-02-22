@@ -144,11 +144,30 @@
     }
 }
 
+@keyframes gradient {
+    from {
+        background-position: 0% center;
+    }
+    to {
+        background-position: -200% center;
+    }
+}
+
 .text-kraton {
-    background: linear-gradient(180deg, #f55c7a 0%, #f6bc66 100%);
+    animation: gradient 3s linear infinite;
+    background: linear-gradient(
+        45deg,
+        #f55c7a,
+        #94ba4e,
+        #f6bc66,
+        #5cbaf5,
+        #f55ccc,
+        #f55c7a
+    );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 200%;
 }
 
 .bg-kraton-gradient {
@@ -159,110 +178,3 @@
     border: 1px solid transparent;
     border-image: linear-gradient(180deg, #f55c7a 0%, #f6bc66 100%) 1;
 }
-
-/*
-import type { Config } from "tailwindcss";
-
-export default {
-    darkMode: ["class"],
-    content: [
-        "./src/pages//*.{js,ts,jsx,tsx,mdx}",
-        "./src/components//.{js,ts,jsx,tsx,mdx}",
-       /* ],
-        theme: {
-            extend: {
-colors: {
-    'creative-ai-gradient': 'var(--Project-Color-Styles-CreativeAI-Gradient, #F55C7A)',
-    background: 'hsl(var(--background))',
-    foreground: 'hsl(var(--foreground))',
-    card: {
-        DEFAULT: 'hsl(var(--card))',
-        foreground: 'hsl(var(--card-foreground))',
-        'primary-80': 'hsl(var(--primary-80))'
-    },
-    popover: {
-        DEFAULT: 'hsl(var(--popover))',
-        foreground: 'hsl(var(--popover-foreground))'
-    },
-    primary: {
-        '10': 'hsl(var(--primary-10))',
-        '20': 'hsl(var(--primary-20))',
-        '80': 'hsl(var(--primary-80))',
-        '90': 'hsl(var(--primary-90))',
-        DEFAULT: 'hsl(var(--primary))',
-        foreground: 'hsl(var(--primary-foreground))'
-    },
-    secondary: {
-        '90': 'hsl(var(--secondary-90))',
-        DEFAULT: 'hsl(var(--secondary))',
-foreground: 'hsl(var(--secondary-foreground))'
-},
-muted: {
-    DEFAULT: 'hsl(var(--muted))',
-    foreground: 'hsl(var(--muted-foreground))'
-},
-accent: {
-    DEFAULT: 'hsl(var(--accent))',
-    foreground: 'hsl(var(--accent-foreground))'
-},
-destructive: {
-    DEFAULT: 'hsl(var(--destructive))',
-    foreground: 'hsl(var(--destructive-foreground))'
-},
-border: 'hsl(var(--border))',
-input: 'hsl(var(--input))',
-ring: 'hsl(var(--ring))',
-chart: {
-    '1': 'hsl(var(--chart-1))',
-    '2': 'hsl(var(--chart-2))',
-    '3': 'hsl(var(--chart-3))',
-    '4': 'hsl(var(--chart-4))',
-    '5': 'hsl(var(--chart-5))'
-},
-sidebar: {
-    DEFAULT: 'hsl(var(--sidebar-background))',
-    foreground: 'hsl(var(--sidebar-foreground))',
-    primary: 'hsl(var(--sidebar-primary))',
-    'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-    accent: 'hsl(var(--sidebar-accent))',
-    'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-    border: 'hsl(var(--sidebar-border))',
-    ring: 'hsl(var(--sidebar-ring))'
-}
-},
-backgroundImage: {
-    'vivid-gradient': 'var( --creative-ai-gradient)'
-},
-borderRadius: {
-    lg: 'var(--radius)',
-    md: 'calc(var(--radius) - 2px)',
-    sm: 'calc(var(--radius) - 4px)'
-},
-keyframes: {
-    'accordion-down': {
-        from: {
-            height: '0'
-        },
-        to: {
-            height: 'var(--radix-accordion-content-height)'
-        }
-    },
-    'accordion-up': {
-        from: {
-            height: 'var(--radix-accordion-content-height)'
-        },
-        to: {
-            height: '0'
-        }
-    }
-},
-animation: {
-    'accordion-down': 'accordion-down 0.2s ease-out',
-    'accordion-up': 'accordion-up 0.2s ease-out'
-}
-}
-},
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-plugins: [require("tailwindcss-animate")],
-} satisfies Config;
-*/

@@ -5,16 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useRef, useState } from "react";
 import Card from "./card";
 import AddCardButton from "./addCardButton";
+import { toast } from "sonner";
 
 type CardListProps = {
     outlines: OutlineCard[] | [];
     editingCard: string | null;
     selectedCard: string | null;
-    editText: string | null;
-    onEditChange: (value: string) => void;
     onCardSelect: (cardId: string) => void;
-    onCardDoubleClick: (cardId: string, title: string) => void;
-    setEditedText: (value: string) => void;
+    onCardDoubleClick: (cardId: string) => void;
     setEditingCard: (cardId: string | null) => void;
     setSelectedCard: (cardId: string | null) => void;
     addMultipleOutlines: (outlines: OutlineCard[] | []) => void;
@@ -22,19 +20,17 @@ type CardListProps = {
 
 const CardList = ({
     outlines,
-    editText,
     editingCard,
     selectedCard,
     addMultipleOutlines,
-    onEditChange,
     onCardDoubleClick,
     onCardSelect,
-    setEditedText,
     setEditingCard,
     setSelectedCard,
 }: CardListProps) => {
     const [draggedItem, setDraggedItem] = useState<OutlineCard | null>(null);
     const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
+    const [editText, setEditText] = useState<string | null>(null);
     const dataOffsetY = useRef<number>(0);
 
     const onDragOver = (e: React.DragEvent<HTMLDivElement>, index: number) => {
@@ -95,7 +91,7 @@ const CardList = ({
         );
         setEditingCard(null);
         setSelectedCard(null);
-        setEditedText("");
+        setEditText(null);
     };
 
     const onCardDelete = (cardId: string) => {
@@ -160,6 +156,14 @@ const CardList = ({
     };
 
     const onAddCard = (cardIndex?: number) => {
+        if (outlines.length === 15) {
+            toast.error("You can't add more than 15 cards.", {
+                description:
+                    "Please delete some cards to add more or generate project.",
+            });
+            return;
+        }
+
         const newCard: OutlineCard = {
             id: Math.random().toString().substr(2, 9),
             order:
@@ -180,7 +184,7 @@ const CardList = ({
                   ];
 
         addMultipleOutlines(updatedCards);
-        setEditedText("");
+        setEditText("");
     };
 
     return (
@@ -213,7 +217,7 @@ const CardList = ({
                                 isEditing={editingCard === card.id}
                                 isSelected={selectedCard === card.id}
                                 editText={editText}
-                                onEditChange={onEditChange}
+                                onEditChange={setEditText}
                                 onEditBlur={() =>
                                     onCardUpdate(card.id, editText)
                                 }
@@ -224,7 +228,7 @@ const CardList = ({
                                 }}
                                 onCardClick={() => onCardSelect(card.id)}
                                 onCardDoubleClick={() =>
-                                    onCardDoubleClick(card.id, card.title)
+                                    onCardDoubleClick(card.id)
                                 }
                                 onDeleteClick={() => {
                                     onCardDelete(card.id);
