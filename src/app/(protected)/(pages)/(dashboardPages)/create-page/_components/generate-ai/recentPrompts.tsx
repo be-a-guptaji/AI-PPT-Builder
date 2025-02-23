@@ -7,11 +7,12 @@ import { timeAgo } from "@/lib/utils";
 import useCreativeAIStore from "@/store/useCreativeAIStore";
 import usePromptStore from "@/store/usePromptStore";
 import { motion } from "framer-motion";
+import { Trash2 } from "lucide-react";
 import React from "react";
 import { toast } from "sonner";
 
 const RecentPrompts = () => {
-    const { prompts, setPage } = usePromptStore();
+    const { prompts, setPage, removePrompt } = usePromptStore();
     const { addMultipleOutlines, setCurrentAIPrompt } = useCreativeAIStore();
 
     const handleEdit = (id: string) => {
@@ -26,6 +27,14 @@ const RecentPrompts = () => {
                 description: "Prompt not found",
             });
         }
+    };
+
+    const handleDelete = (id: string) => {
+        removePrompt(id);
+
+        toast.success("Prompt deleted", {
+            description: "Prompt deleted successfully",
+        });
     };
 
     return (
@@ -66,6 +75,14 @@ const RecentPrompts = () => {
                                     onClick={() => handleEdit(prompt?.id)}
                                 >
                                     Edit
+                                </Button>
+                                <Button
+                                    variant={"destructive"}
+                                    size={"sm"}
+                                    className="cursor-pointer"
+                                    onClick={() => handleDelete(prompt?.id)}
+                                >
+                                    <Trash2 className="size-4" />
                                 </Button>
                             </div>
                         </Card>
