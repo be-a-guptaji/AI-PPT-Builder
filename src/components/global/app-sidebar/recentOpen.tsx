@@ -37,7 +37,7 @@ const RecentOpen = ({ recentProjects }: { recentProjects: Project[] }) => {
             {recentProjects && recentProjects.length > 0 && (
                 <SidebarGroup>
                     <SidebarGroupLabel className="cursor-default">
-                        Recently Opened
+                        Recently Projects
                     </SidebarGroupLabel>
                     <SidebarMenu>
                         {recentProjects?.map((project) => (
