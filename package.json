@@ -53,6 +53,8 @@
         "openai": "^4.85.3",
         "react": "^19.0.0",
         "react-day-picker": "8.10.1",
+        "react-dnd": "16.0.1",
+        "react-dnd-html5-backend": "16.0.1",
         "react-dom": "^19.0.0",
         "react-hook-form": "^7.54.2",
         "react-resizable-panels": "^2.1.7",
