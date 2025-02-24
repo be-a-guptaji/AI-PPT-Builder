@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { containerVaraints, itemVatiants } from "@/lib/constant";
+import { OutlineCard } from "@/lib/types";
 import { timeAgo } from "@/lib/utils";
 import useCreativeAIStore from "@/store/useCreativeAIStore";
 import usePromptStore from "@/store/usePromptStore";
@@ -10,6 +11,13 @@ import { motion } from "framer-motion";
 import { Trash2 } from "lucide-react";
 import React from "react";
 import { toast } from "sonner";
+
+type Prompt = {
+    id: string;
+    createdAt: string;
+    title: string;
+    outlines: OutlineCard[] | [];
+};
 
 const RecentPrompts = () => {
     const { prompts, setPage, removePrompt } = usePromptStore();
@@ -29,11 +37,12 @@ const RecentPrompts = () => {
         }
     };
 
-    const handleDelete = (id: string) => {
-        removePrompt(id);
+    const handleDelete = (prompt: Prompt) => {
+        removePrompt(prompt.id);
 
-        toast.success("Prompt deleted", {
-            description: "Prompt deleted successfully",
+        toast.success("Prompt deleted successfully", {
+            description:
+                "The recent prompt " + prompt.title + " has been deleted",
         });
     };
 
@@ -80,7 +89,7 @@ const RecentPrompts = () => {
                                     variant={"destructive"}
                                     size={"sm"}
                                     className="cursor-pointer"
-                                    onClick={() => handleDelete(prompt?.id)}
+                                    onClick={() => handleDelete(prompt)}
                                 >
                                     <Trash2 className="size-4" />
                                 </Button>
