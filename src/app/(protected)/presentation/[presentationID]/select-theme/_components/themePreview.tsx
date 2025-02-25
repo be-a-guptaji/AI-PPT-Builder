@@ -5,6 +5,8 @@ import { redirect, useParams, useRouter } from "next/navigation";
 import { useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import ThemeCard from "./themeCard";
 
 const ThemePreview = () => {
     const params = useParams();
@@ -104,7 +106,73 @@ const ThemePreview = () => {
         </div>
     );
 
-    const rightCardContent = <div className="space-y-4"></div>;
+    const rightCardContent = (
+        <div className="space-y-4">
+            <div
+                className="rounded-xl p-6"
+                style={{ backgroundColor: selectedTheme.accentColor + "10" }}
+            >
+                <h3
+                    className="text-xl font-semibold mb-4"
+                    style={{ color: selectedTheme.accentColor }}
+                >
+                    Theme Features
+                </h3>
+                <ul
+                    className="list-disc list-inside space-y-2"
+                    style={{ color: selectedTheme.accentColor }}
+                >
+                    <li>Responsive design</li>
+                    <li>Dark and light mode</li>
+                    <li>Custom color schemes</li>
+                    <li>Accessibility optimized</li>
+                </ul>
+            </div>
+            <Button
+                variant={"outline"}
+                className="w-full h-12 text-lg font-medium"
+                style={{
+                    backgroundColor: selectedTheme.accentColor,
+                    color: selectedTheme.fontColor,
+                }}
+            >
+                Explore Features
+            </Button>
+        </div>
+    );
+
+    return (
+        <div
+            className="h-screen w-full flex"
+            style={{
+                backgroundColor: selectedTheme.backgroundColor,
+                color: selectedTheme.accentColor,
+                font: selectedTheme.fontFamily,
+            }}
+        >
+            <div className="flex-grow overflow-y-auto">
+                <div className="p-12 flex flex-col items-center min-h-screen">
+                    <Button
+                        variant={"outline"}
+                        className="mb-12 self-start"
+                        size={"lg"}
+                        style={{
+                            backgroundColor: selectedTheme.accentColor + "10",
+                            color: selectedTheme.accentColor,
+                            font: selectedTheme.accentColor + "20",
+                        }}
+                        onClick={() => router.push("/create-page")}
+                    >
+                        <ArrowLeft className="mr-2 size-5" />
+                        Back
+                    </Button>
+                    <div className="w-full flex justify-center items-center relative flex-grow">
+                        <ThemeCard />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default ThemePreview;
