@@ -157,12 +157,12 @@
     animation: gradient 3s linear infinite;
     background: linear-gradient(
         45deg,
-        #f55c7a,
-        #94ba4e,
-        #f6bc66,
-        #5cbaf5,
-        #f55ccc,
-        #f55c7a
+        #0d3b66,
+        #faf0ca,
+        #f4d35e,
+        #ee964b,
+        #f95738,
+        #0d3b66
     );
     background-clip: text;
     -webkit-background-clip: text;

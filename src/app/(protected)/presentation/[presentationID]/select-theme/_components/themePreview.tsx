@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import ThemeCard from "./themeCard";
+import ThemePicker from "./themePicker";
 
 const ThemePreview = () => {
     const params = useParams();
@@ -48,7 +49,7 @@ const ThemePreview = () => {
                 </ol>
             </div>
             <Button
-                className="w-full h-12 text-lg font-medium"
+                className="w-full h-12 text-lg font-medium cursor-pointer"
                 style={{
                     backgroundColor: selectedTheme.accentColor,
                     color: selectedTheme.fontColor,
@@ -83,9 +84,9 @@ const ThemePreview = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex md:flex-wrap gap-4">
                 <Button
-                    className="px-6 h-12 text-lg font-medium"
+                    className="px-6 h-12 text-lg font-medium cursor-pointer w-full"
                     style={{
                         backgroundColor: selectedTheme.accentColor,
                         color: selectedTheme.fontColor,
@@ -94,9 +95,9 @@ const ThemePreview = () => {
                     Primary Button
                 </Button>
                 <Button
-                    className="px-6 h-12 text-lg font-medium"
+                    className="px-6 h-12 text-lg font-medium cursor-pointer w-full"
                     style={{
-                        backgroundColor: selectedTheme.accentColor,
+                        backgroundColor: selectedTheme.backgroundColor,
                         color: selectedTheme.fontColor,
                     }}
                 >
@@ -130,7 +131,7 @@ const ThemePreview = () => {
             </div>
             <Button
                 variant={"outline"}
-                className="w-full h-12 text-lg font-medium"
+                className="w-full h-12 text-lg font-medium cursor-pointer"
                 style={{
                     backgroundColor: selectedTheme.accentColor,
                     color: selectedTheme.fontColor,
@@ -167,10 +168,34 @@ const ThemePreview = () => {
                         Back
                     </Button>
                     <div className="w-full flex justify-center items-center relative flex-grow">
-                        <ThemeCard />
+                        <ThemeCard
+                            title="Quick Start"
+                            description="Get up and running in no time"
+                            content={leftCardContent}
+                            variant="left"
+                            theme={selectedTheme}
+                            controls={controls}
+                        />
+                        <ThemeCard
+                            title="Main Content"
+                            description="Add your main content"
+                            content={mainCardContent}
+                            variant="main"
+                            theme={selectedTheme}
+                            controls={controls}
+                        />
+                        <ThemeCard
+                            title="Theme Features"
+                            description="Explore our theme features"
+                            content={rightCardContent}
+                            variant="right"
+                            theme={selectedTheme}
+                            controls={controls}
+                        />
                     </div>
                 </div>
             </div>
+            <ThemePicker/>
         </div>
     );
 };
