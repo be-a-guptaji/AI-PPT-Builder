@@ -74,7 +74,7 @@ const ThemeCard = ({
             initial={"hidden"}
             animate={controls}
             variants={variants[variant]}
-            className="absolute w-full max-w-3xl"
+            className="absolute w-full max-w-2xl"
             style={{ zIndex: variant === "main" ? 10 : 0 }}
         >
             <Card

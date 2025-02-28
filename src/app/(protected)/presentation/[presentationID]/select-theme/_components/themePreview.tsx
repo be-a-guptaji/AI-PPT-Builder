@@ -8,12 +8,14 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import ThemeCard from "./themeCard";
 import ThemePicker from "./themePicker";
+import { themes } from "@/lib/constant";
+import { Theme } from "@/lib/types";
 
 const ThemePreview = () => {
     const params = useParams();
     const router = useRouter();
     const controls = useAnimation();
-    const { curretntTheme, project } = useSlideStore();
+    const { curretntTheme, project, setCurrentTheme } = useSlideStore();
     const [selectedTheme, setSelectedTheme] = useState(curretntTheme);
 
     useEffect(() => {
@@ -25,6 +27,11 @@ const ThemePreview = () => {
     useEffect(() => {
         controls.start("visible");
     }, [controls, selectedTheme]);
+
+    const applyTheme = (theme: Theme) => {
+        setSelectedTheme(theme);
+        setCurrentTheme(theme);
+    };
 
     const leftCardContent = (
         <div className="space-y-4">
@@ -195,7 +202,11 @@ const ThemePreview = () => {
                     </div>
                 </div>
             </div>
-            <ThemePicker/>
+            <ThemePicker
+                selectedTheme={selectedTheme}
+                themes={themes}
+                onThemeSelect={applyTheme}
+            />
         </div>
     );
 };
