@@ -7,7 +7,7 @@ const isPublicRoute = createRouteMatcher([
     "/callback(.*)",
 ]);
 
-export default clerkMiddleware(async (auth, req) => {
+export default clerkMiddleware(async (auth, req): Promise<void> => {
     // Protect all routes except the public ones
     if (!isPublicRoute(req)) {
         await auth.protect(); // Protect the route if it's not public

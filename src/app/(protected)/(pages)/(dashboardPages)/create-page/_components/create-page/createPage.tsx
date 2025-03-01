@@ -16,7 +16,7 @@ type CreatePageProps = {
 };
 
 const CreatePage = ({ onSelectOption }: CreatePageProps) => {
-    const { prompts, setPage } = usePromptStore();
+    const { prompts } = usePromptStore();
 
     return (
         <motion.div

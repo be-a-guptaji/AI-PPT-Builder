@@ -1,5 +1,3 @@
-import { User } from "@prisma/client";
-
 export interface Slide {
     id: string;
     slideName: string;
@@ -83,5 +81,4 @@ export interface ReturnProps {
     status: number;
     data?: any;
     error?: string;
-    user?: User;
 }

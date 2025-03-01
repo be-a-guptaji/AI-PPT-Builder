@@ -1,5 +1,7 @@
 import { generateLayout } from "@/actions/chatGPT";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Theme } from "@/lib/types";
 import { useSlideStore } from "@/store/useSlideStore";
 import { Loader2, Wand2 } from "lucide-react";
@@ -53,8 +55,22 @@ const ThemePicker = ({
                 });
                 return;
             }
+
+            toast.success("Layouts generated successfully.", {
+                description: "Redirecting to your presentation.",
+            });
+
+            router.push(`/presentation/${project?.id}`);
+
+            setSlides(response.data);
         } catch (error) {
             console.error("Error generating layouts:", error);
+
+            toast.error("Error!", {
+                description: "Failed to generate layouts.",
+            });
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -103,6 +119,19 @@ const ThemePicker = ({
                     )}
                 </Button>
             </div>
+            <ScrollArea className="flex flex-grow px-8 pb-8">
+                <div className="grid grid-cols-1 gap-4">
+                    {themes.map((theme) => (
+                        <motion.div
+                            key={theme.name}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                        >
+                            <Button></Button>
+                        </motion.div>
+                    ))}
+                </div>
+            </ScrollArea>
         </div>
     );
 };

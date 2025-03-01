@@ -32,7 +32,7 @@ const Page = () => {
                 }
 
                 const findTheme = themes.find(
-                    (theme) => theme.name === response.data.themeName
+                    (theme) => theme.name === response?.data?.themeName
                 );
 
                 setCurrentTheme(findTheme || themes[0]);

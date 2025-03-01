@@ -85,7 +85,9 @@ export const getRecentProjects = async (): Promise<ReturnProps> => {
     }
 };
 
-export const recoverProject = async (projectId: string): Promise<ReturnProps> => {
+export const recoverProject = async (
+    projectId: string
+): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 
@@ -124,7 +126,9 @@ export const recoverProject = async (projectId: string): Promise<ReturnProps> =>
     }
 };
 
-export const deleteProject = async (projectId: string): Promise<ReturnProps> => {
+export const deleteProject = async (
+    projectId: string
+): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 
@@ -163,7 +167,10 @@ export const deleteProject = async (projectId: string): Promise<ReturnProps> => 
     }
 };
 
-export const createProject = async (title: string, outlines: OutlineCard[]): Promise<ReturnProps> => {
+export const createProject = async (
+    title: string,
+    outlines: OutlineCard[]
+): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 
@@ -209,7 +216,9 @@ export const createProject = async (title: string, outlines: OutlineCard[]): Pro
     }
 };
 
-export const getProjectById = async (projectId: string): Promise<ReturnProps> => {
+export const getProjectById = async (
+    projectId: string
+): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 

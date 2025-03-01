@@ -3,8 +3,13 @@
 import { client } from "@/lib/prisma";
 import { ReturnProps } from "@/lib/types";
 import { currentUser } from "@clerk/nextjs/server";
+import { User } from "@prisma/client";
 
-export const onAuthenticateUser = async (): Promise<ReturnProps> => {
+type UserReturnProps = ReturnProps & {
+    user?: User;
+};
+
+export const onAuthenticateUser = async (): Promise<UserReturnProps> => {
     try {
         const user = await currentUser();
 
