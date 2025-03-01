@@ -178,3 +178,33 @@
     border: 1px solid transparent;
     border-image: linear-gradient(180deg, #f55c7a 0%, #f6bc66 100%) 1;
 }
+
+/* Style for the entire scrollbar */
+::-webkit-scrollbar {
+    width: 8px;  /* Adjust the width of the scrollbar */
+    height: 8px; /* Adjust the height of horizontal scrollbar */
+}
+
+/* Style for the thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background-color: #888; /* Dark grey thumb */
+    border-radius: 10px;     /* Rounded corners */
+    transition: background-color 0.5s ease, transform 0.3s ease;  /* Smooth transition for background color and transform */
+}
+
+/* Hover effect for the thumb */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Lighter grey thumb on hover */
+    transform: scale(1.1);  /* Slightly increase the size on hover */
+}
+
+/* Style for the track (the background part of the scrollbar) */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Light background color for the track */
+    border-radius: 10px;  /* Rounded corners for the track */
+}
+
+/* Style for the corner (when there's both vertical and horizontal scrollbars) */
+::-webkit-scrollbar-corner {
+    background-color: #f1f1f1; /* Color of the corner */
+}

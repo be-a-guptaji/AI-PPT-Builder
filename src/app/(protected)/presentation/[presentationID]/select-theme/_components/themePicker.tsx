@@ -76,7 +76,7 @@ const ThemePicker = ({
 
     return (
         <div
-            className="w-[400px] overflow-hidden sticky top-0 h-screen flex flex-col"
+            className="w-[400px] overflow-x-hidden sticky top-0 h-screen flex flex-col"
             style={{
                 backgroundColor:
                     selectedTheme.sidebarColor || selectedTheme.backgroundColor,
@@ -127,7 +127,17 @@ const ThemePicker = ({
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >
-                            <Button></Button>
+                            <Button
+                                className="flex flex-col items-center justify-start p-6 w-full h-auto"
+                                style={{
+                                    fontFamily: theme.fontFamily,
+                                    color: theme.fontColor,
+                                    background:
+                                        theme.gradientBackground ||
+                                        theme.backgroundColor,
+                                }}
+                                onClick={() => onThemeSelect(theme)}
+                            ></Button>
                         </motion.div>
                     ))}
                 </div>

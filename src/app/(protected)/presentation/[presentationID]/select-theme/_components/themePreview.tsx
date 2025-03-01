@@ -165,9 +165,8 @@ const ThemePreview = () => {
                         className="mb-12 self-start"
                         size={"lg"}
                         style={{
-                            backgroundColor: selectedTheme.accentColor + "10",
-                            color: selectedTheme.accentColor,
-                            font: selectedTheme.accentColor + "20",
+                            backgroundColor: selectedTheme.accentColor,
+                            color: selectedTheme.fontColor,
                         }}
                         onClick={() => router.push("/create-page")}
                     >
