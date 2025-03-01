@@ -9,6 +9,7 @@ import { redirect, useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const Page = () => {
     const params = useParams();
@@ -64,7 +65,9 @@ const Page = () => {
         );
     }
 
-    return <DndProvider></DndProvider>;
+    return <DndProvider backend={HTML5Backend}>
+        <div></div>
+    </DndProvider>;
 };
 
 export default Page;

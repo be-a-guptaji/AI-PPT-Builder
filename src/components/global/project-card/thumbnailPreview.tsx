@@ -27,7 +27,10 @@ const ThumbnailPreview = ({ slide, theme }: ThumbnailPreviewProps) => {
                 </div>
             ) : (
                 <div className="w-full h-full bg-gray-400 flex items-center justify-center">
-                    <Image className="size-6 text-gray-500" />
+                    <Image
+                        className="size-6 text-gray-500"
+                        aria-label="Descriptive text for the image"
+                    />
                 </div>
             )}
         </div>

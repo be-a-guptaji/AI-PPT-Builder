@@ -87,13 +87,19 @@ const ThemePicker = ({
                 <div className="space-y-2">
                     <h2
                         className="text-3xl font-bold tracking-tight"
-                        style={{ color: selectedTheme.accentColor }}
+                        style={{
+                            color: selectedTheme.accentColor,
+                            fontFamily: selectedTheme.fontFamily,
+                        }}
                     >
                         Pick a Theme
                     </h2>
                     <p
                         className="text-sm"
-                        style={{ color: `${selectedTheme.accentColor}80` }}
+                        style={{
+                            color: `${selectedTheme.accentColor}80`,
+                            fontFamily: selectedTheme.fontFamily,
+                        }}
                     >
                         Choose from our curated collection or generate your own
                         custom theme
@@ -104,6 +110,7 @@ const ThemePicker = ({
                     style={{
                         backgroundColor: selectedTheme.accentColor,
                         color: selectedTheme.backgroundColor,
+                        fontFamily: selectedTheme.fontFamily,
                     }}
                     onClick={handleGenerateLayouts}
                 >
@@ -137,7 +144,35 @@ const ThemePicker = ({
                                         theme.backgroundColor,
                                 }}
                                 onClick={() => onThemeSelect(theme)}
-                            ></Button>
+                            >
+                                <div className="w-full flex items-center justify-between">
+                                    <span className="text-xl font-bold">
+                                        {theme.name}
+                                    </span>
+                                    <div
+                                        className="size-3 rounded-full"
+                                        style={{
+                                            backgroundColor: theme.accentColor,
+                                        }}
+                                    />
+                                </div>
+                                <div className="space-y-1 w-full">
+                                    <div
+                                        className="text-2xl font-bold"
+                                        style={{ color: theme.accentColor }}
+                                    >
+                                        Title
+                                    </div>
+                                    <div className="text-base opacity-80">
+                                        Body &{" "}
+                                        <span
+                                            style={{ color: theme.accentColor }}
+                                        >
+                                            Link
+                                        </span>
+                                    </div>
+                                </div>
+                            </Button>
                         </motion.div>
                     ))}
                 </div>

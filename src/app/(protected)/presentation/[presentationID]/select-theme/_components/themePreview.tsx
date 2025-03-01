@@ -60,6 +60,7 @@ const ThemePreview = () => {
                 style={{
                     backgroundColor: selectedTheme.accentColor,
                     color: selectedTheme.fontColor,
+                    fontFamily: selectedTheme.fontFamily,
                 }}
             >
                 Get Started
@@ -97,6 +98,7 @@ const ThemePreview = () => {
                     style={{
                         backgroundColor: selectedTheme.accentColor,
                         color: selectedTheme.fontColor,
+                        fontFamily: selectedTheme.fontFamily,
                     }}
                 >
                     Primary Button
@@ -104,8 +106,11 @@ const ThemePreview = () => {
                 <Button
                     className="px-6 h-12 text-lg font-medium cursor-pointer w-full"
                     style={{
-                        backgroundColor: selectedTheme.backgroundColor,
+                        fontFamily: selectedTheme.fontFamily,
                         color: selectedTheme.fontColor,
+                        background:
+                            selectedTheme.gradientBackground ||
+                            selectedTheme.backgroundColor,
                     }}
                 >
                     Secondary Button
@@ -142,6 +147,7 @@ const ThemePreview = () => {
                 style={{
                     backgroundColor: selectedTheme.backgroundColor,
                     color: selectedTheme.fontColor,
+                    fontFamily: selectedTheme.fontFamily,
                 }}
             >
                 Explore Features
@@ -162,11 +168,12 @@ const ThemePreview = () => {
                 <div className="p-12 flex flex-col items-center min-h-screen">
                     <Button
                         variant={"outline"}
-                        className="mb-12 self-start"
+                        className="mb-12 self-start cursor-pointer"
                         size={"lg"}
                         style={{
                             backgroundColor: selectedTheme.accentColor,
                             color: selectedTheme.fontColor,
+                            fontFamily: selectedTheme.fontFamily,
                         }}
                         onClick={() => router.push("/create-page")}
                     >

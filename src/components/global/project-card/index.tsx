@@ -120,7 +120,7 @@ const ProjectCard = ({
             >
                 <ThumbnailPreview
                     theme={currentTheme}
-                    // slide={JSON.parse(JSON.stringify(slideData))?.[0]}
+                    slide={JSON.parse(JSON.stringify(slideData))?.[0]}
                 />
             </div>
             <div className="w-full">
