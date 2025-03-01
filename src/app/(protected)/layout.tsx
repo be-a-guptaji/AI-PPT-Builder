@@ -4,17 +4,17 @@ import { onAuthenticateUser } from "@/actions/user";
 import { redirect } from "next/navigation";
 import React from "react";
 
-type Props = {
+type LayoutProps = {
     children: React.ReactNode;
 };
 
-const Layout = async (props: Props) => {
+const Layout = async ({ children }: LayoutProps) => {
     const auth = await onAuthenticateUser();
 
     if (!auth.user) {
         redirect("/sign-in");
     }
-    return <div className="w-full min-h-screen">{props.children}</div>;
+    return <div className="w-full min-h-screen">{children}</div>;
 };
 
 export default Layout;

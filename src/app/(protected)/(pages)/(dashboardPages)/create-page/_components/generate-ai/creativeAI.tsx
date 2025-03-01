@@ -17,11 +17,11 @@ import { v4 } from "uuid";
 import { createProject } from "@/actions/projects";
 import { useSlideStore } from "@/store/useSlideStore";
 
-type Props = {
+type CreativeAIProps = {
     onBack: () => void;
 };
 
-const CreateAI = ({ onBack }: Props) => {
+const CreateAI = ({ onBack }: CreativeAIProps) => {
     const router = useRouter();
     const [numberOfCards, setNumberOfCards] = useState<number>(0);
     const [editingCard, setEditingCard] = useState<string | null>(null);

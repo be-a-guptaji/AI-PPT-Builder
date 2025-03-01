@@ -1,10 +1,10 @@
 import React from "react";
 
-type Props = {
+type LayoutProps = {
     children: React.ReactNode;
 };
 
-const PresentationLayout = ({ children }: Props) => {
+const PresentationLayout = ({ children }: LayoutProps) => {
     return <div className="size-full overflow-x-hidden">{children}</div>;
 };
 

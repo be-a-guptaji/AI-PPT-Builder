@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import React from "react";
 
-type Props = {
+type IndexProps = {
     children: React.ReactNode;
     className?: string;
     discription: string;
@@ -30,7 +30,7 @@ const AlertDialogBox = ({
     onClick,
     open,
     handleOpen,
-}: Props) => {
+}: IndexProps) => {
     return (
         <AlertDialog open={open} onOpenChange={handleOpen}>
             <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>

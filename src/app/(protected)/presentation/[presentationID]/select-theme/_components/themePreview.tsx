@@ -140,7 +140,7 @@ const ThemePreview = () => {
                 variant={"outline"}
                 className="w-full h-12 text-lg font-medium cursor-pointer"
                 style={{
-                    backgroundColor: selectedTheme.accentColor,
+                    backgroundColor: selectedTheme.backgroundColor,
                     color: selectedTheme.fontColor,
                 }}
             >

@@ -3,12 +3,12 @@ import { cn } from "@/lib/utils";
 import { Image } from "lucide-react";
 import React from "react";
 
-type Props = {
+type ThumbnailPreviewProps = {
     slide: Slide;
     theme: Theme;
 };
 
-const ThumbnailPreview = ({ slide, theme }: Props) => {
+const ThumbnailPreview = ({ slide, theme }: ThumbnailPreviewProps) => {
     return (
         <div
             className={cn(

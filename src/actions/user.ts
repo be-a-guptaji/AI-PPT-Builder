@@ -1,9 +1,10 @@
 "use server";
 
 import { client } from "@/lib/prisma";
+import { ReturnProps } from "@/lib/types";
 import { currentUser } from "@clerk/nextjs/server";
 
-export const onAuthenticateUser = async () => {
+export const onAuthenticateUser = async (): Promise<ReturnProps> => {
     try {
         const user = await currentUser();
 
@@ -46,8 +47,10 @@ export const onAuthenticateUser = async () => {
             return { status: 201, user: newUser };
         }
 
-        return { status: 400 };
+        return { status: 400, error: "Something went wrong" };
     } catch (error) {
-        return { status: 500, error };
+        console.error("Error authenticating user:", error);
+
+        return { status: 500, error: "Internal server error" };
     }
 };

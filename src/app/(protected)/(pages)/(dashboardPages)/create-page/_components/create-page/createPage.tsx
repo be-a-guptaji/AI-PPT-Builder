@@ -11,11 +11,11 @@ import { Button } from "@/components/ui/button";
 import RecentPrompts from "../generate-ai/recentPrompts";
 import usePromptStore from "@/store/usePromptStore";
 
-type Props = {
+type CreatePageProps = {
     onSelectOption: (option: string) => void;
 };
 
-const CreatePage = ({ onSelectOption }: Props) => {
+const CreatePage = ({ onSelectOption }: CreatePageProps) => {
     const { prompts, setPage } = usePromptStore();
 
     return (

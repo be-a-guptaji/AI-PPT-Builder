@@ -2,9 +2,9 @@
 
 import client from "@/lib/prisma";
 import { onAuthenticateUser } from "./user";
-import { OutlineCard } from "@/lib/types";
+import { OutlineCard, ReturnProps } from "@/lib/types";
 
-export const getAllProjects = async () => {
+export const getAllProjects = async (): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 
@@ -44,7 +44,7 @@ export const getAllProjects = async () => {
     }
 };
 
-export const getRecentProjects = async () => {
+export const getRecentProjects = async (): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 
@@ -85,7 +85,7 @@ export const getRecentProjects = async () => {
     }
 };
 
-export const recoverProject = async (projectId: string) => {
+export const recoverProject = async (projectId: string): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 
@@ -124,7 +124,7 @@ export const recoverProject = async (projectId: string) => {
     }
 };
 
-export const deleteProject = async (projectId: string) => {
+export const deleteProject = async (projectId: string): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 
@@ -163,7 +163,7 @@ export const deleteProject = async (projectId: string) => {
     }
 };
 
-export const createProject = async (title: string, outlines: OutlineCard[]) => {
+export const createProject = async (title: string, outlines: OutlineCard[]): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 
@@ -209,7 +209,7 @@ export const createProject = async (title: string, outlines: OutlineCard[]) => {
     }
 };
 
-export const getProjectById = async (projectId: string) => {
+export const getProjectById = async (projectId: string): Promise<ReturnProps> => {
     try {
         const checkUser = await onAuthenticateUser();
 

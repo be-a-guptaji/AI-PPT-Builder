@@ -1,8 +1,10 @@
+import { User } from "@prisma/client";
+
 export interface Slide {
     id: string;
     slideName: string;
     type: string;
-    constent: ContentItem;
+    content: ContentItem;
     slideOrder: number;
     className?: string;
 }
@@ -75,4 +77,11 @@ export interface OutlineCard {
     title: string;
     id: string;
     order: number;
+}
+
+export interface ReturnProps {
+    status: number;
+    data?: any;
+    error?: string;
+    user?: User;
 }

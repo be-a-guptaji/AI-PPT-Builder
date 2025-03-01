@@ -42,8 +42,20 @@ const ThemePicker = ({
         }
 
         try {
-            const response = await generateLayout();
-        } catch (error) {}
+            const response = await generateLayout(
+                params.presentationID as string,
+                curretntTheme.name
+            );
+
+            if (response.status !== 200 || !response?.data) {
+                toast.error("Oops!", {
+                    description: response.error || "Something went wrong",
+                });
+                return;
+            }
+        } catch (error) {
+            console.error("Error generating layouts:", error);
+        }
     };
 
     return (
