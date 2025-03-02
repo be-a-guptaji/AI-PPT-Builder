@@ -66,7 +66,7 @@ const Page = () => {
     }
 
     return <DndProvider backend={HTML5Backend}>
-        <div></div>
+        <div className=""></div>
     </DndProvider>;
 };
 
