@@ -262,7 +262,6 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
                     )}
                 </Button>
             )}
-            {/* {prompts?.length > 0 && <RecentPrompts />} */}
         </motion.div>
     );
 };

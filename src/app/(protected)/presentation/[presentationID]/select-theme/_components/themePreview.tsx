@@ -5,7 +5,7 @@ import { redirect, useParams, useRouter } from "next/navigation";
 import { useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import ThemeCard from "./themeCard";
 import ThemePicker from "./themePicker";
 import { themes } from "@/lib/constant";
@@ -17,6 +17,7 @@ const ThemePreview = () => {
     const controls = useAnimation();
     const { curretntTheme, project, setCurrentTheme } = useSlideStore();
     const [selectedTheme, setSelectedTheme] = useState(curretntTheme);
+    const [isLoading, setLoading] = useState(false);
 
     useEffect(() => {
         if (project?.slides) {
@@ -155,6 +156,30 @@ const ThemePreview = () => {
         </div>
     );
 
+    if (isLoading) {
+        return (
+            <>
+                <div className="size-full h-screen flex flex-col items-center justify-center dark:text-white text-black gap-6">
+                    <Loader2 className="animate-spin size-8" />
+                    <p className="text-xl font-semibold text-center dark:text-white text-black animate-pulse">
+                        Get ready to witness a stunning experience!
+                    </p>
+                    <p className="text-lg font-normal text-center dark:text-white text-black animate-pulse">
+                        We&apos;re preparing something special just for you on{" "}
+                        <span className="font-bold text-xl text-kraton">
+                            {`${project?.title || "Your Selected Topic"}`}
+                        </span>
+                        .
+                    </p>
+                    <p className="text-lg font-normal text-center dark:text-white text-black animate-pulse">
+                        Sit back, relax, and let us handle the heavy lifting. We
+                        promise it&apos;ll be worth the wait!
+                    </p>
+                </div>
+            </>
+        );
+    }
+
     return (
         <div
             className="h-screen w-full flex"
@@ -211,6 +236,8 @@ const ThemePreview = () => {
             <ThemePicker
                 selectedTheme={selectedTheme}
                 themes={themes}
+                isLoading={isLoading}
+                setLoading={setLoading}
                 onThemeSelect={applyTheme}
             />
         </div>

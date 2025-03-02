@@ -6,23 +6,26 @@ import { Theme } from "@/lib/types";
 import { useSlideStore } from "@/store/useSlideStore";
 import { Loader2, Wand2 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import { toast } from "sonner";
 
 type ThemePicekerProps = {
     selectedTheme: Theme;
     themes: Theme[];
+    isLoading: boolean;
+    setLoading: (isLoading: boolean) => void;
     onThemeSelect: (theme: Theme) => void;
 };
 
 const ThemePicker = ({
     selectedTheme,
     themes,
+    isLoading,
+    setLoading,
     onThemeSelect,
 }: ThemePicekerProps) => {
     const router = useRouter();
     const params = useParams();
-    const [isLoading, setLoading] = useState(false);
     const { project, curretntTheme, setSlides } = useSlideStore();
 
     const handleGenerateLayouts = async () => {
