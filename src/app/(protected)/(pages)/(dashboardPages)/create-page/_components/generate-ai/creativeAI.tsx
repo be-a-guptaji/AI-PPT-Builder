@@ -243,7 +243,7 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
             />
             {outlines.length > 0 && (
                 <Button
-                    className="w-full transition-all duration-300 cursor-pointer text-lg h-12 dark:bg-white text-black bg-black/5 dark:hover:bg-white/50 hover:bg-black/50 mt-8"
+                    className="w-full transition-all duration-300 cursor-pointer text-lg h-12 dark:bg-white text-black bg-black/5 dark:hover:bg-white/50 hover:bg-black/50 my-8"
                     onClick={handleGenerate}
                     disabled={
                         isGenerating ||

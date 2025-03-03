@@ -10,11 +10,12 @@ import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import Navbar from "./_components/navbar/navbar";
 
 const Page = () => {
     const params = useParams();
-    const { setTheme } = useTheme();
     const [isLoading, setLoading] = useState(true);
+    const { setTheme } = useTheme();
     const { setCurrentTheme, setProject, setSlides } = useSlideStore();
 
     useEffect(() => {
@@ -60,14 +61,19 @@ const Page = () => {
     if (isLoading) {
         return (
             <div className="flex items-center justify-center h-screen">
-                <Loader2 className="animate-spin size-4 text-primary" />
+                <Loader2 className="animate-spin size-8 text-primary" />
             </div>
         );
     }
 
-    return <DndProvider backend={HTML5Backend}>
-        <div className=""></div>
-    </DndProvider>;
+    return (
+        <DndProvider backend={HTML5Backend}>
+            <div className="min-h-screen flex flex-col">
+                <Navbar presentationID={params.presentationID as string} />
+                <div></div>
+            </div>
+        </DndProvider>
+    );
 };
 
 export default Page;

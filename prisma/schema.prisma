@@ -38,7 +38,7 @@ model Project {
   outlines   String[]
   variantId  String?
   thumbnail  String?
-  themeName  String   @default("light")
+  themeName  String   @default("Default")
   isDeleted  Boolean  @default(false)
   isSellable Boolean  @default(false)
   createdAt  DateTime @default(now())
