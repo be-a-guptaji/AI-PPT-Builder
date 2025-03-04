@@ -1,33 +1,31 @@
-"use client";
+"use client"
 
-import Switch from "@/components/ui/switch";
-import { useTheme } from "next-themes";
-import React, { useEffect, useState } from "react";
+import Switch from "@/components/ui/switch"
+import { useTheme } from "next-themes"
+import React, { useEffect, useState } from "react"
 
 const TheamSwicher = () => {
-    const [mouted, setMouted] = useState(false);
-    const { theme, setTheme } = useTheme();
+  const [mouted, setMouted] = useState(false)
+  const { theme, setTheme } = useTheme()
 
-    useEffect(() => {
-        setMouted(true);
-    }, []);
+  useEffect(() => {
+    setMouted(true)
+  }, [])
 
-    if (!mouted) {
-        return null;
-    }
+  if (!mouted) {
+    return null
+  }
 
-    return (
-        <div>
-            <Switch
-                checked={theme === "dark"}
-                className="h-10 w-20 pl-1 data-[state=checked]:bg-primary/20"
-                aria-label="Toggle dark mode"
-                onCheckedChange={() =>
-                    setTheme(theme === "dark" ? "light" : "dark")
-                }
-            />
-        </div>
-    );
-};
+  return (
+    <div>
+      <Switch
+        checked={theme === "dark"}
+        className="h-10 w-20 pl-1 data-[state=checked]:bg-primary/20"
+        aria-label="Toggle dark mode"
+        onCheckedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
+      />
+    </div>
+  )
+}
 
-export default TheamSwicher;
+export default TheamSwicher
