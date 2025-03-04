@@ -11,12 +11,14 @@ import { toast } from "sonner";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Navbar from "./_components/navbar/navbar";
+import LayoutPreview from "./_components/editor-sidebar/left-sidebar/layoutPreview";
 
 const Page = () => {
     const params = useParams();
     const [isLoading, setLoading] = useState(true);
     const { setTheme } = useTheme();
-    const { setCurrentTheme, setProject, setSlides } = useSlideStore();
+    const { curretntTheme, setCurrentTheme, setProject, setSlides } =
+        useSlideStore();
 
     useEffect(() => {
         (async () => {
@@ -70,7 +72,16 @@ const Page = () => {
         <DndProvider backend={HTML5Backend}>
             <div className="min-h-screen flex flex-col">
                 <Navbar presentationID={params.presentationID as string} />
-                <div></div>
+                <div
+                    className="flex-1 flex overflow-hidden pt-16"
+                    style={{
+                        backgroundColor: curretntTheme.backgroundColor,
+                        color: curretntTheme.accentColor,
+                        fontFamily: curretntTheme.fontFamily,
+                    }}
+                >
+                    <LayoutPreview />
+                </div>
             </div>
         </DndProvider>
     );
