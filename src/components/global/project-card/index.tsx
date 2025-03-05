@@ -126,7 +126,7 @@ const ProjectCard = ({
       <div className="w-full">
         <div className="space-y-1">
           <h3 className="font-semibold text-base text-primary line-clamp-1">
-            {title}This is a project
+            {title}
           </h3>
           <div className="flex justify-between items-center gap-2 w-full">
             <p
@@ -135,7 +135,7 @@ const ProjectCard = ({
             >
               {timeAgo(createdAt)}
             </p>
-            {!isDeleted ? (
+            {isDeleted ? (
               <AlertDialogBox
                 discription="This will recover your project and restore all your data"
                 className="bg-green-500 text-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-200"

@@ -26,7 +26,7 @@ const LayoutPreview = (props: LayoutPreviewProps) => {
             <Skeleton className="h-20 w-full" />
           </div>
         ) : (
-          <div className="p-4 pb-32 space-y-6">
+          <div className="p-4 pb-32 space-y-6 mt-8">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-sm font-medium dark:text-gray-100 text-gray-500">
                 SLIDES

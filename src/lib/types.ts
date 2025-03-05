@@ -82,3 +82,10 @@ export interface ReturnProps {
   data?: any
   error?: string
 }
+
+export interface LayoutSlides {
+  slideName: string
+  content: ContentItem
+  className?: string
+  type: string
+}
