@@ -1,11 +1,11 @@
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Skeleton } from "@/components/ui/skeleton"
-import { LayoutSlides, Slide } from "@/lib/types"
-import { cn } from "@/lib/utils"
-import { useSlideStore } from "@/store/useSlideStore"
-import React, { useEffect, useRef, useState } from "react"
-import { useDrop } from "react-dnd"
 import { v4 } from "uuid"
+import { cn } from "@/lib/utils"
+import { useDrop } from "react-dnd"
+import { LayoutSlides, Slide } from "@/lib/types"
+import { Skeleton } from "@/components/ui/skeleton"
+import { useSlideStore } from "@/store/useSlideStore"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import React, { useEffect, useRef, useState } from "react"
 
 type EditorProps = {
   isEditable: boolean
