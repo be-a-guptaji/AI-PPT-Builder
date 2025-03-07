@@ -1,4 +1,4 @@
-import { Slide, Theme } from "@/lib/types"
+import { ContentItem, Slide, Theme } from "@/lib/types"
 import { Project } from "@prisma/client"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
@@ -16,6 +16,12 @@ interface SlideState {
   addSlideAtIndex: (slide: Slide, index: number) => void
   getOrderedSlides: () => Slide[]
   reOrderedSlides: (fromIndex: number, toIndex: number) => void
+  updateContentItem: (
+    slideId: string,
+    contentID: string,
+    newContent: string | string[] | string[][]
+  ) => void
+  setCurrentSlide: (index: number) => void
 }
 
 const defaultTheme: Theme = {
@@ -69,6 +75,46 @@ export const useSlideStore = create(
               ...slide,
               slideOrder: index,
             })),
+          }
+        })
+      },
+      setCurrentSlide: (index: number) => set({ currentSlide: index }),
+      updateContentItem: (
+        slideId: string,
+        contentID: string,
+        newContent: string | string[] | string[][]
+      ) => {
+        set((state) => {
+          const updateContentRecursively = (item: ContentItem): ContentItem => {
+            if (item.id === contentID) {
+              return {
+                ...item,
+                content: newContent,
+              }
+            }
+
+            if (
+              Array.isArray(item.content) &&
+              item.content.every((i) => typeof i !== "string")
+            ) {
+              return {
+                ...item,
+                content: item.content.map((subItem) => {
+                  if (typeof subItem !== "string") {
+                    return updateContentRecursively(subItem as ContentItem)
+                  }
+                  return subItem
+                }) as ContentItem[],
+              }
+            }
+            return item
+          }
+          return {
+            slides: state.slides.map((slide) =>
+              slide.id === slideId
+                ? { ...slide, content: updateContentRecursively(slide.content) }
+                : slide
+            ),
           }
         })
       },
