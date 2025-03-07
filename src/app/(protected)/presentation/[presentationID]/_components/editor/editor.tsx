@@ -1,6 +1,6 @@
 import { v4 } from "uuid"
 import { cn } from "@/lib/utils"
-import { useDrop } from "react-dnd"
+import { useDrag, useDrop } from "react-dnd"
 import { LayoutSlides, Slide } from "@/lib/types"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useSlideStore } from "@/store/useSlideStore"
@@ -13,6 +13,7 @@ type EditorProps = {
 
 interface DropZoneProps {
   index: number
+  isEditable: boolean
   onDrop: (
     item: {
       type: string
@@ -22,7 +23,6 @@ interface DropZoneProps {
     },
     dropIndex: number
   ) => void
-  isEditable: boolean
 }
 
 export const DropZone: React.FC<DropZoneProps> = ({
@@ -84,11 +84,32 @@ export const DragableSlide: React.FC<DragableSlideProps> = ({
   handelDelete,
 }) => {
   const ref = useRef(null)
+  const { currentSlide, curretntTheme, setCurrentSlide } = useSlideStore()
+  const [{ isDragging }, drag] = useDrag({
+    type: "SLIDE",
+    item: { index, type: "SLIDE" },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+    canDrag: isEditable,
+  })
 
   return (
-    <div className="h-4 rounded-md transition-all duration-200 border-gray-300">
-      <div className="h-full flex items-center justify-center text-gray-600">
-        Drag Here
+    <div
+      ref={ref}
+      className={cn(
+        "w-full rounded-lg shadow-lg relative p-0 min-h-[400px] max-h-[800px]",
+        "shadow-xl transition-shadow duration-300",
+        "flex flex-col",
+        index === currentSlide ? "ring-2 ring-blue-500 ring-offset-2" : "",
+        slide.className,
+        isDragging ? "opacity-50" : "opacity-100"
+      )}
+      style={{ backgroundImage: curretntTheme.gradientBackground }}
+      onClick={() => setCurrentSlide(index)}
+    >
+      <div className="size-full flex-grow overflow-hidden">
+        <MasterRecursiveComponent />
       </div>
     </div>
   )
@@ -97,19 +118,8 @@ export const DragableSlide: React.FC<DragableSlideProps> = ({
 const Editor = ({ isEditable }: EditorProps) => {
   const slideRefs = useRef<(HTMLDivElement | null)[]>([])
   const [isLoading, setLoading] = useState(true)
-  const {
-    curretntTheme,
-    project,
-    slides,
-    currentSlide,
-    addSlideAtIndex,
-    removeSlide,
-    getOrderedSlides,
-    reOrderedSlides,
-    setCurrentTheme,
-    setProject,
-    setSlides,
-  } = useSlideStore()
+  const { currentSlide, getOrderedSlides, reOrderedSlides, addSlideAtIndex } =
+    useSlideStore()
   const orderedSlides = getOrderedSlides()
 
   const moveSlide = (dragIndex: number, hoverIndex: number) => {
