@@ -13,6 +13,7 @@ import { motion } from "framer-motion"
 import React, { useCallback } from "react"
 import DropZone from "./dropZone"
 import Paragraph from "@/components/global/editor/components/paragraph"
+import TableComponet from "@/components/global/editor/components/tableComponet"
 
 type MasterRecursiveComponentProps = {
   content: ContentItem
@@ -88,6 +89,13 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
         return (
           <motion.div className="size-full" {...animationProps}>
             <Paragraph {...commonProps} />
+          </motion.div>
+        )
+
+      case "table":
+        return (
+          <motion.div className="size-full" {...animationProps}>
+            <TableComponet {...commonProps} />
           </motion.div>
         )
 
