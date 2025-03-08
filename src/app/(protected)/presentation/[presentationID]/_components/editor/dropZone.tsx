@@ -1,9 +1,9 @@
-import { ContentItem } from "@/lib/types"
-import { cn } from "@/lib/utils"
-import { useSlideStore } from "@/store/useSlideStore"
-import React from "react"
-import { useDrop } from "react-dnd"
 import { v4 } from "uuid"
+import React from "react"
+import { cn } from "@/lib/utils"
+import { useDrop } from "react-dnd"
+import { ContentItem } from "@/lib/types"
+import { useSlideStore } from "@/store/useSlideStore"
 
 type DropZoneProps = {
   index: number
