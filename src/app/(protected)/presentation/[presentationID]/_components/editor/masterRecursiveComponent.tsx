@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 import React, { useCallback } from "react"
 import DropZone from "./dropZone"
+import Paragraph from "@/components/global/editor/components/paragraph"
 
 type MasterRecursiveComponentProps = {
   content: ContentItem
@@ -36,7 +37,7 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
 
     const commonProps = {
       placeholder: content.placeholder,
-      vlaue: content.content as string,
+      value: content.content as string,
       isPreview: isPreview,
       onChange: handleChange,
     }
@@ -75,11 +76,18 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
             <Heading4 {...commonProps} />
           </motion.div>
         )
-      
+
       case "title":
         return (
           <motion.div className="size-full" {...animationProps}>
             <Title {...commonProps} />
+          </motion.div>
+        )
+
+      case "paragraph":
+        return (
+          <motion.div className="size-full" {...animationProps}>
+            <Paragraph {...commonProps} />
           </motion.div>
         )
 
