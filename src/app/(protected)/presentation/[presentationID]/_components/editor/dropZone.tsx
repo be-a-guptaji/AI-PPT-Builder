@@ -1,3 +1,4 @@
+import { ContentItem } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import { useSlideStore } from "@/store/useSlideStore"
 import React from "react"
@@ -44,7 +45,11 @@ const DropZone = ({ index, parentID, slideID }: DropZoneProps) => {
         "hover:border-blue-300"
       )}
     >
-      DropZone
+      {isOver && canDrop && (
+        <div className="size-full flex text-sm items-center justify-center text-green-600">
+          Drop here
+        </div>
+      )}
     </div>
   )
 }
