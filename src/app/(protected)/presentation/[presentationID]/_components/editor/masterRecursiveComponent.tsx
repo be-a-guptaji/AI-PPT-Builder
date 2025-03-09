@@ -14,6 +14,8 @@ import React, { useCallback } from "react"
 import DropZone from "./dropZone"
 import Paragraph from "@/components/global/editor/components/paragraph"
 import TableComponet from "@/components/global/editor/components/tableComponet"
+import ColumnComponent from "@/components/global/editor/components/columnComponent"
+import CustomImage from "@/components/global/editor/components/customImage"
 
 type MasterRecursiveComponentProps = {
   content: ContentItem
@@ -115,10 +117,33 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
         if (Array.isArray(content.content)) {
           return (
             <motion.div className="size-full" {...animationProps}>
-              <Paragraph {...commonProps} />
+              <ColumnComponent
+                content={content.content as ContentItem[]}
+                className={content.className}
+                isPreview={isPreview}
+                isEditable={isEditable}
+                slideId={slideId}
+                onContentChange={onContentChange}
+              />
             </motion.div>
           )
         }
+        return null
+
+      case "image":
+        return (
+          <motion.div className="size-full" {...animationProps}>
+            <CustomImage
+              src={content.content as string}
+              alt={content.alt || "image"}
+              className={content.className}
+              isEditable={isEditable}
+              isPreview={isPreview}
+              contentId={content.id}
+              onContentChange={onContentChange}
+            />
+          </motion.div>
+        )
 
       case "column":
         if (Array.isArray(content.content)) {
