@@ -94,7 +94,7 @@ export const DragableSlide: React.FC<DragableSlideProps> = ({
   handleDelete,
 }) => {
   const ref = useRef(null)
-  const { currentSlide, curretntTheme, setCurrentSlide, updateContentItem } =
+  const { currentSlide, currentTheme, setCurrentSlide, updateContentItem } =
     useSlideStore()
   const [{ isDragging }, drag] = useDrag({
     type: "SLIDE",
@@ -125,7 +125,7 @@ export const DragableSlide: React.FC<DragableSlideProps> = ({
         slide.className,
         isDragging ? "opacity-50" : "opacity-100"
       )}
-      style={{ backgroundImage: curretntTheme.gradientBackground }}
+      style={{ backgroundImage: currentTheme.gradientBackground }}
       onClick={() => setCurrentSlide(index)}
     >
       <div className="size-full flex-grow overflow-hidden">

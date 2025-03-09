@@ -7,7 +7,7 @@ import { v4 } from "uuid"
 interface SlideState {
   slides: Slide[]
   project: Project | null
-  curretntTheme: Theme
+  currentTheme: Theme
   currentSlide: number
   setSlides: (slides: Slide[]) => void
   setProject: (project: Project | null) => void
@@ -47,11 +47,11 @@ export const useSlideStore = create(
     (set, get) => ({
       slides: [],
       project: null,
-      curretntTheme: defaultTheme,
+      currentTheme: defaultTheme,
       currentSlide: 0,
       setSlides: (slides: Slide[]) => set({ slides }),
       setProject: (project: Project | null) => set({ project }),
-      setCurrentTheme: (theme: Theme) => set({ curretntTheme: theme }),
+      setCurrentTheme: (theme: Theme) => set({ currentTheme: theme }),
       removeSlide: (id: string) => {
         set((state) => ({
           slides: state.slides.filter((slide) => slide.id !== id),

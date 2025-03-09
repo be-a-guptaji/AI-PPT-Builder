@@ -95,9 +95,30 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
       case "table":
         return (
           <motion.div className="size-full" {...animationProps}>
-            <TableComponet {...commonProps} />
+            <TableComponet
+              content={content.content as string[][]}
+              onChange={(newContent) => {
+                onContentChange(
+                  content.id,
+                  newContent !== null ? newContent : ""
+                )
+              }}
+              initialColumnSize={content.initialColumns}
+              initialRowSize={content.initialRows}
+              isEditable={isEditable}
+              isPreview={isPreview}
+            />
           </motion.div>
         )
+
+      case "resizable-column":
+        if (Array.isArray(content.content)) {
+          return (
+            <motion.div className="size-full" {...animationProps}>
+              <Paragraph {...commonProps} />
+            </motion.div>
+          )
+        }
 
       case "column":
         if (Array.isArray(content.content)) {

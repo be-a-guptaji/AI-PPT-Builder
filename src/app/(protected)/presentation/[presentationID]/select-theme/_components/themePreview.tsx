@@ -15,8 +15,8 @@ const ThemePreview = () => {
   const params = useParams()
   const router = useRouter()
   const controls = useAnimation()
-  const { curretntTheme, project, setCurrentTheme } = useSlideStore()
-  const [selectedTheme, setSelectedTheme] = useState(curretntTheme)
+  const { currentTheme, project, setCurrentTheme } = useSlideStore()
+  const [selectedTheme, setSelectedTheme] = useState(currentTheme)
   const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {

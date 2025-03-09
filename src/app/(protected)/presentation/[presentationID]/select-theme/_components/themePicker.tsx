@@ -26,7 +26,7 @@ const ThemePicker = ({
 }: ThemePicekerProps) => {
   const router = useRouter()
   const params = useParams()
-  const { project, curretntTheme, setSlides } = useSlideStore()
+  const { project, currentTheme, setSlides } = useSlideStore()
 
   const handleGenerateLayouts = async () => {
     setLoading(true)
@@ -49,7 +49,7 @@ const ThemePicker = ({
     try {
       const response = await generateLayout(
         params.presentationID as string,
-        curretntTheme.name
+        currentTheme.name
       )
 
       if (response.status !== 200 || !response?.data) {

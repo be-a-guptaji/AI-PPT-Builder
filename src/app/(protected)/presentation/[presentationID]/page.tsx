@@ -18,7 +18,7 @@ const Page = () => {
   const params = useParams()
   const [isLoading, setLoading] = useState(true)
   const { setTheme } = useTheme()
-  const { curretntTheme, setCurrentTheme, setProject, setSlides } =
+  const { currentTheme, setCurrentTheme, setProject, setSlides } =
     useSlideStore()
 
   useEffect(() => {
@@ -68,9 +68,9 @@ const Page = () => {
         <div
           className="flex-1 flex overflow-hidden pt-16"
           style={{
-            backgroundColor: curretntTheme.backgroundColor,
-            color: curretntTheme.accentColor,
-            fontFamily: curretntTheme.fontFamily,
+            backgroundColor: currentTheme.backgroundColor,
+            color: currentTheme.accentColor,
+            fontFamily: currentTheme.fontFamily,
           }}
         >
           <LayoutPreview />

@@ -13,7 +13,7 @@ type NavbarProps = {
 
 const Navbar = ({ presentationID }: NavbarProps) => {
   const [isPresentationMode, setIsPresentationMode] = useState(false)
-  const { curretntTheme, project } = useSlideStore()
+  const { currentTheme, project } = useSlideStore()
 
   const handelCopy = () => {
     navigator.clipboard.writeText(
@@ -30,8 +30,8 @@ const Navbar = ({ presentationID }: NavbarProps) => {
       className="fixed top-0 left-0 right-0 z-50 w-full h-20 flex justify-between items-center py-4 px-7 boarder-b"
       style={{
         backgroundColor:
-          curretntTheme.navbarColor || curretntTheme.backgroundColor,
-        color: curretntTheme.accentColor,
+          currentTheme.navbarColor || currentTheme.backgroundColor,
+        color: currentTheme.accentColor,
       }}
     >
       <Link href={`/dashboard`} passHref>
@@ -39,7 +39,7 @@ const Navbar = ({ presentationID }: NavbarProps) => {
           variant={"outline"}
           className="flex items-center gap-2 cursor-pointer"
           style={{
-            backgroundColor: curretntTheme.backgroundColor,
+            backgroundColor: currentTheme.backgroundColor,
           }}
         >
           <Home className="size-4" />
@@ -56,7 +56,7 @@ const Navbar = ({ presentationID }: NavbarProps) => {
 
       <div className="flex items-center gap-4">
         <Button
-          style={{ backgroundColor: curretntTheme.backgroundColor }}
+          style={{ backgroundColor: currentTheme.backgroundColor }}
           variant={"outline"}
           className="cursor-pointer"
           onClick={handelCopy}
