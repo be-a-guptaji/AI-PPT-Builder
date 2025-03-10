@@ -17,6 +17,7 @@ import TableComponet from "@/components/global/editor/components/tableComponet"
 import ColumnComponent from "@/components/global/editor/components/columnComponent"
 import CustomImage from "@/components/global/editor/components/imageComponent"
 import BlockQuote from "@/components/global/editor/components/blockQuote"
+import NumberedList from "@/components/global/editor/components/listComponent"
 
 type MasterRecursiveComponentProps = {
   content: ContentItem
@@ -163,8 +164,11 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
           <motion.div {...animationProps} className="sizefull">
             <NumberedList
               items={content.content as string[]}
-              onChange={(newItems) => onContentChange(content.id, newItems)}
               className={content.className}
+              isEditable={isEditable}
+              onChange={(newItems: string[]) =>
+                onContentChange(content.id, newItems)
+              }
             />
           </motion.div>
         )
