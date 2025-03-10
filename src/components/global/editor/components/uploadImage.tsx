@@ -39,7 +39,7 @@ const UploadImage = ({ contentId, onContentChange }: UploadImageProps) => {
       <FileUploaderRegular
         sourceList="local, camera, facebook, gdrive"
         cameraModes="photo, video"
-        pubkey={process.env.UPLOADCARE_PUBLIC_KEY!}
+        pubkey={process.env.NEXT_PUBLIC_UPLOADCARE_PUBLIC_KEY!}
         multiple={false}
         onFileUploadSuccess={handelChangeEvent}
         maxLocalFileSizeBytes={10485760}

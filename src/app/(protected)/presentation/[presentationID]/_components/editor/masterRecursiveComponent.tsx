@@ -16,6 +16,7 @@ import Paragraph from "@/components/global/editor/components/paragraph"
 import TableComponet from "@/components/global/editor/components/tableComponet"
 import ColumnComponent from "@/components/global/editor/components/columnComponent"
 import CustomImage from "@/components/global/editor/components/imageComponent"
+import BlockQuote from "@/components/global/editor/components/blockQuote"
 
 type MasterRecursiveComponentProps = {
   content: ContentItem
@@ -141,6 +142,29 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
               isPreview={isPreview}
               contentId={content.id}
               onContentChange={onContentChange}
+            />
+          </motion.div>
+        )
+
+      case "blockquote":
+        return (
+          <motion.div
+            {...animationProps}
+            className={cn("sizefull flex flex-col", content.className)}
+          >
+            <BlockQuote>
+              <Paragraph {...commonProps} />
+            </BlockQuote>
+          </motion.div>
+        )
+
+      case "numberedList":
+        return (
+          <motion.div {...animationProps} className="sizefull">
+            <NumberedList
+              items={content.content as string[]}
+              onChange={(newItems) => onContentChange(content.id, newItems)}
+              className={content.className}
             />
           </motion.div>
         )
