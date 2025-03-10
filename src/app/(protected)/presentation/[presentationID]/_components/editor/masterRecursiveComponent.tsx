@@ -15,7 +15,7 @@ import DropZone from "./dropZone"
 import Paragraph from "@/components/global/editor/components/paragraph"
 import TableComponet from "@/components/global/editor/components/tableComponet"
 import ColumnComponent from "@/components/global/editor/components/columnComponent"
-import CustomImage from "@/components/global/editor/components/customImage"
+import CustomImage from "@/components/global/editor/components/imageComponent"
 
 type MasterRecursiveComponentProps = {
   content: ContentItem

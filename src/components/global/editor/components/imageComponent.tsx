@@ -1,5 +1,6 @@
 import Image from "next/image"
 import React from "react"
+import UploadImage from "./uploadImage"
 
 type CustomImageProps = {
   src: string
@@ -31,8 +32,14 @@ const CustomImage = ({
         className={`object-cover rounded-lg size-full ${className}`}
         width={isPreview ? 48 : 800}
         height={isPreview ? 48 : 800}
-      />{!isPreview && isEditable && (
-          <div className="absolute top-0 right-0 hidden group-hover:block"></div>
+      />
+      {!isPreview && isEditable && (
+        <div className="absolute top-0 right-0 hidden group-hover:block">
+          <UploadImage
+            contentId={contentId}
+            onContentChange={onContentChange}
+          />
+        </div>
       )}
     </div>
   )
