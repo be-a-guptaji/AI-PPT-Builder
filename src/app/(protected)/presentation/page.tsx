@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 
 const PresentationPage = () => {
-  redirect("/dashboard")
+    redirect("/dashboard")
 }
 
 export default PresentationPage

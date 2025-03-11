@@ -15,72 +15,80 @@ import LayoutPreview from "./_components/editor-sidebar/left-sidebar/layoutPrevi
 import Editor from "./_components/editor/editor"
 
 const Page = () => {
-  const params = useParams()
-  const [isLoading, setLoading] = useState(true)
-  const { setTheme } = useTheme()
-  const { currentTheme, setCurrentTheme, setProject, setSlides } =
-    useSlideStore()
+    const params = useParams()
+    const [isLoading, setLoading] = useState(true)
+    const { setTheme } = useTheme()
+    const { currentTheme, setCurrentTheme, setProject, setSlides } =
+        useSlideStore()
 
-  useEffect(() => {
-    ;(async () => {
-      try {
-        const response = await getProjectById(params.presentationID as string)
+    useEffect(() => {
+        ;(async () => {
+            try {
+                const response = await getProjectById(
+                    params.presentationID as string
+                )
 
-        if (response.status !== 200 || !response.data) {
-          toast.error("Oops!", {
-            description: "Unable to fetch project.",
-          })
+                if (response.status !== 200 || !response.data) {
+                    toast.error("Oops!", {
+                        description: "Unable to fetch project.",
+                    })
 
-          redirect("/dashboard")
-        }
+                    redirect("/dashboard")
+                }
 
-        const findTheme = themes.find(
-          (theme) => theme.name === response?.data?.themeName
+                const findTheme = themes.find(
+                    (theme) => theme.name === response?.data?.themeName
+                )
+
+                setCurrentTheme(findTheme || themes[0])
+                setTheme(findTheme?.type === "dark" ? "dark" : "light")
+                setProject(response.data)
+                setSlides(JSON.parse(JSON.stringify(response.data.slides)))
+            } catch (error) {
+                console.error("Error fetching project:", error)
+                toast.error("Error!", {
+                    description: "An unexpected error occurred.",
+                })
+            } finally {
+                setLoading(false)
+            }
+        })()
+    }, [
+        params.presentationID,
+        setCurrentTheme,
+        setTheme,
+        setProject,
+        setSlides,
+    ])
+
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <Loader2 className="animate-spin size-8 text-primary" />
+            </div>
         )
+    }
 
-        setCurrentTheme(findTheme || themes[0])
-        setTheme(findTheme?.type === "dark" ? "dark" : "light")
-        setProject(response.data)
-        setSlides(JSON.parse(JSON.stringify(response.data.slides)))
-      } catch (error) {
-        console.error("Error fetching project:", error)
-        toast.error("Error!", {
-          description: "An unexpected error occurred.",
-        })
-      } finally {
-        setLoading(false)
-      }
-    })()
-  }, [params.presentationID, setCurrentTheme, setTheme, setProject, setSlides])
-
-  if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <Loader2 className="animate-spin size-8 text-primary" />
-      </div>
+        <DndProvider backend={HTML5Backend}>
+            <div className="min-h-screen flex flex-col">
+                <Navbar presentationID={params.presentationID as string} />
+                <div
+                    className="flex-1 flex overflow-hidden pt-16"
+                    style={{
+                        backgroundColor: currentTheme.backgroundColor,
+                        color: currentTheme.accentColor,
+                        fontFamily: currentTheme.fontFamily,
+                    }}
+                >
+                    <LayoutPreview />
+                    <div className="flex-1 ml-64 pr-16">
+                        <Editor isEditable={true} />
+                    </div>
+                </div>
+            </div>
+        </DndProvider>
     )
-  }
-
-  return (
-    <DndProvider backend={HTML5Backend}>
-      <div className="min-h-screen flex flex-col">
-        <Navbar presentationID={params.presentationID as string} />
-        <div
-          className="flex-1 flex overflow-hidden pt-16"
-          style={{
-            backgroundColor: currentTheme.backgroundColor,
-            color: currentTheme.accentColor,
-            fontFamily: currentTheme.fontFamily,
-          }}
-        >
-          <LayoutPreview />
-          <div className="flex-1 ml-64 pr-16">
-            <Editor isEditable={true} />
-          </div>
-        </div>
-      </div>
-    </DndProvider>
-  )
 }
 
 export default Page

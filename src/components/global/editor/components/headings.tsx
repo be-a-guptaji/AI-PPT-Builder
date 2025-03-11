@@ -4,64 +4,66 @@ import { cn } from "@/lib/utils"
 import React, { useEffect, useRef } from "react"
 
 interface HeadingProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  className?: string
-  isPreview?: boolean
-  styles?: React.CSSProperties
+    extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+    className?: string
+    isPreview?: boolean
+    styles?: React.CSSProperties
 }
 
 const createHeading = (displayName: string, defaultClassName: string) => {
-  const Heading = React.forwardRef<HTMLTextAreaElement, HeadingProps>(
-    ({ styles, isPreview = false, className, ...props }, ref) => {
-      const textAreaRef = useRef<HTMLTextAreaElement>(null)
+    const Heading = React.forwardRef<HTMLTextAreaElement, HeadingProps>(
+        ({ styles, isPreview = false, className, ...props }, ref) => {
+            const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
-      useEffect(() => {
-        const textArea = textAreaRef.current
-        if (textArea && !isPreview) {
-          const adjustHeight = () => {
-            textArea.style.height = "0"
-            textArea.style.height = `${textArea.scrollHeight}px`
-          }
+            useEffect(() => {
+                const textArea = textAreaRef.current
+                if (textArea && !isPreview) {
+                    const adjustHeight = () => {
+                        textArea.style.height = "0"
+                        textArea.style.height = `${textArea.scrollHeight}px`
+                    }
 
-          textArea.addEventListener("input", adjustHeight)
-          adjustHeight()
+                    textArea.addEventListener("input", adjustHeight)
+                    adjustHeight()
 
-          return () => textArea.removeEventListener("input", adjustHeight)
+                    return () =>
+                        textArea.removeEventListener("input", adjustHeight)
+                }
+            }, [isPreview])
+            const previewClassName = isPreview ? "text-xs" : ""
+
+            return (
+                <textarea
+                    className={cn(
+                        `w-full bg-transparent font-normal text-gray-900 placeholder:text-gray-300 focus:outline-none resize-none overflow-hidden leading-tight ${defaultClassName} ${previewClassName}`,
+                        className
+                    )}
+                    style={{
+                        padding: 0,
+                        margin: 0,
+                        color: "inherit",
+                        boxSizing: "content-box",
+                        lineHeight: "1.2em",
+                        minHeight: "1.2em",
+                        ...styles,
+                    }}
+                    ref={(el) => {
+                        ;(textAreaRef.current as HTMLTextAreaElement | null) =
+                            el
+                        if (typeof ref === "function") {
+                            ref(el)
+                        } else if (ref) ref.current = el
+                    }}
+                    readOnly={isPreview}
+                    {...props}
+                ></textarea>
+            )
         }
-      }, [isPreview])
-      const previewClassName = isPreview ? "text-xs" : ""
+    )
 
-      return (
-        <textarea
-          className={cn(
-            `w-full bg-transparent font-normal text-gray-900 placeholder:text-gray-300 focus:outline-none resize-none overflow-hidden leading-tight ${defaultClassName} ${previewClassName}`,
-            className
-          )}
-          style={{
-            padding: 0,
-            margin: 0,
-            color: "inherit",
-            boxSizing: "content-box",
-            lineHeight: "1.2em",
-            minHeight: "1.2em",
-            ...styles,
-          }}
-          ref={(el) => {
-            ;(textAreaRef.current as HTMLTextAreaElement | null) = el
-            if (typeof ref === "function") {
-              ref(el)
-            } else if (ref) ref.current = el
-          }}
-          readOnly={isPreview}
-          {...props}
-        ></textarea>
-      )
-    }
-  )
+    Heading.displayName = displayName
 
-  Heading.displayName = displayName
-
-  return Heading
+    return Heading
 }
 
 const Title = createHeading("Title", "text-5xl")
