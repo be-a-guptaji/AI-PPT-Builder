@@ -3,7 +3,7 @@ import { useSlideStore } from "@/store/useSlideStore"
 import React from "react"
 
 type DividerProps = {
-    className?: string
+    className: string
 }
 
 const Divider = ({ className }: DividerProps) => {

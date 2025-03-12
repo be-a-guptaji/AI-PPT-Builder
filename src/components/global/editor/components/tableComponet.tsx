@@ -31,6 +31,11 @@ const TableComponet = ({
         if (content.length === 0 || content[0].length === 0) {
             return Array(initialRowSize).fill(Array(initialColumnSize).fill(""))
         }
+
+        if (!Array.isArray(content) || !Array.isArray(content[0])) {
+            return Array(initialRowSize).fill(Array(initialColumnSize).fill(""))
+        }
+
         return content
     })
     const { currentTheme } = useSlideStore()

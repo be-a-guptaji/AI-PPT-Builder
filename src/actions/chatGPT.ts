@@ -151,7 +151,7 @@ export const generateLayoutsJSON = async (
     ${JSON.stringify(outlines)}
 
     The output must be an array of JSON objects.
-    1. Write layouts based on the specific outline provided.Do not use types that are not mentioned in the example layouts.
+    1. Write layouts based on the specific outline provided. Do not use types that are not mentioned in the example layouts.
     2. Ensure each layout is unique and creative.
     3. Adhere to the structure of existing layouts.
     4. Fill placeholder data into content fields where required.

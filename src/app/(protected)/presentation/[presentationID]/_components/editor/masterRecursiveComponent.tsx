@@ -248,7 +248,7 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
             case "divider":
                 return (
                     <motion.div {...animationProps} className="sizefull">
-                        <Divider className={content.className} />
+                        <Divider className={content.className as string} />
                     </motion.div>
                 )
 
