@@ -5,8 +5,8 @@ import React from "react"
 type ListProps = {
     items: string[]
     className?: string
-    onChange: (items: string[]) => void
     isEditable?: boolean
+    onChange: (items: string[]) => void
 }
 
 type ListItemProps = {
@@ -162,6 +162,93 @@ export const BulletList: React.FC<ListProps> = ({
                 <li key={index} className="pl-1 marker:text-current">
                     <ListItem
                         item={item}
+                        index={index}
+                        fontColor={currentTheme.fontColor}
+                        isEditable={isEditable}
+                        onChange={handleChange}
+                        onKeyDown={handleKeyDown}
+                    />
+                </li>
+            ))}
+        </ul>
+    )
+}
+
+export const TodoList: React.FC<ListProps> = ({
+    items,
+    className,
+    isEditable = true,
+    onChange,
+}) => {
+    const { currentTheme } = useSlideStore()
+
+    const toggleCheckBox = (index: number) => {
+        if (isEditable) {
+            const newItems = [...items]
+            newItems[index] = newItems[index].startsWith("[x] ")
+                ? newItems[index].replace("[x] ", "[ ] ")
+                : newItems[index].replace("[ ] ", "[x] ")
+            onChange(newItems)
+        }
+    }
+
+    const handleChange = (index: number, value: string) => {
+        if (isEditable) {
+            const newItems = [...items]
+            newItems[index] =
+                value.startsWith("[ ] ") || value.startsWith("[x] ")
+                    ? value
+                    : `[ ] ${value}`
+            onChange(newItems)
+        }
+    }
+
+    const handleKeyDown = (
+        event: React.KeyboardEvent<HTMLInputElement>,
+        index: number
+    ) => {
+        if (event.key === "Enter") {
+            event.preventDefault()
+            const newItems = [...items]
+            newItems.splice(index + 1, 0, "")
+            onChange(newItems)
+            setTimeout(() => {
+                const nextInput = document.querySelector(
+                    `li:nth-child(${index + 2}) input`
+                ) as HTMLInputElement
+
+                if (nextInput) {
+                    nextInput.focus()
+                }
+            }, 0)
+        } else if (
+            event.key === "Backspace" &&
+            items[index] === "" &&
+            items.length > 1
+        ) {
+            event.preventDefault()
+            const newItems = [...items]
+            newItems.splice(index, 1)
+            onChange(newItems)
+        }
+    }
+
+    return (
+        <ul
+            className={cn("space-y-1", className)}
+            style={{ color: currentTheme.fontColor }}
+        >
+            {items.map((item, index) => (
+                <li key={index} className="flex items-center space-x-2">
+                    <input
+                        type="checkbox"
+                        checked={item.startsWith("[x] ")}
+                        className="form-checkbox"
+                        disabled={!isEditable}
+                        onChange={() => toggleCheckBox(index)}
+                    />
+                    <ListItem
+                        item={item.replace(/^\[[ x]\] /, "")}
                         index={index}
                         fontColor={currentTheme.fontColor}
                         isEditable={isEditable}
