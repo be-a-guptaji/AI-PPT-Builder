@@ -22,6 +22,7 @@ import NumberedList, {
     TodoList,
 } from "@/components/global/editor/components/listComponent"
 import CalloutBox from "@/components/global/editor/components/calloutBox"
+import CodeBlock from "@/components/global/editor/components/codeBlock"
 
 type MasterRecursiveComponentProps = {
     content: ContentItem
@@ -228,6 +229,19 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
                             language={content.language}
                             className={content.className}
                             onChange={() => {}}
+                        />
+                    </motion.div>
+                )
+
+            case "tableOfContents":
+                return (
+                    <motion.div {...animationProps} className="sizefull">
+                        <TableOfContents
+                            items={content.content as string[]}
+                            className={content.className}
+                            onItemClick={(id) => {
+                                console.log(`Navigate to section : ${id}`)
+                            }}
                         />
                     </motion.div>
                 )
