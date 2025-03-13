@@ -7,7 +7,7 @@ import { LayoutSlides, Slide } from "@/lib/types"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useSlideStore } from "@/store/useSlideStore"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import MasterRecursiveComponent from "./masterRecursiveComponent"
 import {
     Popover,
@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { EllipsisVertical, Trash } from "lucide-react"
+import { updateSlides } from "@/actions/projects"
 
 type EditorProps = {
     isEditable: boolean
@@ -40,7 +41,7 @@ export const DropZone: React.FC<DropZoneProps> = ({
     isEditable,
     onDrop,
 }) => {
-    const [{ isOver, canDrop }, dropRef] = useDrop({
+    const [{ isOver, canDrop }] = useDrop({
         accept: ["SLIDE", "LAYOUT"],
         drop: (item: {
             type: string
@@ -107,6 +108,29 @@ export const DragableSlide: React.FC<DragableSlideProps> = ({
         canDrag: isEditable,
     })
 
+    const [, drop] = useDrop({
+        accept: ["SLIDE", "LAYOUT"],
+        hover(item: { index: number; type: string }) {
+            if (!ref.current || !isEditable) {
+                return
+            }
+
+            const dragIndex = item.index
+            const hoverIndex = index
+
+            if (item.type === "SLIDE") {
+                if (dragIndex === hoverIndex) {
+                    return
+                }
+
+                moveSlide(dragIndex, hoverIndex)
+                item.index = hoverIndex
+            }
+        },
+    })
+
+    drag(drop(ref))
+
     const handelContentChange = (
         contentID: string,
         newContent: string | string[] | string[][]
@@ -170,9 +194,12 @@ export const DragableSlide: React.FC<DragableSlideProps> = ({
 
 const Editor = ({ isEditable }: EditorProps) => {
     const slideRefs = useRef<(HTMLDivElement | null)[]>([])
+    const autoSaveTimerRef = useRef<NodeJS.Timeout | null>(null)
     const [isLoading, setLoading] = useState(true)
     const {
         currentSlide,
+        slides,
+        project,
         getOrderedSlides,
         reOrderedSlides,
         addSlideAtIndex,
@@ -229,6 +256,35 @@ const Editor = ({ isEditable }: EditorProps) => {
             setLoading(false)
         }
     }, [])
+
+    const saveSlides = useCallback(() => {
+        if (isEditable && project) {
+            ;(async () => {
+                await updateSlides(
+                    project.id,
+                    JSON.parse(JSON.stringify(slides))
+                )
+            })()
+        }
+    }, [slides, project, isEditable])
+
+    useEffect(() => {
+        if (autoSaveTimerRef.current) {
+            clearTimeout(autoSaveTimerRef.current)
+        }
+
+        if (isEditable) {
+            autoSaveTimerRef.current = setTimeout(() => {
+                saveSlides()
+            }, 2000)
+        }
+
+        return () => {
+            if (autoSaveTimerRef.current) {
+                clearTimeout(autoSaveTimerRef.current)
+            }
+        }
+    }, [slides, isEditable, project, saveSlides])
 
     return (
         <div className="flex-1 flex flex-col h-full max-w-3xl mx-auto px-4 mb-20">
