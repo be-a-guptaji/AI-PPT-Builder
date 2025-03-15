@@ -13,7 +13,7 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 import Navbar from "./_components/navbar/navbar"
 import LayoutPreview from "./_components/editor-sidebar/left-sidebar/layoutPreview"
 import Editor from "./_components/editor/editor"
-import EditorSidebar from "./_components/editor-sidebar/right-sidebar/tabs"
+import EditorSidebar from "./_components/editor-sidebar/right-sidebar"
 
 const Page = () => {
     const params = useParams()
