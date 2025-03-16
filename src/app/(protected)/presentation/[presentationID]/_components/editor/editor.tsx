@@ -41,7 +41,7 @@ export const DropZone: React.FC<DropZoneProps> = ({
     isEditable,
     onDrop,
 }) => {
-    const [{ isOver, canDrop }] = useDrop({
+    const [{ isOver, canDrop }, dropref] = useDrop({
         accept: ["SLIDE", "LAYOUT"],
         drop: (item: {
             type: string
@@ -64,6 +64,7 @@ export const DropZone: React.FC<DropZoneProps> = ({
 
     return (
         <div
+            ref={dropref as unknown as React.RefObject<HTMLDivElement>}
             className={cn(
                 "h-4 rounded-md transition-all duration-200",
                 isOver && canDrop
@@ -313,6 +314,13 @@ const Editor = ({ isEditable }: EditorProps) => {
                                     moveSlide={moveSlide}
                                     handleDelete={handleDelete}
                                 />
+                                {isEditable && (
+                                    <DropZone
+                                        index={index + 1}
+                                        isEditable={isEditable}
+                                        onDrop={handleDrop}
+                                    />
+                                )}
                             </React.Fragment>
                         ))}
                     </div>
