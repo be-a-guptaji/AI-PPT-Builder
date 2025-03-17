@@ -41,7 +41,7 @@ import {
     Table,
     Title,
     TodoListComponent,
-} from "./slideCompoennts"
+} from "./slideComponents"
 
 export const data = {
     user: {

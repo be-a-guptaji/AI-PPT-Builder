@@ -100,12 +100,6 @@ export interface Layout {
     component: LayoutSlides
     layoutType: string
 }
-
-export interface ComponentGroup {
-    name: string
-    components: Component[]
-}
-
 interface Component {
     name: string
     icon: string
@@ -113,3 +107,9 @@ interface Component {
     component: ContentItem
     componentType: string
 }
+
+export interface ComponentGroup {
+    name: string
+    components: Component[]
+}
+

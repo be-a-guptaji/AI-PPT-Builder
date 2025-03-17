@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { ContentType } from "./types";
+
 export const Heading1 = {
   id: uuidv4(),
   type: "heading1" as ContentType,
