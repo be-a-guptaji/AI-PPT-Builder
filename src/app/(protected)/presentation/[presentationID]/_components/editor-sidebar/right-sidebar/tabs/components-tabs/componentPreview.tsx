@@ -20,8 +20,6 @@ const ComponentCard = ({ item }: { item: ComponentItemProps }) => {
         }),
     })
 
-    console.log(isDragging)
-
     return (
         <div
             ref={drag as unknown as React.LegacyRef<HTMLDivElement>}

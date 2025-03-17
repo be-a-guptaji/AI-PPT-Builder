@@ -10,7 +10,7 @@ import LayoutChooser from "./tabs/layoutChooser"
 import { cn } from "@/lib/utils"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
 import { component } from "@/lib/constant"
-import ComponentCard from "./tabs/components-tabs/componentPrevirw"
+import ComponentCard from "./tabs/components-tabs/componentPreview"
 
 const EditorSidebar = () => {
     const [open, setOpen] = useState(false)
@@ -69,7 +69,28 @@ const EditorSidebar = () => {
                             color: currentTheme.fontColor,
                         }}
                     >
-                        <ScrollArea className="h-[400px] overflow-y-scroll">
+                        {/* <ScrollArea className="h-[400px]">
+                            <div className="p-4 flex flex-col space-y-6">
+                                {component.map((group, index) => (
+                                    <div key={index} className="space-y-2">
+                                        <h3 className="text-sm font-medium text-muted-foreground px-1">
+                                            {group.name}
+                                        </h3>
+                                        <div className="grid grid-cols-3 gap-4">
+                                            {group.components.map(
+                                                (item, index) => (
+                                                    <ComponentCard
+                                                        key={index}
+                                                        item={item}
+                                                    />
+                                                )
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </ScrollArea> */}
+                        <ScrollArea className="h-[400px] custom-scroll overflow-y-scroll">
                             <div className="p-4 flex flex-col space-y-6">
                                 {component.map((group, index) => (
                                     <div key={index} className="space-y-2">
@@ -90,6 +111,30 @@ const EditorSidebar = () => {
                                 ))}
                             </div>
                         </ScrollArea>
+                    </PopoverContent>
+                </Popover>
+                <Popover>
+                    <PopoverTrigger asChild>
+                        <Button
+                            variant="ghost"
+                            size={"icon"}
+                            className="size-10 rounded-full cursor-pointer m-0"
+                            onClick={() => setOpen(!open)}
+                        >
+                            <LayoutTemplate className="size-5" />
+                            <span className="sr-only">Change Style</span>
+                        </Button>
+                    </PopoverTrigger>
+                    <PopoverContent
+                        side="left"
+                        align="center"
+                        className="p-0 w-80 border-1 rounded-2xl relative right-6"
+                        style={{
+                            backgroundColor: currentTheme.backgroundColor,
+                            color: currentTheme.fontColor,
+                        }}
+                    >
+                        <LayoutChooser />
                     </PopoverContent>
                 </Popover>
             </div>
