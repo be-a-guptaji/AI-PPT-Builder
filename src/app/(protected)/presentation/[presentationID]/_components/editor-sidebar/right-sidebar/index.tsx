@@ -5,7 +5,7 @@ import { Popover, PopoverTrigger } from "@/components/ui/popover"
 import { useSlideStore } from "@/store/useSlideStore"
 import { PopoverContent } from "@radix-ui/react-popover"
 import { LayoutTemplate, Palette, Type } from "lucide-react"
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import LayoutChooser from "./tabs/layoutChooser"
 import { cn } from "@/lib/utils"
 import { component } from "@/lib/constant"
@@ -14,8 +14,13 @@ import ThemeChooser from "./tabs/themeChooser"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 const EditorSidebar = () => {
+    const popOverRef = useRef<HTMLDivElement>(null)
     const [open, setOpen] = useState(false)
     const { currentTheme } = useSlideStore()
+
+    const layoutButton = document.getElementById("layout")
+    const styleButton = document.getElementById("style")
+    const themeButton = document.getElementById("theme")
 
     const handleOpen = (e: React.MouseEvent) => {
         e.stopPropagation()
@@ -30,6 +35,30 @@ const EditorSidebar = () => {
         }
     }
 
+    const handleClickOutside = (e: MouseEvent) => {
+        if (
+            popOverRef.current &&
+            !popOverRef.current.contains(e.target as Node)
+        ) {
+            setOpen(false)
+        }
+        if (
+            layoutButton?.getAttribute("data-state") === "closed" &&
+            styleButton?.getAttribute("data-state") === "closed" &&
+            themeButton?.getAttribute("data-state") === "closed"
+        ) {
+            setOpen(false)
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutside)
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside)
+        }
+    })
+
     return (
         <div className="fixed top-1/2 right-2 transform -translate-y-1/2 z-10">
             <div
@@ -37,9 +66,10 @@ const EditorSidebar = () => {
                     "rounded-xl border-r-0 border border-background/30 shadow-lg p-2 flex flex-col items-center space-y-4",
                     open && "ring-2 ring-blue-500"
                 )}
+                ref={popOverRef}
             >
                 <Popover>
-                    <PopoverTrigger asChild>
+                    <PopoverTrigger asChild id="layout">
                         <Button
                             variant="ghost"
                             size={"icon"}
@@ -65,7 +95,7 @@ const EditorSidebar = () => {
                     </PopoverContent>
                 </Popover>
                 <Popover>
-                    <PopoverTrigger asChild>
+                    <PopoverTrigger asChild id="style">
                         <Button
                             variant="ghost"
                             size={"icon"}
@@ -75,7 +105,7 @@ const EditorSidebar = () => {
                             }}
                         >
                             <Type className="size-5" />
-                            <span className="sr-only">Choose Layout</span>
+                            <span className="sr-only">Choose Style</span>
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent
@@ -111,7 +141,7 @@ const EditorSidebar = () => {
                     </PopoverContent>
                 </Popover>
                 <Popover>
-                    <PopoverTrigger asChild>
+                    <PopoverTrigger asChild id="theme">
                         <Button
                             variant="ghost"
                             size={"icon"}
@@ -121,7 +151,7 @@ const EditorSidebar = () => {
                             }}
                         >
                             <Palette className="size-5" />
-                            <span className="sr-only">Change Style</span>
+                            <span className="sr-only">Change Theme</span>
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent
