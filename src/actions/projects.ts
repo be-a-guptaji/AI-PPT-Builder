@@ -292,3 +292,41 @@ export const updateSlides = async (
         }
     }
 }
+
+export const updateTheme = async (
+    projectId: string,
+    theme: string
+): Promise<ReturnProps> => {
+    try {
+        if (!projectId || !theme) {
+            return { status: 400, error: "Project ID and theme are required" }
+        }
+
+        const updatedProject = await client.project.update({
+            where: {
+                id: projectId,
+            },
+            data: {
+                themeName: theme,
+                updatedAt: new Date(),
+            },
+        })
+
+        if (!updatedProject) {
+            return {
+                status: 500,
+                error: "Failed to update slides",
+            }
+        }
+
+        return {
+            status: 200,
+            data: updatedProject,
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            error: "Internal Server Error" + error,
+        }
+    }
+}

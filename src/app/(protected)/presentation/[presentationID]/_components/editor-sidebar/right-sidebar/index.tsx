@@ -17,6 +17,19 @@ const EditorSidebar = () => {
     const [open, setOpen] = useState(false)
     const { currentTheme } = useSlideStore()
 
+    const handleOpen = (e: React.MouseEvent) => {
+        e.stopPropagation()
+
+        const target = e.target as HTMLElement
+        const state = target.getAttribute("data-state")
+
+        if (state === "open") {
+            setOpen(false)
+        } else {
+            setOpen(true)
+        }
+    }
+
     return (
         <div className="fixed top-1/2 right-2 transform -translate-y-1/2 z-10">
             <div
@@ -31,7 +44,9 @@ const EditorSidebar = () => {
                             variant="ghost"
                             size={"icon"}
                             className="size-10 rounded-full cursor-pointer m-0"
-                            onClick={() => setOpen(!open)}
+                            onClick={(e) => {
+                                handleOpen(e)
+                            }}
                         >
                             <LayoutTemplate className="size-5" />
                             <span className="sr-only">Choose Layout</span>
@@ -50,12 +65,14 @@ const EditorSidebar = () => {
                     </PopoverContent>
                 </Popover>
                 <Popover>
-                    <PopoverTrigger asChild  >
+                    <PopoverTrigger asChild>
                         <Button
                             variant="ghost"
                             size={"icon"}
                             className="size-10 rounded-full cursor-pointer m-0"
-                            onClick={() => setOpen(!open)}
+                            onClick={(e) => {
+                                handleOpen(e)
+                            }}
                         >
                             <Type className="size-5" />
                             <span className="sr-only">Choose Layout</span>
@@ -99,7 +116,9 @@ const EditorSidebar = () => {
                             variant="ghost"
                             size={"icon"}
                             className="size-10 rounded-full cursor-pointer m-0"
-                            onClick={() => setOpen(!open)}
+                            onClick={(e) => {
+                                handleOpen(e)
+                            }}
                         >
                             <Palette className="size-5" />
                             <span className="sr-only">Change Style</span>
