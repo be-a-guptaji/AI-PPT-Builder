@@ -330,3 +330,60 @@ export const updateTheme = async (
         }
     }
 }
+export const deleteAllProjects = async (
+    projectIDs: string[]
+): Promise<ReturnProps> => {
+    try {
+        if (!Array.isArray(projectIDs) || projectIDs.length === 0) {
+            return {
+                status: 400,
+                error: "Project IDs are required",
+            }
+        }
+
+        const checkUser = await onAuthenticateUser()
+
+        if (checkUser.status !== 200 || !checkUser.user) {
+            return {
+                status: 403,
+                error: "User not Authenticated",
+            }
+        }
+
+        const userID = checkUser.user.id
+
+        const projectToDelete = await client.project.findMany({
+            where: {
+                id: {
+                    in: projectIDs,
+                },
+                userId: userID,
+            },
+        })
+
+        if (projectToDelete.length === 0) {
+            return {
+                status: 404,
+                error: "No projects found to delete",
+            }
+        }
+
+        const deletedProjects = await client.project.deleteMany({
+            where: {
+                id: {
+                    in: projectToDelete.map((project) => project.id),
+                },
+            },
+        })
+
+        return {
+            status: 200,
+            data: `${deletedProjects.count} projects deleted successfully.`,
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            error: "Internal Server Error: " + (error as Error).message,
+        }
+    }
+}

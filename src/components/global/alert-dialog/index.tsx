@@ -23,12 +23,12 @@ type IndexProps = {
 }
 
 const AlertDialogBox = ({
+    open,
     children,
     className,
     discription,
     loading = false,
     onClick,
-    open,
     handleOpen,
 }: IndexProps) => {
     return (

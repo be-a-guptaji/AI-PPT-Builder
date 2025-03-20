@@ -90,7 +90,7 @@ const PresentationMode = ({ onClose }: PresentationModeProps) => {
                 </AnimatePresence>
 
                 <Button
-                    variant={"ghost"}
+                    variant={"outline"}
                     size={"icon"}
                     className="absolute top-4 right-4 cursor-pointer"
                     onClick={onClose}

@@ -166,7 +166,7 @@ const ProjectCard = ({
                                     size={"sm"}
                                     variant={"ghost"}
                                     disabled={loading}
-                                    className="bg-red-600 hover:bg-red-400 transition-all duration-200 cursor-pointer"
+                                    className="bg-red-600 hover:bg-red-900 transition-all duration-200 cursor-pointer"
                                 >
                                     Delete
                                 </Button>
