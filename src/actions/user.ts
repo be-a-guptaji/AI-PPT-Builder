@@ -54,8 +54,6 @@ export const onAuthenticateUser = async (): Promise<UserReturnProps> => {
 
         return { status: 400, error: "Something went wrong" }
     } catch (error) {
-        console.error("Error authenticating user:", error)
-
-        return { status: 500, error: "Internal server error" }
+        return { status: 500, error: "Internal server error" + error }
     }
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import { buySubscription } from "@/actions/lemonSqueezy"
 import { Button } from "@/components/ui/button"
 import {
     SidebarMenu,
@@ -15,7 +16,16 @@ const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
     const [loading, setLoading] = useState(false)
 
     const handleUpgradeing = async () => {
-        setLoading(true)
+        try {
+            setLoading(true)
+
+            const res = await buySubscription(prismaUser.id)
+
+        } catch (error) {
+            console.error(error)
+        } finally {
+            setLoading(false)
+        }
     }
 
     if (!isLoaded || !isSignedIn) {

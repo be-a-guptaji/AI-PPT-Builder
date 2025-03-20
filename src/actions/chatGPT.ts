@@ -51,11 +51,9 @@ export const generateCreativePrompt = async (
                 const jsonResponse = JSON.parse(responseContent)
                 return { status: 200, data: jsonResponse }
             } catch (error) {
-                console.error("Failed to parse JSON response:", error)
-
                 return {
                     status: 500,
-                    error: "Failed to parse JSON response",
+                    error: "Failed to parse JSON response" + error,
                 }
             }
         }
@@ -65,11 +63,9 @@ export const generateCreativePrompt = async (
             error: "No response generated",
         }
     } catch (error) {
-        console.error("Error generating creative prompt:", error)
-
         return {
             status: 500,
-            error: "Internal Server Error",
+            error: "Internal Server Error" + error,
         }
     }
 }
@@ -158,18 +154,16 @@ export const generateLayoutsJSON = async (
     5. Generate unique image placeholders for the "content" property of image components and also alt text according to the outline.
     6. Ensure proper formatting and scheme alignment for the output JSON.
     7. First create LAYOUTS TYPES at the top most level of the JSON output as follows:
-    ${JSON.stringify(
-        [
-            {
-                id: uuidv4(),
-                slideName: "Blank card",
-                type: "blank-card",
-                className:
-                    "p-8 mx-auto flex justify-center items-center min-h-[200px]",
-                content: {},
-            },
-        ]
-    )}
+    ${JSON.stringify([
+        {
+            id: uuidv4(),
+            slideName: "Blank card",
+            type: "blank-card",
+            className:
+                "p-8 mx-auto flex justify-center items-center min-h-[200px]",
+            content: {},
+        },
+    ])}
     8. The content property of each LAYOUTS TYPES should start with "column" and within the columns content property you can use any of the CONTENT TYPES I provided above. Resizable-column, column and other multi element contents should be an array because you can have more elements inside them nested. Static elements like title and paragraph should have content set to a string. Here is an example of what 1 layout with 1 column with 1 title inside would look like:
     ${JSON.stringify({
         id: uuidv4(),
@@ -315,11 +309,9 @@ export const generateLayoutsJSON = async (
 
             await Promise.all(JSONResponse.map(repleaceImagesWithPlaceholders))
         } catch (error) {
-            console.error("Error parsing JSON response:", error)
-
             return {
                 status: 500,
-                error: "Failed to parse JSON response",
+                error: "Failed to parse JSON response" + error,
             }
         }
 
@@ -328,11 +320,9 @@ export const generateLayoutsJSON = async (
             data: JSONResponse,
         }
     } catch (error) {
-        console.error("Error generating layouts:", error)
-
         return {
             status: 500,
-            error: "Internal Server Error",
+            error: "Internal Server Error" + error,
         }
     }
 }
@@ -412,11 +402,9 @@ export const generateLayout = async (
 
         return { status: 200, data: layouts.data }
     } catch (error) {
-        console.error("Error generating layout:", error)
-
         return {
             status: 500,
-            error: "Internal Server Error",
+            error: "Internal Server Error" + error,
         }
     }
 }
