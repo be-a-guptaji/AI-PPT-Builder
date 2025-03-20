@@ -5,7 +5,7 @@ import { themes } from "@/lib/constant"
 import { useSlideStore } from "@/store/useSlideStore"
 import { Loader2 } from "lucide-react"
 import { useTheme } from "next-themes"
-import { redirect, useParams } from "next/navigation"
+import { useRouter, useParams } from "next/navigation"
 import React, { useEffect, useState } from "react"
 import { toast } from "sonner"
 import { DndProvider } from "react-dnd"
@@ -17,6 +17,7 @@ import EditorSidebar from "./_components/editor-sidebar/right-sidebar"
 
 const Page = () => {
     const params = useParams()
+    const router = useRouter()
     const [isLoading, setLoading] = useState(true)
     const { setTheme } = useTheme()
     const { currentTheme, setCurrentTheme, setProject, setSlides } =
@@ -33,8 +34,8 @@ const Page = () => {
                     toast.error("Oops!", {
                         description: "Unable to fetch project.",
                     })
-
-                    redirect("/dashboard")
+                    router.push("/dashboard")
+                    return
                 }
 
                 const findTheme = themes.find(
@@ -56,6 +57,7 @@ const Page = () => {
         })()
     }, [
         params.presentationID,
+        router,
         setCurrentTheme,
         setTheme,
         setProject,

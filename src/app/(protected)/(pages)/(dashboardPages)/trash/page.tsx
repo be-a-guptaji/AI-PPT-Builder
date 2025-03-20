@@ -1,8 +1,14 @@
 import React from "react"
 import DeleteAllButton from "./_components/deleteAllButton"
+import { getDeletedProjects } from "@/actions/projects"
+import NotFound from "@/components/global/not-found"
 
 const Page = async () => {
     const deletedProjects = await getDeletedProjects()
+
+    if (!deletedProjects.data || deletedProjects.data.length === 0) {
+        return <NotFound />
+    }
 
     return (
         <div className="flex flex-col gap-2 relative">

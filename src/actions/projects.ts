@@ -387,3 +387,46 @@ export const deleteAllProjects = async (
         }
     }
 }
+
+export const getDeletedProjects = async (): Promise<ReturnProps> => {
+    try {
+        const checkUser = await onAuthenticateUser()
+
+        if (checkUser.status !== 200 || !checkUser.user) {
+            return {
+                status: 403,
+                error: "User not Authenticated",
+            }
+        }
+
+        const userID = checkUser.user.id
+
+        const projects = await client.project.findMany({
+            where: {
+                userId: userID,
+                isDeleted: true,
+            },
+            orderBy: {
+                updatedAt: "desc",
+            },
+        })
+
+        if (projects.length === 0) {
+            return {
+                status: 400,
+                error: "No projects found to delete",
+                data: [],
+            }
+        }
+
+        return {
+            status: 200,
+            data: projects,
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            error: "Internal Server Error: " + (error as Error).message,
+        }
+    }
+}
