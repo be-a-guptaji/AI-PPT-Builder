@@ -63,8 +63,8 @@ const EditorSidebar = () => {
         <div className="fixed top-1/2 right-2 transform -translate-y-1/2 z-10">
             <div
                 className={cn(
-                    "rounded-xl border-r-0 border border-background/30 shadow-lg p-2 flex flex-col items-center space-y-4",
-                    open && "ring-2 ring-blue-500"
+                    "rounded-xl border-r-0 border border-background/30 shadow-lg p-2 flex flex-col items-center space-y-4 opacity-65 hover:opacity-100 transition-opacity duration-300",
+                    open && "ring-2 ring-blue-500 opacity-100"
                 )}
                 ref={popOverRef}
             >

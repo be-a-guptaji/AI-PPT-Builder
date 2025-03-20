@@ -6,6 +6,7 @@ import { Home, Play, Share } from "lucide-react"
 import Link from "next/link"
 import React, { useState } from "react"
 import { toast } from "sonner"
+import PresentationMode from "./presentationMode"
 
 type NavbarProps = {
     presentationID: string
@@ -75,7 +76,11 @@ const Navbar = ({ presentationID }: NavbarProps) => {
                 </Button>
             </div>
 
-            {/* {isPresentationMode && <PresentationMode />} */}
+            {isPresentationMode && (
+                <PresentationMode
+                    onClose={() => setIsPresentationMode(false)}
+                />
+            )}
         </nav>
     )
 }
