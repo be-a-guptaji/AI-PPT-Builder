@@ -14,11 +14,12 @@ import React from "react"
 
 type IndexProps = {
     children: React.ReactNode
+    open: boolean
     className?: string
     discription: string
     loading?: boolean
+    loadingText?: string
     onClick: () => void
-    open: boolean
     handleOpen: () => void
 }
 
@@ -27,6 +28,7 @@ const AlertDialogBox = ({
     children,
     className,
     discription,
+    loadingText,
     loading = false,
     onClick,
     handleOpen,
@@ -55,7 +57,7 @@ const AlertDialogBox = ({
                         {loading ? (
                             <>
                                 <Loader2 className="animate-spin" />
-                                Loading
+                                {loadingText ? loadingText : "Loading"}
                             </>
                         ) : (
                             "Continue"

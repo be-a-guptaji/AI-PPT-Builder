@@ -171,7 +171,13 @@
 }
 
 .bg-kraton-gradient {
-    background: linear-gradient(180deg, #f55c7a 0%, #f6bc66 100%);
+    background: linear-gradient(
+        145deg,
+        #faf0ca 0%,
+        #f4d35e 33%,
+        #ee964b 66%,
+        #f95738 100%
+    );
 }
 
 .border-kraton {

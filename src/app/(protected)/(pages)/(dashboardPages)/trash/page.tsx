@@ -2,6 +2,7 @@ import React from "react"
 import DeleteAllButton from "./_components/deleteAllButton"
 import { getDeletedProjects } from "@/actions/projects"
 import NotFound from "@/components/global/not-found"
+import Projects from "@/components/global/projects"
 
 const Page = async () => {
     const deletedProjects = await getDeletedProjects()
@@ -12,7 +13,7 @@ const Page = async () => {
 
     return (
         <div className="flex flex-col gap-2 relative">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mb-4">
                 <div className="flex flex-col items-start">
                     <h1 className="text-2xl font-semibold dark:text-primary backdrop-blur-lg">
                         Trash
@@ -21,8 +22,15 @@ const Page = async () => {
                         All your deleted projects
                     </p>
                 </div>
+
                 <DeleteAllButton Projects={deletedProjects.data} />
             </div>
+
+            {deletedProjects.data.length > 0 ? (
+                <Projects projects={deletedProjects.data} />
+            ) : (
+                <NotFound />
+            )}
         </div>
     )
 }

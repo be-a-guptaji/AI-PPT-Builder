@@ -44,15 +44,14 @@ const ProjectCard = ({
         themes.find((theme) => theme.name === themeName) || themes[0]
 
     const handleRecover = async () => {
-        setLoading(true)
-
-        if (!projectId || !slideData) {
-            setLoading(false)
-            toast.error(`${title}`, { description: "Project not found." })
-            return
-        }
-
         try {
+            setLoading(true)
+
+            if (!projectId) {
+                toast.error(`${title}`, { description: "Project not found." })
+                return
+            }
+
             const response = await recoverProject(projectId)
 
             if (response.status !== 200) {
@@ -62,9 +61,6 @@ const ProjectCard = ({
                 return
             }
 
-            setOpen(false)
-            router.refresh()
-
             toast.success(`${title}`, {
                 description: "Project recovered successfully.",
             })
@@ -73,19 +69,22 @@ const ProjectCard = ({
             toast.error("Oops!", {
                 description: "Something went wrong! Please contact support",
             })
+        } finally {
+            setLoading(false)
+            setOpen(false)
+            router.refresh()
         }
     }
 
     const handleDelete = async () => {
-        setLoading(true)
-
-        if (!projectId || !slideData) {
-            setLoading(false)
-            toast.error(`${title}`, { description: "Project not found." })
-            return
-        }
-
         try {
+            setLoading(true)
+
+            if (!projectId) {
+                toast.error(`${title}`, { description: "Project not found." })
+                return
+            }
+
             const response = await deleteProject(projectId)
 
             if (response.status !== 200) {
@@ -95,9 +94,6 @@ const ProjectCard = ({
                 return
             }
 
-            setOpen(false)
-            router.refresh()
-
             toast.success(`${title}`, {
                 description: "Project deleted successfully.",
             })
@@ -106,6 +102,10 @@ const ProjectCard = ({
             toast.error("Oops!", {
                 description: "Something went wrong! Please contact support",
             })
+        } finally {
+            setLoading(false)
+            setOpen(false)
+            router.refresh()
         }
     }
 
@@ -141,6 +141,7 @@ const ProjectCard = ({
                                 className="bg-green-500 text-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-200"
                                 loading={loading}
                                 open={open}
+                                loadingText="Recovering"
                                 onClick={handleRecover}
                                 handleOpen={() => setOpen(!open)}
                             >
@@ -159,6 +160,7 @@ const ProjectCard = ({
                                 className="bg-red-500 text-white dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700"
                                 loading={loading}
                                 open={open}
+                                loadingText="Deleting"
                                 onClick={handleDelete}
                                 handleOpen={() => setOpen(!open)}
                             >

@@ -40,7 +40,7 @@ const NavMain = ({
                                 <item.icon className="text-lg" />
                                 <Link
                                     href={item.url}
-                                    className={`text-lg ${pathname.includes(item.url) && "font-bold"}`}
+                                    className={`text-lg ${pathname.includes(item.url) && "font-bold"} w-full`}
                                 >
                                     <span>{item.title}</span>
                                 </Link>

@@ -60,6 +60,7 @@ const DeleteAllButton = ({ Projects }: DeleteAllButtonProps) => {
             className="bg-red-500 text-white dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700"
             loading={loading}
             open={open}
+            loadingText="Deleting"
             onClick={handleDeleteAllProjects}
             handleOpen={() => setOpen(!open)}
         >
