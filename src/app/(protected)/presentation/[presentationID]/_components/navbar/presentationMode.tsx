@@ -31,9 +31,9 @@ const PresentationMode = ({ onClose }: PresentationModeProps) => {
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === "ArrowLeft" || event.key === " ") {
+            if (event.key === "ArrowLeft") {
                 setCurrentSlideIndex((prevIndex) => Math.max(prevIndex - 1, 0))
-            } else if (event.key === "ArrowRight") {
+            } else if (event.key === "ArrowRight" || event.key === " ") {
                 if (currentSlideIndex === slides.length - 1) {
                     onClose()
                 } else {
@@ -103,7 +103,7 @@ const PresentationMode = ({ onClose }: PresentationModeProps) => {
                         variant="outline"
                         size="icon"
                         className="cursor-pointer disabled:cursor-not-allowed"
-                        onClick={() => goToPreviousSlide}
+                        onClick={goToPreviousSlide}
                         disabled={currentSlideIndex === 0}
                     >
                         <ChevronLeft className="size-4" />
@@ -115,7 +115,7 @@ const PresentationMode = ({ onClose }: PresentationModeProps) => {
                         variant="outline"
                         size="icon"
                         className="cursor-pointer disabled:cursor-not-allowed"
-                        onClick={() => goToNextSlide}
+                        onClick={goToNextSlide}
                         disabled={currentSlideIndex === slides.length - 1}
                     >
                         <ChevronRight className="size-4" />
