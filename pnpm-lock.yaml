@@ -100,6 +100,9 @@ importers:
             "@uploadcare/react-uploader":
                 specifier: ^1.5.0
                 version: 1.5.0(@types/react@19.0.10)(next@15.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+            axios:
+                specifier: ^1.8.4
+                version: 1.8.4
             class-variance-authority:
                 specifier: ^0.7.1
                 version: 0.7.1
@@ -2236,6 +2239,12 @@ packages:
             }
         engines: { node: ">=4" }
 
+    axios@1.8.4:
+        resolution:
+            {
+                integrity: sha512-eBSYY4Y68NNlHbHBMdeDmKNtDgXWhQsJcGqzO3iLUM0GraQFSS9cVgPX5I9b3lbdFKyYoAEGAZF1DwhTaljNAw==,
+            }
+
     axobject-query@4.1.0:
         resolution:
             {
@@ -3002,6 +3011,18 @@ packages:
             {
                 integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==,
             }
+
+    follow-redirects@1.15.9:
+        resolution:
+            {
+                integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==,
+            }
+        engines: { node: ">=4.0" }
+        peerDependencies:
+            debug: "*"
+        peerDependenciesMeta:
+            debug:
+                optional: true
 
     for-each@0.3.5:
         resolution:
@@ -4112,6 +4133,12 @@ packages:
         resolution:
             {
                 integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==,
+            }
+
+    proxy-from-env@1.1.0:
+        resolution:
+            {
+                integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==,
             }
 
     punycode@2.3.1:
@@ -6372,6 +6399,14 @@ snapshots:
 
     axe-core@4.10.2: {}
 
+    axios@1.8.4:
+        dependencies:
+            follow-redirects: 1.15.9
+            form-data: 4.0.2
+            proxy-from-env: 1.1.0
+        transitivePeerDependencies:
+            - debug
+
     axobject-query@4.1.0: {}
 
     balanced-match@1.0.2: {}
@@ -6964,6 +6999,8 @@ snapshots:
             keyv: 4.5.4
 
     flatted@3.3.3: {}
+
+    follow-redirects@1.15.9: {}
 
     for-each@0.3.5:
         dependencies:
@@ -7562,6 +7599,8 @@ snapshots:
             loose-envify: 1.4.0
             object-assign: 4.1.1
             react-is: 16.13.1
+
+    proxy-from-env@1.1.0: {}
 
     punycode@2.3.1: {}
 

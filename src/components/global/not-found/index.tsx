@@ -11,7 +11,9 @@ const NotFound = () => {
                 </p>
                 <p className="text-base font-normal text-secondary-foreground/50">
                     No such product existed create one with{" "}
-                    <span className="text-kraton font-bold tracking-wide">Creative AI</span>
+                    <span className="text-kraton font-bold tracking-wide">
+                        Creative AI
+                    </span>
                 </p>
             </div>
         </div>

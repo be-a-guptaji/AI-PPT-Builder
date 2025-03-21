@@ -7,10 +7,7 @@ type TableOfContentsProps = {
     className?: string
 }
 
-const TableOfContents = ({
-    items,
-    className
-}: TableOfContentsProps) => {
+const TableOfContents = ({ items, className }: TableOfContentsProps) => {
     const { currentTheme } = useSlideStore()
 
     return (

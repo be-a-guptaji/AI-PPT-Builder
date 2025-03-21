@@ -40,9 +40,7 @@ const ScaledPreview = ({ index, isActive, slide }: ScaledPreviewProps) => {
             <div
                 className={cn(
                     "absolute bottom-2 left-2 text-xs bg-gray-800 px-2 py-1 rounded",
-                    isActive
-                        && "ring-2 ring-blue-500 ring-offset-2 !text-white"
-                        
+                    isActive && "ring-2 ring-blue-500 ring-offset-2 !text-white"
                 )}
                 style={{ color: currentTheme.accentColor }}
             >

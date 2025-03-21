@@ -8,10 +8,13 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { SignedIn, UserButton, useUser } from "@clerk/nextjs"
-import { User } from "@prisma/client"
+import { useRouter } from "next/navigation"
 import React, { useState } from "react"
+import { toast } from "sonner"
+import { User } from "@prisma/client"
 
 const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
+    const router = useRouter()
     const { isLoaded, isSignedIn, user } = useUser()
     const [loading, setLoading] = useState(false)
 
@@ -21,8 +24,23 @@ const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
 
             const res = await buySubscription(prismaUser.id)
 
+            if (res.status !== 200) {
+                toast.error("Payment Failed", {
+                    description: "Something went wrong! Please contact support",
+                })
+                return
+            }
+
+            toast.success("Payment Successful", {
+                description: "You can now use all features",
+            })
+
+            router.push(res.data)
         } catch (error) {
             console.error(error)
+            toast.error("Payment Failed", {
+                description: "Something went wrong! Please contact support",
+            })
         } finally {
             setLoading(false)
         }

@@ -112,4 +112,3 @@ export interface ComponentGroup {
     name: string
     components: Component[]
 }
-
