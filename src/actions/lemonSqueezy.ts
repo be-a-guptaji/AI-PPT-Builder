@@ -1,5 +1,5 @@
-import lemonSqueezyClient from "@/lib/axios"
 import { ReturnProps } from "@/lib/types"
+import lemonSqueezyClient from "@/lib/axios"
 
 export const buySubscription = async (
     buyUserID: string
