@@ -57,12 +57,12 @@ export const data = {
             icon: Home,
             isActive: true,
         },
-        {
-            title: "Templates",
-            url: "/templates",
-            icon: LayoutTemplate,
-            isActive: false,
-        },
+        // {
+        //     title: "Templates",
+        //     url: "/templates",
+        //     icon: LayoutTemplate,
+        //     isActive: false,
+        // },
         {
             title: "Trash",
             url: "/trash",

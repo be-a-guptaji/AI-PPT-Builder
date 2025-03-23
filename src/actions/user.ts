@@ -102,3 +102,93 @@ export const updateUser = async (
         }
     }
 }
+
+export const addTemplateToUser = async (
+    projectId: string
+): Promise<UserReturnProps> => {
+    try {
+        // Authenticate user
+        const checkUser = await onAuthenticateUser()
+
+        if (checkUser.status !== 200 || !checkUser.user) {
+            return {
+                status: 403,
+                error: "User not Authenticated",
+            }
+        }
+
+        // Retrieve the project based on projectId
+        const project = await client.project.findUnique({
+            where: {
+                id: projectId,
+            },
+        })
+
+        if (!project) {
+            return {
+                status: 404,
+                error: "Project not found",
+            }
+        }
+
+        // Check if the user already owns this project in the PurchasedProjects relation
+        const user = await client.user.findUnique({
+            where: {
+                id: checkUser.user.id,
+            },
+            include: {
+                PurchasedProjects: true, // Get user's purchased projects to check for duplicates
+            },
+        })
+
+        if (!user) {
+            return {
+                status: 404,
+                error: "User not found",
+            }
+        }
+
+        // If the user already owns the project, do not add it again
+        const alreadyPurchased = user.PurchasedProjects.some(
+            (p) => p.id === projectId
+        )
+
+        if (alreadyPurchased) {
+            return {
+                status: 400,
+                error: "User already owns this template",
+            }
+        }
+
+        // Update the user's PurchasedProjects to add the new project (template)
+        const updatedUser = await client.user.update({
+            where: {
+                id: checkUser.user.id,
+            },
+            data: {
+                PurchasedProjects: {
+                    connect: {
+                        id: projectId, // Connect the project to the user
+                    },
+                },
+            },
+        })
+
+        if (!updatedUser) {
+            return {
+                status: 400,
+                error: "Something went wrong",
+            }
+        }
+
+        return {
+            status: 200,
+            user: updatedUser,
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            error: "Internal Server Error: " + error,
+        }
+    }
+}

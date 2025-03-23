@@ -12,6 +12,8 @@ import AlertDialogBox from "../alert-dialog"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 import { deleteProject, recoverProject } from "@/actions/projects"
+import { buyTemplate } from "@/actions/lemonSqueezy"
+import { addTemplateToUser } from "@/actions/user"
 
 type ProjectCardProps = {
     projectId: string
@@ -38,7 +40,7 @@ const ProjectCard = ({
 
     const handleNavigation = () => {
         if (pathname.includes("templates")) {
-            router.push(`/templates/${projectId}`)   
+            router.push(`/templates/${projectId}`)
         } else {
             setSlides(JSON.parse(JSON.stringify(slideData)))
             router.push(`/presentation/${projectId}`)
@@ -114,8 +116,36 @@ const ProjectCard = ({
         }
     }
 
-    const handleBuy = () => {
-        router.push(`/templates/${projectId}`)
+    const handleBuy = async () => {
+        try {
+            setLoading(true)
+
+            const res = await buyTemplate(projectId)
+
+            if (res.status !== 200) {
+                toast.error("Payment Failed", {
+                    description: "Something went wrong! Please contact support",
+                })
+                return
+            } else {
+                addTemplateToUser(projectId)
+            }
+
+            router.push(res.data)
+
+            toast.success("Payment Successful", {
+                description: "You can now use the template",
+            })
+        } catch (error) {
+            console.error("Error recovering project:", error)
+            toast.error("Oops!", {
+                description: "Something went wrong! Please contact support",
+            })
+        } finally {
+            setLoading(false)
+            setOpen(false)
+            router.refresh()
+        }
     }
 
     return (
@@ -186,11 +216,11 @@ const ProjectCard = ({
                             )
                         ) : (
                             <AlertDialogBox
-                                discription="This template will cost you $2"
+                                discription="This template will cost you $4.99"
                                 className="bg-green-500 text-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-200"
                                 loading={loading}
                                 open={open}
-                                loadingText="Recovering"
+                                loadingText="Buying"
                                 onClick={handleBuy}
                                 handleOpen={() => setOpen(!open)}
                             >
