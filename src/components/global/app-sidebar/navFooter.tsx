@@ -31,11 +31,11 @@ const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
                 return
             }
 
+            router.push(res.data)
+
             toast.success("Payment Successful", {
                 description: "You can now use all features",
             })
-
-            router.push(res.data)
         } catch (error) {
             console.error(error)
             toast.error("Payment Failed", {
