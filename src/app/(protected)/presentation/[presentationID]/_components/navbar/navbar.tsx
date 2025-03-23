@@ -4,17 +4,22 @@ import { Button } from "@/components/ui/button"
 import { useSlideStore } from "@/store/useSlideStore"
 import { Forward, Home, Play } from "lucide-react"
 import Link from "next/link"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { toast } from "sonner"
 import PresentationMode from "./presentationMode"
+import { cn } from "@/lib/utils"
+import { toggleSellable } from "@/actions/projects"
+import { useRouter } from "next/navigation"
 
 type NavbarProps = {
     presentationID: string
 }
 
 const Navbar = ({ presentationID }: NavbarProps) => {
+    const router = useRouter()
     const [isPresentationMode, setIsPresentationMode] = useState(false)
     const { currentTheme, project } = useSlideStore()
+    const [isSellable, setIsSellable] = useState(project?.isSellable || false)
 
     const handelCopy = () => {
         navigator.clipboard.writeText(
@@ -26,7 +31,22 @@ const Navbar = ({ presentationID }: NavbarProps) => {
         })
     }
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {}
+    const toggleSellableButton = () => {
+        setIsSellable(!isSellable)
+    }
+
+    useEffect(() => {
+        const handler = setTimeout(async () => {
+            if (isSellable !== project?.isSellable) {
+                await toggleSellable(presentationID, isSellable)
+                router.refresh()
+            }
+        }, 3000)
+
+        return () => {
+            clearTimeout(handler)
+        }
+    }, [isSellable])
 
     return (
         <nav
@@ -58,8 +78,17 @@ const Navbar = ({ presentationID }: NavbarProps) => {
             </Link>
 
             <div className="flex items-center gap-4">
-                <Button className="w-16 rounded-3xl">
-                    <div></div>
+                <Button
+                    className="bg-white border w-16 h-8 rounded-3xl cursor-pointer hover:bg-gray-200 p-2 relative"
+                    onClick={toggleSellableButton}
+                    title="Sellable"
+                >
+                    <div
+                        className={cn(
+                            "h-6 aspect-square bg-blue-600 rounded-full absolute transition-transform duration-300",
+                            isSellable ? "translate-x-4" : "-translate-x-4"
+                        )}
+                    />
                 </Button>
 
                 <Button

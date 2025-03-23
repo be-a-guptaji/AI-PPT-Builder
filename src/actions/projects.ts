@@ -430,3 +430,49 @@ export const getDeletedProjects = async (): Promise<ReturnProps> => {
         }
     }
 }
+
+export const toggleSellable = async (
+    projectID: string,
+    sellable: boolean
+): Promise<ReturnProps> => {
+    try {
+        const checkUser = await onAuthenticateUser()
+
+        if (checkUser.status !== 200 || !checkUser.user) {
+            return {
+                status: 403,
+                error: "User not Authenticated",
+            }
+        }
+
+        const userID = checkUser.user.id
+
+        const project = await client.project.update({
+            where: {
+                id: projectID, // Ensure this is the unique identifier for the project
+                userId: userID, // Ensure the project belongs to the authenticated user
+            },
+            data: {
+                isSellable: sellable, // Add the field you want to update
+            },
+        })
+
+        if (!project) {
+            return {
+                status: 400,
+                error: "No projects found to update",
+                data: [],
+            }
+        }
+
+        return {
+            status: 200,
+            data: project,
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            error: "Internal Server Error: " + (error as Error).message,
+        }
+    }
+}
