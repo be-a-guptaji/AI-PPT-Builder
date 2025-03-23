@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { useSlideStore } from "@/store/useSlideStore"
-import { Home, Play, Share } from "lucide-react"
+import { Forward, Home, Play } from "lucide-react"
 import Link from "next/link"
 import React, { useState } from "react"
 import { toast } from "sonner"
@@ -25,6 +25,8 @@ const Navbar = ({ presentationID }: NavbarProps) => {
             description: "Link copied to clipboard",
         })
     }
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {}
 
     return (
         <nav
@@ -56,13 +58,17 @@ const Navbar = ({ presentationID }: NavbarProps) => {
             </Link>
 
             <div className="flex items-center gap-4">
+                <Button className="w-16 rounded-3xl">
+                    <div></div>
+                </Button>
+
                 <Button
                     style={{ backgroundColor: currentTheme.backgroundColor }}
                     variant={"outline"}
                     className="cursor-pointer"
                     onClick={handelCopy}
                 >
-                    <Share className="size-4" />
+                    <Forward className="size-4" />
                 </Button>
                 {/* <SellTemplate/> */}
                 <Button

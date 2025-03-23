@@ -4,8 +4,6 @@ import { User } from "@prisma/client"
 import React from "react"
 import SearchBar from "./upperInfoSearchBar"
 import TheamSwicher from "../mode-toggle"
-import { Button } from "@/components/ui/button"
-import { Upload } from "lucide-react"
 import NewProjectButton from "./newProjectButton"
 
 const UpperInfobar = ({ user }: { user: User }) => {
@@ -18,14 +16,6 @@ const UpperInfobar = ({ user }: { user: User }) => {
             </div>
             <div className="w-full max-w-[95%] flex items-center lg:justify-end justify-between gap-6 lg:mx-16 sm:mx-16">
                 <TheamSwicher />
-                <Button
-                    className="bg-primary/20 rounded-lg dark:hover:bg-white/30 transition-all duration-300 cursor-pointer text-primary font-semibold hover:bg-black/30"
-                    size={"default"}
-                >
-                    {" "}
-                    <Upload />
-                    Import
-                </Button>
                 <NewProjectButton user={user} />
             </div>
         </header>
