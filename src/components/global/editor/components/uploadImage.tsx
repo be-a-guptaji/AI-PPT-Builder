@@ -13,7 +13,7 @@ type UploadImageProps = {
 }
 
 const UploadImage = ({ contentId, onContentChange }: UploadImageProps) => {
-    const handelChangeEvent = (event: {
+    const handleChangeEvent = (event: {
         status: "success"
         internalId: string
         name: string
@@ -41,7 +41,7 @@ const UploadImage = ({ contentId, onContentChange }: UploadImageProps) => {
                 cameraModes="photo, video"
                 pubkey={process.env.NEXT_PUBLIC_UPLOADCARE_PUBLIC_KEY!}
                 multiple={false}
-                onFileUploadSuccess={handelChangeEvent}
+                onFileUploadSuccess={handleChangeEvent}
                 maxLocalFileSizeBytes={10485760}
             />
         </div>

@@ -132,7 +132,7 @@ export const DragableSlide: React.FC<DragableSlideProps> = ({
 
     drag(drop(ref))
 
-    const handelContentChange = (
+    const handleContentChange = (
         contentID: string,
         newContent: string | string[] | string[][]
     ) => {
@@ -163,7 +163,7 @@ export const DragableSlide: React.FC<DragableSlideProps> = ({
                     isEditable={isEditable}
                     isPreview={false}
                     slideId={slide.id}
-                    onContentChange={handelContentChange}
+                    onContentChange={handleContentChange}
                 />
             </div>
             {isEditable && (

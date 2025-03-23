@@ -40,7 +40,7 @@ const TableComponet = ({
     })
     const { currentTheme } = useSlideStore()
 
-    const handelResizeColumn = (index: number, newSize: number) => {
+    const handleResizeColumn = (index: number, newSize: number) => {
         if (isEditable) {
             const newSizes = [...colSizes]
             newSizes[index] = newSize
@@ -149,7 +149,7 @@ const TableComponet = ({
                                     <ResizablePanel
                                         defaultSize={colSizes[colIndex]}
                                         onResize={(sizes) => {
-                                            handelResizeColumn(colIndex, sizes)
+                                            handleResizeColumn(colIndex, sizes)
                                         }}
                                         className="size-full min-h-9"
                                     >

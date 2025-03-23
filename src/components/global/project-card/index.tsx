@@ -4,7 +4,7 @@ import { itemVatiants, themes } from "@/lib/constant"
 import { useSlideStore } from "@/store/useSlideStore"
 import { JsonValue } from "@prisma/client/runtime/library"
 import { motion } from "framer-motion"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import React, { useState } from "react"
 import ThumbnailPreview from "./thumbnailPreview"
 import { timeAgo } from "@/lib/utils"
@@ -31,13 +31,18 @@ const ProjectCard = ({
     themeName,
 }: ProjectCardProps) => {
     const router = useRouter()
+    const pathname = usePathname()
     const [loading, setLoading] = useState(false)
     const [open, setOpen] = useState(false)
     const { setSlides } = useSlideStore()
 
     const handleNavigation = () => {
-        setSlides(JSON.parse(JSON.stringify(slideData)))
-        router.push(`/presentation/${projectId}`)
+        if (pathname.includes("templates")) {
+            router.push(`/templates/${projectId}`)   
+        } else {
+            setSlides(JSON.parse(JSON.stringify(slideData)))
+            router.push(`/presentation/${projectId}`)
+        }
     }
 
     const currentTheme =
@@ -109,6 +114,10 @@ const ProjectCard = ({
         }
     }
 
+    const handleBuy = () => {
+        router.push(`/templates/${projectId}`)
+    }
+
     return (
         <motion.div
             variants={itemVatiants}
@@ -135,14 +144,54 @@ const ProjectCard = ({
                         >
                             {timeAgo(createdAt)}
                         </p>
-                        {isDeleted ? (
+                        {!pathname.includes("templates") ? (
+                            isDeleted ? (
+                                <AlertDialogBox
+                                    discription="This will recover your project and restore all your data"
+                                    className="bg-green-500 text-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-200"
+                                    loading={loading}
+                                    open={open}
+                                    loadingText="Recovering"
+                                    onClick={handleRecover}
+                                    handleOpen={() => setOpen(!open)}
+                                >
+                                    <Button
+                                        size={"sm"}
+                                        variant={"ghost"}
+                                        disabled={loading}
+                                        className="bg-green-600 hover:bg-green-400 transition-all duration-200 cursor-pointer"
+                                    >
+                                        Recover
+                                    </Button>
+                                </AlertDialogBox>
+                            ) : (
+                                <AlertDialogBox
+                                    discription="This will delete your project and send it to trash"
+                                    className="bg-red-500 text-white dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700"
+                                    loading={loading}
+                                    open={open}
+                                    loadingText="Deleting"
+                                    onClick={handleDelete}
+                                    handleOpen={() => setOpen(!open)}
+                                >
+                                    <Button
+                                        size={"sm"}
+                                        variant={"ghost"}
+                                        disabled={loading}
+                                        className="bg-red-600 hover:bg-red-900 transition-all duration-200 cursor-pointer"
+                                    >
+                                        Delete
+                                    </Button>
+                                </AlertDialogBox>
+                            )
+                        ) : (
                             <AlertDialogBox
-                                discription="This will recover your project and restore all your data"
+                                discription="This template will cost you $2"
                                 className="bg-green-500 text-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-200"
                                 loading={loading}
                                 open={open}
                                 loadingText="Recovering"
-                                onClick={handleRecover}
+                                onClick={handleBuy}
                                 handleOpen={() => setOpen(!open)}
                             >
                                 <Button
@@ -151,26 +200,7 @@ const ProjectCard = ({
                                     disabled={loading}
                                     className="bg-green-600 hover:bg-green-400 transition-all duration-200 cursor-pointer"
                                 >
-                                    Recover
-                                </Button>
-                            </AlertDialogBox>
-                        ) : (
-                            <AlertDialogBox
-                                discription="This will delete your project and send it to trash"
-                                className="bg-red-500 text-white dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700"
-                                loading={loading}
-                                open={open}
-                                loadingText="Deleting"
-                                onClick={handleDelete}
-                                handleOpen={() => setOpen(!open)}
-                            >
-                                <Button
-                                    size={"sm"}
-                                    variant={"ghost"}
-                                    disabled={loading}
-                                    className="bg-red-600 hover:bg-red-900 transition-all duration-200 cursor-pointer"
-                                >
-                                    Delete
+                                    Buy
                                 </Button>
                             </AlertDialogBox>
                         )}

@@ -21,7 +21,7 @@ const Navbar = ({ presentationID }: NavbarProps) => {
     const { currentTheme, project } = useSlideStore()
     const [isSellable, setIsSellable] = useState(project?.isSellable || false)
 
-    const handelCopy = () => {
+    const handleCopy = () => {
         navigator.clipboard.writeText(
             `${window.location.origin}/share/${presentationID}`
         )
@@ -95,7 +95,7 @@ const Navbar = ({ presentationID }: NavbarProps) => {
                     style={{ backgroundColor: currentTheme.backgroundColor }}
                     variant={"outline"}
                     className="cursor-pointer"
-                    onClick={handelCopy}
+                    onClick={handleCopy}
                 >
                     <Forward className="size-4" />
                 </Button>

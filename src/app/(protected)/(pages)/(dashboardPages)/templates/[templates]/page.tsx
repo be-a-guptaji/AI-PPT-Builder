@@ -10,7 +10,7 @@ const Page = () => {
     return (
         <PresentationMode
             onClose={() => {
-                router.push("/dashboard")
+                router.push("/templates")
             }}
         />
     )
