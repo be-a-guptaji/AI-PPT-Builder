@@ -1,5 +1,6 @@
 import { onAuthenticateUser } from "@/actions/user"
 import React from "react"
+import UserSettings from "./_components/userSettings"
 
 const Page = async () => {
     const checkUser = await onAuthenticateUser()
@@ -16,6 +17,7 @@ const Page = async () => {
                     </p>
                 </div>
             </div>
+            <UserSettings User={checkUser.user} />
         </div>
     )
 }

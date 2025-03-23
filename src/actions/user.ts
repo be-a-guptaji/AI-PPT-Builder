@@ -57,3 +57,48 @@ export const onAuthenticateUser = async (): Promise<UserReturnProps> => {
         return { status: 500, error: "Internal server error" + error }
     }
 }
+
+export const updateUser = async (
+    lemonSqueezyAPIKey: string,
+    storeID: string,
+    webhookSecret: string
+): Promise<UserReturnProps> => {
+    try {
+        const checkUser = await onAuthenticateUser()
+
+        if (checkUser.status !== 200 || !checkUser.user) {
+            return {
+                status: 403,
+                error: "User not Authenticated",
+            }
+        }
+
+        const updatedUser = await client.user.update({
+            where: {
+                id: checkUser.user.id,
+            },
+            data: {
+                lemonSqueezyAPIKey,
+                storeID,
+                webhookSecret,
+            },
+        })
+
+        if (!updatedUser) {
+            return {
+                status: 400,
+                error: "Something went wrong",
+            }
+        }
+
+        return {
+            status: 200,
+            user: updatedUser,
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            error: "Internal Server Error" + error,
+        }
+    }
+}
