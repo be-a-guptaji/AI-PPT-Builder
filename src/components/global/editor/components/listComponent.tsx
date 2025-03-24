@@ -1,264 +1,264 @@
-import { cn } from "@/lib/utils"
-import { useSlideStore } from "@/store/useSlideStore"
-import React from "react"
+import { cn } from "@/lib/utils";
+import { useSlideStore } from "@/store/useSlideStore";
+import React from "react";
 
 type ListProps = {
-    items: string[]
-    className?: string
-    isEditable?: boolean
-    onChange: (items: string[]) => void
-}
+  items: string[];
+  className?: string;
+  isEditable?: boolean;
+  onChange: (items: string[]) => void;
+};
 
 type ListItemProps = {
-    item: string
+  item: string;
+  index: number;
+  fontColor: string;
+  isEditable: boolean;
+  onChange: (index: number, value: string) => void;
+  onKeyDown: (
+    event: React.KeyboardEvent<HTMLInputElement>,
     index: number
-    fontColor: string
-    isEditable: boolean
-    onChange: (index: number, value: string) => void
-    onKeyDown: (
-        event: React.KeyboardEvent<HTMLInputElement>,
-        index: number
-    ) => void
-}
+  ) => void;
+};
 
 const ListItem: React.FC<ListItemProps> = ({
-    item,
-    fontColor,
-    index,
-    isEditable,
-    onChange,
-    onKeyDown,
+  item,
+  fontColor,
+  index,
+  isEditable,
+  onChange,
+  onKeyDown,
 }) => (
-    <input
-        type="text"
-        value={item}
-        onChange={(e) => onChange(index, e.target.value)}
-        onKeyDown={(e) => onKeyDown(e, index)}
-        style={{ color: fontColor }}
-        className="bg-transparent outline-none w-full py-1"
-        readOnly={!isEditable}
-    />
-)
+  <input
+    type="text"
+    value={item}
+    onChange={(e) => onChange(index, e.target.value)}
+    onKeyDown={(e) => onKeyDown(e, index)}
+    style={{ color: fontColor }}
+    className="bg-transparent outline-none w-full py-1"
+    readOnly={!isEditable}
+  />
+);
 
 const NumberedList: React.FC<ListProps> = ({
-    items,
-    className,
-    isEditable = true,
-    onChange,
+  items,
+  className,
+  isEditable = true,
+  onChange,
 }) => {
-    const { currentTheme } = useSlideStore()
+  const { currentTheme } = useSlideStore();
 
-    const handleChange = (index: number, value: string) => {
-        if (isEditable) {
-            const newItems = [...items]
-            newItems[index] = value
-            onChange(newItems)
-        }
+  const handleChange = (index: number, value: string) => {
+    if (isEditable) {
+      const newItems = [...items];
+      newItems[index] = value;
+      onChange(newItems);
     }
+  };
 
-    const handleKeyDown = (
-        event: React.KeyboardEvent<HTMLInputElement>,
-        index: number
-    ) => {
-        if (event.key === "Enter") {
-            event.preventDefault()
-            const newItems = [...items]
-            newItems.splice(index + 1, 0, "")
-            onChange(newItems)
-            setTimeout(() => {
-                const nextInput = document.querySelector(
-                    `li:nth-child(${index + 2}) input`
-                ) as HTMLInputElement
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const newItems = [...items];
+      newItems.splice(index + 1, 0, "");
+      onChange(newItems);
+      setTimeout(() => {
+        const nextInput = document.querySelector(
+          `li:nth-child(${index + 2}) input`
+        ) as HTMLInputElement;
 
-                if (nextInput) {
-                    nextInput.focus()
-                }
-            }, 0)
-        } else if (
-            event.key === "Backspace" &&
-            items[index] === "" &&
-            items.length > 1
-        ) {
-            event.preventDefault()
-            const newItems = [...items]
-            newItems.splice(index, 1)
-            onChange(newItems)
+        if (nextInput) {
+          nextInput.focus();
         }
+      }, 0);
+    } else if (
+      event.key === "Backspace" &&
+      items[index] === "" &&
+      items.length > 1
+    ) {
+      event.preventDefault();
+      const newItems = [...items];
+      newItems.splice(index, 1);
+      onChange(newItems);
     }
+  };
 
-    return (
-        <ol
-            className={cn("list-decimal list-inside space-y-1", className)}
-            style={{ color: currentTheme.fontColor }}
-        >
-            {items.map((item, index) => (
-                <li key={index}>
-                    <ListItem
-                        item={item}
-                        index={index}
-                        fontColor={currentTheme.fontColor}
-                        isEditable={isEditable}
-                        onChange={handleChange}
-                        onKeyDown={handleKeyDown}
-                    />
-                </li>
-            ))}
-        </ol>
-    )
-}
+  return (
+    <ol
+      className={cn("list-decimal list-inside space-y-1", className)}
+      style={{ color: currentTheme.fontColor }}
+    >
+      {items.map((item, index) => (
+        <li key={index}>
+          <ListItem
+            item={item}
+            index={index}
+            fontColor={currentTheme.fontColor}
+            isEditable={isEditable}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+        </li>
+      ))}
+    </ol>
+  );
+};
 
 export const BulletList: React.FC<ListProps> = ({
-    className,
-    items,
-    isEditable = true,
-    onChange,
+  className,
+  items,
+  isEditable = true,
+  onChange,
 }) => {
-    const { currentTheme } = useSlideStore()
+  const { currentTheme } = useSlideStore();
 
-    const handleChange = (index: number, value: string) => {
-        if (isEditable) {
-            const newItems = [...items]
-            newItems[index] = value
-            onChange(newItems)
-        }
+  const handleChange = (index: number, value: string) => {
+    if (isEditable) {
+      const newItems = [...items];
+      newItems[index] = value;
+      onChange(newItems);
     }
+  };
 
-    const handleKeyDown = (
-        event: React.KeyboardEvent<HTMLInputElement>,
-        index: number
-    ) => {
-        if (event.key === "Enter") {
-            event.preventDefault()
-            const newItems = [...items]
-            newItems.splice(index + 1, 0, "")
-            onChange(newItems)
-            setTimeout(() => {
-                const nextInput = document.querySelector(
-                    `li:nth-child(${index + 2}) input`
-                ) as HTMLInputElement
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const newItems = [...items];
+      newItems.splice(index + 1, 0, "");
+      onChange(newItems);
+      setTimeout(() => {
+        const nextInput = document.querySelector(
+          `li:nth-child(${index + 2}) input`
+        ) as HTMLInputElement;
 
-                if (nextInput) {
-                    nextInput.focus()
-                }
-            }, 0)
-        } else if (
-            event.key === "Backspace" &&
-            items[index] === "" &&
-            items.length > 1
-        ) {
-            event.preventDefault()
-            const newItems = [...items]
-            newItems.splice(index, 1)
-            onChange(newItems)
+        if (nextInput) {
+          nextInput.focus();
         }
+      }, 0);
+    } else if (
+      event.key === "Backspace" &&
+      items[index] === "" &&
+      items.length > 1
+    ) {
+      event.preventDefault();
+      const newItems = [...items];
+      newItems.splice(index, 1);
+      onChange(newItems);
     }
+  };
 
-    return (
-        <ul
-            className={cn("list-disc pl-5 space-y-1", className)}
-            style={{ color: currentTheme.fontColor }}
-        >
-            {items.map((item, index) => (
-                <li key={index} className="pl-1 marker:text-current">
-                    <ListItem
-                        item={item}
-                        index={index}
-                        fontColor={currentTheme.fontColor}
-                        isEditable={isEditable}
-                        onChange={handleChange}
-                        onKeyDown={handleKeyDown}
-                    />
-                </li>
-            ))}
-        </ul>
-    )
-}
+  return (
+    <ul
+      className={cn("list-disc pl-5 space-y-1", className)}
+      style={{ color: currentTheme.fontColor }}
+    >
+      {items.map((item, index) => (
+        <li key={index} className="pl-1 marker:text-current">
+          <ListItem
+            item={item}
+            index={index}
+            fontColor={currentTheme.fontColor}
+            isEditable={isEditable}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 export const TodoList: React.FC<ListProps> = ({
-    items,
-    className,
-    isEditable = true,
-    onChange,
+  items,
+  className,
+  isEditable = true,
+  onChange,
 }) => {
-    const { currentTheme } = useSlideStore()
+  const { currentTheme } = useSlideStore();
 
-    const toggleCheckBox = (index: number) => {
-        if (isEditable) {
-            const newItems = [...items]
-            newItems[index] = newItems[index].startsWith("[x] ")
-                ? newItems[index].replace("[x] ", "[ ] ")
-                : newItems[index].replace("[ ] ", "[x] ")
-            onChange(newItems)
-        }
+  const toggleCheckBox = (index: number) => {
+    if (isEditable) {
+      const newItems = [...items];
+      newItems[index] = newItems[index].startsWith("[x] ")
+        ? newItems[index].replace("[x] ", "[ ] ")
+        : newItems[index].replace("[ ] ", "[x] ");
+      onChange(newItems);
     }
+  };
 
-    const handleChange = (index: number, value: string) => {
-        if (isEditable) {
-            const newItems = [...items]
-            newItems[index] =
-                value.startsWith("[ ] ") || value.startsWith("[x] ")
-                    ? value
-                    : `[ ] ${value}`
-            onChange(newItems)
-        }
+  const handleChange = (index: number, value: string) => {
+    if (isEditable) {
+      const newItems = [...items];
+      newItems[index] =
+        value.startsWith("[ ] ") || value.startsWith("[x] ")
+          ? value
+          : `[ ] ${value}`;
+      onChange(newItems);
     }
+  };
 
-    const handleKeyDown = (
-        event: React.KeyboardEvent<HTMLInputElement>,
-        index: number
-    ) => {
-        if (event.key === "Enter") {
-            event.preventDefault()
-            const newItems = [...items]
-            newItems.splice(index + 1, 0, "")
-            onChange(newItems)
-            setTimeout(() => {
-                const nextInput = document.querySelector(
-                    `li:nth-child(${index + 2}) input`
-                ) as HTMLInputElement
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const newItems = [...items];
+      newItems.splice(index + 1, 0, "");
+      onChange(newItems);
+      setTimeout(() => {
+        const nextInput = document.querySelector(
+          `li:nth-child(${index + 2}) input`
+        ) as HTMLInputElement;
 
-                if (nextInput) {
-                    nextInput.focus()
-                }
-            }, 0)
-        } else if (
-            event.key === "Backspace" &&
-            items[index] === "" &&
-            items.length > 1
-        ) {
-            event.preventDefault()
-            const newItems = [...items]
-            newItems.splice(index, 1)
-            onChange(newItems)
+        if (nextInput) {
+          nextInput.focus();
         }
+      }, 0);
+    } else if (
+      event.key === "Backspace" &&
+      items[index] === "" &&
+      items.length > 1
+    ) {
+      event.preventDefault();
+      const newItems = [...items];
+      newItems.splice(index, 1);
+      onChange(newItems);
     }
+  };
 
-    return (
-        <ul
-            className={cn("space-y-1", className)}
-            style={{ color: currentTheme.fontColor }}
-        >
-            {items.map((item, index) => (
-                <li key={index} className="flex items-center space-x-2">
-                    <input
-                        type="checkbox"
-                        checked={item.startsWith("[x] ")}
-                        className="form-checkbox"
-                        disabled={!isEditable}
-                        onChange={() => toggleCheckBox(index)}
-                    />
-                    <ListItem
-                        item={item.replace(/^\[[ x]\] /, "")}
-                        index={index}
-                        fontColor={currentTheme.fontColor}
-                        isEditable={isEditable}
-                        onChange={handleChange}
-                        onKeyDown={handleKeyDown}
-                    />
-                </li>
-            ))}
-        </ul>
-    )
-}
+  return (
+    <ul
+      className={cn("space-y-1", className)}
+      style={{ color: currentTheme.fontColor }}
+    >
+      {items.map((item, index) => (
+        <li key={index} className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            checked={item.startsWith("[x] ")}
+            className="form-checkbox"
+            disabled={!isEditable}
+            onChange={() => toggleCheckBox(index)}
+          />
+          <ListItem
+            item={item.replace(/^\[[ x]\] /, "")}
+            index={index}
+            fontColor={currentTheme.fontColor}
+            isEditable={isEditable}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+        </li>
+      ))}
+    </ul>
+  );
+};
 
-export default NumberedList
+export default NumberedList;
