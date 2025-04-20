@@ -56,7 +56,7 @@ const ColumnComponent = ({
     <div className="relative size-full">
       <ResizablePanelGroup
         direction="horizontal"
-        className={cn("size-full flex", !isEditable && "!border-0", className)}
+        className={cn("flex size-full", !isEditable && "!border-0", className)}
       >
         {columns?.map((item, index) => (
           <React.Fragment key={item.id}>

@@ -64,18 +64,18 @@ const Page = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <Loader2 className="animate-spin size-8 text-primary" />
+      <div className="flex h-screen items-center justify-center">
+        <Loader2 className="text-primary size-8 animate-spin" />
       </div>
     );
   }
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="min-h-screen flex flex-col">
+      <div className="flex min-h-screen flex-col">
         <Navbar presentationID={params.presentationID as string} />
         <div
-          className="flex-1 flex overflow-hidden pt-16"
+          className="flex flex-1 overflow-hidden pt-16"
           style={{
             backgroundColor: currentTheme.backgroundColor,
             color: currentTheme.accentColor,
@@ -83,7 +83,7 @@ const Page = () => {
           }}
         >
           <LayoutPreview />
-          <div className="flex-1 ml-64 pr-16">
+          <div className="ml-64 flex-1 pr-16">
             <Editor isEditable={true} />
           </div>
           <EditorSidebar />

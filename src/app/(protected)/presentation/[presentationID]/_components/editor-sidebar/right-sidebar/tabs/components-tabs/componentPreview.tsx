@@ -24,7 +24,7 @@ const ComponentCard = ({ item }: { item: ComponentItemProps }) => {
     <div
       ref={drag as unknown as React.LegacyRef<HTMLDivElement>}
       className={cn(
-        "border rounded-lg",
+        "rounded-lg border",
         isDragging ? "opacity-50" : "opacity-100"
       )}
       style={{
@@ -33,17 +33,17 @@ const ComponentCard = ({ item }: { item: ComponentItemProps }) => {
     >
       <button
         className={cn(
-          "flex flex-col items-center cursor-grab active:cursor-grabbing gap-2 p-2 rounded-lg hover:bg-primary/90 transition-all duration-200",
-          "text-center w-full",
-          "hover:scale-105 transform"
+          "hover:bg-primary/90 flex cursor-grab flex-col items-center gap-2 rounded-lg p-2 transition-all duration-200 active:cursor-grabbing",
+          "w-full text-center",
+          "transform hover:scale-105"
         )}
       >
-        <div className="w-full aspect-video rounded-md border bg-gray-100 dark:bg-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200">
-          <div className="flex flex-col items-center justify-center shadow-gray-600 gap-2 shadow-sm hover:shadow-lg transition-shadow duration-200 size-full rounded-md">
-            <span className="text-2xl text-primary">{item.icon}</span>
+        <div className="aspect-video w-full rounded-md border bg-gray-100 shadow-sm transition-shadow duration-200 hover:shadow-md dark:bg-gray-700">
+          <div className="flex size-full flex-col items-center justify-center gap-2 rounded-md shadow-sm shadow-gray-600 transition-shadow duration-200 hover:shadow-lg">
+            <span className="text-primary text-2xl">{item.icon}</span>
           </div>
         </div>
-        <span className="text-xs text-gray-500 font-medium">{item.name}</span>
+        <span className="text-xs font-medium text-gray-500">{item.name}</span>
       </button>
     </div>
   );

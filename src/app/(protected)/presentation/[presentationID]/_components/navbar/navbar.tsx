@@ -50,7 +50,7 @@ const Navbar = ({ presentationID }: NavbarProps) => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 w-full h-20 flex justify-between items-center py-4 px-7 boarder-b"
+      className="boarder-b fixed top-0 right-0 left-0 z-50 flex h-20 w-full items-center justify-between px-7 py-4"
       style={{
         backgroundColor:
           currentTheme.navbarColor || currentTheme.backgroundColor,
@@ -60,7 +60,7 @@ const Navbar = ({ presentationID }: NavbarProps) => {
       <Link href={`/dashboard`} passHref>
         <Button
           variant={"outline"}
-          className="flex items-center gap-2 cursor-pointer"
+          className="flex cursor-pointer items-center gap-2"
           style={{
             backgroundColor: currentTheme.backgroundColor,
           }}
@@ -72,7 +72,7 @@ const Navbar = ({ presentationID }: NavbarProps) => {
 
       <Link
         href={`/presentation/template-market`}
-        className="text-lg font-semibold hidden sm:block"
+        className="hidden text-lg font-semibold sm:block"
       >
         {project?.title}
       </Link>
@@ -102,7 +102,7 @@ const Navbar = ({ presentationID }: NavbarProps) => {
         {/* <SellTemplate/> */}
         <Button
           variant={"default"}
-          className="flex items-center gap-2 cursor-pointer justify-center"
+          className="flex cursor-pointer items-center justify-center gap-2"
           onClick={() => setIsPresentationMode(true)}
         >
           <Play className="size-4" fill="black" />

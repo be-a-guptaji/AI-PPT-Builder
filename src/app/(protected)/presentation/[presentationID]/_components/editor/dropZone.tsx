@@ -46,7 +46,7 @@ const DropZone = ({ index, parentID, slideID }: DropZoneProps) => {
       )}
     >
       {isOver && canDrop && (
-        <div className="size-full flex text-sm items-center justify-center text-green-600">
+        <div className="flex size-full items-center justify-center text-sm text-green-600">
           Drop here
         </div>
       )}

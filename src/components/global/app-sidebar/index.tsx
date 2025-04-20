@@ -25,26 +25,26 @@ const AppSidebar = ({
   return (
     <Sidebar
       collapsible="icon"
-      className="max-w-[212px] bg-background/10"
+      className="bg-background/10 max-w-[212px]"
       {...props}
     >
-      <SidebarHeader className="pt-6 px-2 pb-0">
+      <SidebarHeader className="px-2 pt-6 pb-0">
         <SidebarMenuButton
           size={"lg"}
           className="data-[state=open]:text-sidebar-accent-foreground"
         >
-          <div className="flex aspect-square items-center justify-center size-8 rounded-lg text-sidebar-primary-foreground">
+          <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
             <Avatar className="size-10 rounded-full">
               <AvatarImage src="/logo.jpg" alt="Kraton" />
               <AvatarFallback className="rounded-lg">Kraton</AvatarFallback>
             </Avatar>
           </div>
-          <span className="truncate text-primary text-3xl font-semibold">
+          <span className="text-primary truncate text-3xl font-semibold">
             Kraton
           </span>
         </SidebarMenuButton>
       </SidebarHeader>
-      <SidebarContent className="px-2 mt-10 gap-y-6">
+      <SidebarContent className="mt-10 gap-y-6 px-2">
         <NavMain items={data.navMain} />
         <RecentOpen recentProjects={recentProjects} />
       </SidebarContent>

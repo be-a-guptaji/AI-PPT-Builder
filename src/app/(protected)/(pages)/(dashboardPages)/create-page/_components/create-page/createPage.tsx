@@ -25,8 +25,8 @@ const CreatePage = ({ onSelectOption }: CreatePageProps) => {
       className="space-y-8"
       variants={containerVaraints}
     >
-      <motion.div variants={itemVatiants} className="text-center space-y-2">
-        <h1 className="text-4xl font-bold text-primary">
+      <motion.div variants={itemVatiants} className="space-y-2 text-center">
+        <h1 className="text-primary text-4xl font-bold">
           How would you like to get started?
         </h1>
         <p className="text-secondary-foreground/50">
@@ -47,13 +47,13 @@ const CreatePage = ({ onSelectOption }: CreatePageProps) => {
               rotate: 1,
               transition: { duration: 0.1 },
             }}
-            className={`${option.highlight ? "bg-kraton-gradient" : "hover:bg-red-300 border"} rounded-xl p-[1px] transition-all duration-300 ease-in-out cursor-default`}
+            className={`${option.highlight ? "bg-kraton-gradient" : "border hover:bg-red-300"} cursor-default rounded-xl p-[1px] transition-all duration-300 ease-in-out`}
           >
             <motion.div
-              className="w-full h-full p-4 flex flex-col gap-y-6 items-start bg-white dark:bg-black rounded-xl justify-between"
+              className="flex h-full w-full flex-col items-start justify-between gap-y-6 rounded-xl bg-white p-4 dark:bg-black"
               whileHover={{ transition: { duration: 0.1 } }}
             >
-              <div className="flex flex-col items-start w-full gap-y-3">
+              <div className="flex w-full flex-col items-start gap-y-3">
                 <div>
                   <p className="text-primary text-lg font-semibold">
                     {option.title}
@@ -75,7 +75,7 @@ const CreatePage = ({ onSelectOption }: CreatePageProps) => {
               >
                 <Button
                   variant={option.highlight ? "default" : "outline"}
-                  className="w-fit rounded-xl font-bold cursor-pointer"
+                  className="w-fit cursor-pointer rounded-xl font-bold"
                   size={"sm"}
                   onClick={() => onSelectOption(option.type)}
                 >

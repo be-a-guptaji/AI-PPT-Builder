@@ -85,7 +85,7 @@ const ThemeCard = ({
         }}
       >
         <div className="flex flex-col md:flex-row">
-          <CardContent className="flex-1 p-8 space-y-6 md:w-1/2">
+          <CardContent className="flex-1 space-y-6 p-8 md:w-1/2">
             <div className="space-y-3">
               <h2
                 className="text-3xl font-bold tracking-tight"
@@ -102,12 +102,12 @@ const ThemeCard = ({
             </div>
             {content}
           </CardContent>
-          <div className="relative w-full md:w-1/2 h-80 md:h-auto overflow-hidden rounded-r-lg">
+          <div className="relative h-80 w-full overflow-hidden rounded-r-lg md:h-auto md:w-1/2">
             <Image
               src="https://plus.unsplash.com/premium_photo-1729004379397-ece899804701?q=80&w=2767&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Theme Preview Image"
               layout="fill"
-              className="transition-transform duration-500 hover:scale-110 object-cover"
+              className="object-cover transition-transform duration-500 hover:scale-110"
             />
           </div>
         </div>

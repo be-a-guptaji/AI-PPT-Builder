@@ -151,10 +151,10 @@ const ProjectCard = ({
   return (
     <motion.div
       variants={itemVatiants}
-      className={`group w-full flex flex-col gap-y-3 rounded-xl p-3 transition-colors border-2 ${!isDeleted && "hover:bg-black/5 dark:hover:bg-white/5"}`}
+      className={`group flex w-full flex-col gap-y-3 rounded-xl border-2 p-3 transition-colors ${!isDeleted && "hover:bg-black/5 dark:hover:bg-white/5"}`}
     >
       <div
-        className="realtive aspect-[16/10] overflow-hidden rounded-lg cursor-pointer"
+        className="realtive aspect-[16/10] cursor-pointer overflow-hidden rounded-lg"
         onClick={handleNavigation}
       >
         <ThumbnailPreview
@@ -164,13 +164,13 @@ const ProjectCard = ({
       </div>
       <div className="w-full">
         <div className="space-y-1">
-          <h3 className="font-semibold text-base text-primary line-clamp-1">
+          <h3 className="text-primary line-clamp-1 text-base font-semibold">
             {title}
           </h3>
-          <div className="flex justify-between items-center gap-2 w-full">
+          <div className="flex w-full items-center justify-between gap-2">
             <p
               suppressHydrationWarning
-              className="text-sm text-muted-foreground"
+              className="text-muted-foreground text-sm"
             >
               {timeAgo(createdAt)}
             </p>
@@ -178,7 +178,7 @@ const ProjectCard = ({
               isDeleted ? (
                 <AlertDialogBox
                   discription="This will recover your project and restore all your data"
-                  className="bg-green-500 text-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-200"
+                  className="bg-green-500 text-white transition-all duration-200 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
                   loading={loading}
                   open={open}
                   loadingText="Recovering"
@@ -189,7 +189,7 @@ const ProjectCard = ({
                     size={"sm"}
                     variant={"ghost"}
                     disabled={loading}
-                    className="bg-green-600 hover:bg-green-400 transition-all duration-200 cursor-pointer"
+                    className="cursor-pointer bg-green-600 transition-all duration-200 hover:bg-green-400"
                   >
                     Recover
                   </Button>
@@ -197,7 +197,7 @@ const ProjectCard = ({
               ) : (
                 <AlertDialogBox
                   discription="This will delete your project and send it to trash"
-                  className="bg-red-500 text-white dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700"
+                  className="bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
                   loading={loading}
                   open={open}
                   loadingText="Deleting"
@@ -208,7 +208,7 @@ const ProjectCard = ({
                     size={"sm"}
                     variant={"ghost"}
                     disabled={loading}
-                    className="bg-red-600 hover:bg-red-900 transition-all duration-200 cursor-pointer"
+                    className="cursor-pointer bg-red-600 transition-all duration-200 hover:bg-red-900"
                   >
                     Delete
                   </Button>
@@ -217,7 +217,7 @@ const ProjectCard = ({
             ) : (
               <AlertDialogBox
                 discription="This template will cost you $4.99"
-                className="bg-green-500 text-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-200"
+                className="bg-green-500 text-white transition-all duration-200 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
                 loading={loading}
                 open={open}
                 loadingText="Buying"
@@ -228,7 +228,7 @@ const ProjectCard = ({
                   size={"sm"}
                   variant={"ghost"}
                   disabled={loading}
-                  className="bg-green-600 hover:bg-green-400 transition-all duration-200 cursor-pointer"
+                  className="cursor-pointer bg-green-600 transition-all duration-200 hover:bg-green-400"
                 >
                   Buy
                 </Button>

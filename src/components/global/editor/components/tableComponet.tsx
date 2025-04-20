@@ -78,7 +78,7 @@ const TableComponet = ({
               {tableData[0].map((cell, index) => (
                 <th
                   key={index}
-                  className="p-2 border"
+                  className="border p-2"
                   style={{ width: `${colSizes[index]}%` }}
                 >
                   {cell || "Type here"}
@@ -93,7 +93,7 @@ const TableComponet = ({
                 style={{ height: `${rowSizes[rowIndex + 1]}%` }}
               >
                 {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="p-2 border">
+                  <td key={cellIndex} className="border p-2">
                     {cell || "Type here"}
                   </td>
                 ))}
@@ -116,16 +116,15 @@ const TableComponet = ({
     >
       <ResizablePanelGroup
         direction="vertical"
-        className={`size-full rounded-lg border 
-          ${
-            initialColumnSize === 2
-              ? "min-h-[100px]"
-              : initialColumnSize === 3
-                ? "min-h-[150px]"
-                : initialColumnSize === 4
-                  ? "min-h-[200px]"
-                  : "min-h-[100px]"
-          }`}
+        className={`size-full rounded-lg border ${
+          initialColumnSize === 2
+            ? "min-h-[100px]"
+            : initialColumnSize === 3
+              ? "min-h-[150px]"
+              : initialColumnSize === 4
+                ? "min-h-[200px]"
+                : "min-h-[100px]"
+        }`}
         onLayout={(sizes) => {
           setRowSizes(sizes);
         }}
@@ -150,13 +149,13 @@ const TableComponet = ({
                     }}
                     className="size-full min-h-9"
                   >
-                    <div className="size-full relative min-h-3">
+                    <div className="relative size-full min-h-3">
                       <input
                         value={cell}
                         onChange={(e) => {
                           updateCell(rowIndex, colIndex, e.target.value);
                         }}
-                        className="size-full p-4 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+                        className="size-full rounded-md bg-transparent p-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         style={{
                           color: currentTheme.fontColor,
                         }}

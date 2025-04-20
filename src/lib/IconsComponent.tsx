@@ -2,19 +2,19 @@ import React from "react";
 
 export function BlankCardIcon() {
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-3/4 h-2 bg-white rounded" />
+    <div className="flex h-full w-full items-center justify-center">
+      <div className="h-2 w-3/4 rounded bg-white" />
     </div>
   );
 }
 
 export function ImageAndTextIcon() {
   return (
-    <div className="w-full h-full flex gap-2">
-      <div className="w-1/2 bg-white rounded" />
-      <div className="w-1/2 flex flex-col gap-1">
-        <div className="h-2 bg-white rounded w-full" />
-        <div className="h-2 bg-white rounded w-2/3" />
+    <div className="flex h-full w-full gap-2">
+      <div className="w-1/2 rounded bg-white" />
+      <div className="flex w-1/2 flex-col gap-1">
+        <div className="h-2 w-full rounded bg-white" />
+        <div className="h-2 w-2/3 rounded bg-white" />
       </div>
     </div>
   );
@@ -22,26 +22,26 @@ export function ImageAndTextIcon() {
 
 export function TextAndImageIcon() {
   return (
-    <div className="w-full h-full flex gap-2">
-      <div className="w-1/2 flex flex-col gap-1">
-        <div className="h-2 bg-white rounded w-full" />
-        <div className="h-2 bg-white rounded w-2/3" />
+    <div className="flex h-full w-full gap-2">
+      <div className="flex w-1/2 flex-col gap-1">
+        <div className="h-2 w-full rounded bg-white" />
+        <div className="h-2 w-2/3 rounded bg-white" />
       </div>
-      <div className="w-1/2 bg-white rounded" />
+      <div className="w-1/2 rounded bg-white" />
     </div>
   );
 }
 
 export function TwoColumnsIcon() {
   return (
-    <div className="w-full h-full flex gap-3 flex-col items-center justify-center">
-      <div className="w-full h-4 bg-white rounded" />
-      <div className="w-full h-full flex gap-2">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-3">
+      <div className="h-4 w-full rounded bg-white" />
+      <div className="flex h-full w-full gap-2">
         {Array.from({ length: 2 }, (_, i) => (
-          <div className="w-1/2 flex flex-col gap-1" key={i}>
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-2 bg-white rounded w-2/3" />
+          <div className="flex w-1/2 flex-col gap-1" key={i}>
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-2 w-2/3 rounded bg-white" />
           </div>
         ))}
       </div>
@@ -51,14 +51,14 @@ export function TwoColumnsIcon() {
 
 export function ThreeColumnsIcon() {
   return (
-    <div className="w-full h-full flex gap-3 flex-col items-center justify-center">
-      <div className="w-full h-4 bg-white rounded" />
-      <div className="w-full h-full flex gap-2">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-3">
+      <div className="h-4 w-full rounded bg-white" />
+      <div className="flex h-full w-full gap-2">
         {Array.from({ length: 3 }, (_, i) => (
-          <div className="w-1/2 flex flex-col gap-1" key={i}>
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-2 bg-white rounded w-2/3" />
+          <div className="flex w-1/2 flex-col gap-1" key={i}>
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-2 w-2/3 rounded bg-white" />
           </div>
         ))}
       </div>
@@ -68,14 +68,14 @@ export function ThreeColumnsIcon() {
 
 export function FourColumnsIcon() {
   return (
-    <div className="w-full h-full flex gap-3 flex-col items-center justify-center">
-      <div className="w-full h-4 bg-white rounded" />
-      <div className="w-full h-full flex gap-2">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-3">
+      <div className="h-4 w-full rounded bg-white" />
+      <div className="flex h-full w-full gap-2">
         {Array.from({ length: 4 }, (_, i) => (
-          <div className="w-1/2 flex flex-col gap-1" key={i}>
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-2 bg-white rounded w-2/3" />
+          <div className="flex w-1/2 flex-col gap-1" key={i}>
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-2 w-2/3 rounded bg-white" />
           </div>
         ))}
       </div>
@@ -85,15 +85,15 @@ export function FourColumnsIcon() {
 
 export function TwoColumnsWithHeadingsIcon() {
   return (
-    <div className="w-full h-full flex gap-3 flex-col items-center justify-center">
-      <div className="w-full h-4 bg-white rounded" />
-      <div className="w-full h-full flex gap-2">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-3">
+      <div className="h-4 w-full rounded bg-white" />
+      <div className="flex h-full w-full gap-2">
         {Array.from({ length: 2 }, (_, i) => (
-          <div className="w-1/2 flex flex-col gap-1" key={i}>
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-2/3" />
+          <div className="flex w-1/2 flex-col gap-1" key={i}>
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-2/3 rounded bg-white" />
           </div>
         ))}
       </div>
@@ -103,15 +103,15 @@ export function TwoColumnsWithHeadingsIcon() {
 
 export function ThreeColumnsWithHeadingsIcon() {
   return (
-    <div className="w-full h-full flex gap-3 flex-col items-center justify-center">
-      <div className="w-full h-4 bg-white rounded" />
-      <div className="w-full h-full flex gap-2">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-3">
+      <div className="h-4 w-full rounded bg-white" />
+      <div className="flex h-full w-full gap-2">
         {Array.from({ length: 2 }, (_, i) => (
-          <div className="w-1/2 flex flex-col gap-1" key={i}>
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-2/3" />
+          <div className="flex w-1/2 flex-col gap-1" key={i}>
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-2/3 rounded bg-white" />
           </div>
         ))}
       </div>
@@ -121,12 +121,12 @@ export function ThreeColumnsWithHeadingsIcon() {
 
 export function BulletsIcon() {
   return (
-    <div className="w-full h-full flex flex-col gap-1">
-      <div className="h-3 bg-gray-300 rounded w-3/4 mb-1" />
+    <div className="flex h-full w-full flex-col gap-1">
+      <div className="mb-1 h-3 w-3/4 rounded bg-gray-300" />
       {[...Array(3)].map((_, i) => (
-        <div key={i} className="flex gap-2 items-center">
-          <div className="w-1 h-1 bg-white rounded-full" />
-          <div className="h-2 bg-white rounded flex-1" />
+        <div key={i} className="flex items-center gap-2">
+          <div className="h-1 w-1 rounded-full bg-white" />
+          <div className="h-2 flex-1 rounded bg-white" />
         </div>
       ))}
     </div>
@@ -135,16 +135,16 @@ export function BulletsIcon() {
 
 export function TwoImageColumnsIcon() {
   return (
-    <div className="w-full h-full flex flex-col gap-1">
-      <div className="w-full h-3 bg-white rounded" />
-      <div className="w-full h-8 bg-white rounded flex justify-center items-center"></div>
-      <div className="w-full h-full flex gap-2">
+    <div className="flex h-full w-full flex-col gap-1">
+      <div className="h-3 w-full rounded bg-white" />
+      <div className="flex h-8 w-full items-center justify-center rounded bg-white"></div>
+      <div className="flex h-full w-full gap-2">
         {Array.from({ length: 2 }, (_, i) => (
-          <div className="w-1/2 flex flex-col gap-1" key={i}>
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-2/3" />
+          <div className="flex w-1/2 flex-col gap-1" key={i}>
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-2/3 rounded bg-white" />
           </div>
         ))}
       </div>
@@ -154,16 +154,16 @@ export function TwoImageColumnsIcon() {
 
 export function ThreeImageColumnsIcon() {
   return (
-    <div className="w-full h-full flex flex-col gap-1">
-      <div className="w-full h-3 bg-white rounded" />
-      <div className="w-full h-8 bg-white rounded flex justify-center items-center"></div>
-      <div className="w-full h-full flex gap-2">
+    <div className="flex h-full w-full flex-col gap-1">
+      <div className="h-3 w-full rounded bg-white" />
+      <div className="flex h-8 w-full items-center justify-center rounded bg-white"></div>
+      <div className="flex h-full w-full gap-2">
         {Array.from({ length: 3 }, (_, i) => (
-          <div className="w-1/2 flex flex-col gap-1" key={i}>
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-2/3" />
+          <div className="flex w-1/2 flex-col gap-1" key={i}>
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-2/3 rounded bg-white" />
           </div>
         ))}
       </div>
@@ -173,16 +173,16 @@ export function ThreeImageColumnsIcon() {
 
 export function FourImageColumnsIcon() {
   return (
-    <div className="w-full h-full flex flex-col gap-1">
-      <div className="w-full h-3 bg-white rounded" />
-      <div className="w-full h-8 bg-white rounded flex justify-center items-center"></div>
-      <div className="w-full h-full flex gap-2">
+    <div className="flex h-full w-full flex-col gap-1">
+      <div className="h-3 w-full rounded bg-white" />
+      <div className="flex h-8 w-full items-center justify-center rounded bg-white"></div>
+      <div className="flex h-full w-full gap-2">
         {Array.from({ length: 4 }, (_, i) => (
-          <div className="w-1/2 flex flex-col gap-1" key={i}>
-            <div className="h-2 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-full" />
-            <div className="h-1 bg-white rounded w-2/3" />
+          <div className="flex w-1/2 flex-col gap-1" key={i}>
+            <div className="h-2 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-full rounded bg-white" />
+            <div className="h-1 w-2/3 rounded bg-white" />
           </div>
         ))}
       </div>

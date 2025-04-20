@@ -3,7 +3,7 @@ import React from "react";
 
 const AuthLoading = () => {
   return (
-    <div className="grid place-content-center h-screen w-screen">
+    <div className="grid h-screen w-screen place-content-center">
       <Loader2 className="animate-spin" />
     </div>
   );

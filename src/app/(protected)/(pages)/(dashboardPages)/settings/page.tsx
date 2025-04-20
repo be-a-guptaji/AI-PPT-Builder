@@ -6,13 +6,13 @@ const Page = async () => {
   const checkUser = await onAuthenticateUser();
 
   return (
-    <div className="flex flex-col gap-6 relative">
-      <div className="flex justify-between items-center">
+    <div className="relative flex flex-col gap-6">
+      <div className="flex items-center justify-between">
         <div className="flex flex-col items-start">
-          <h1 className="text-2xl font-semibold dark:text-primary backdrop-blur-lg">
+          <h1 className="dark:text-primary text-2xl font-semibold backdrop-blur-lg">
             Settings
           </h1>
-          <p className="text-base font-normal dark:text-secondary-foreground/50">
+          <p className="dark:text-secondary-foreground/50 text-base font-normal">
             All of your settings
           </p>
         </div>

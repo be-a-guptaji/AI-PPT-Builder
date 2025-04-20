@@ -64,11 +64,11 @@ const Card = ({
         {...dragHandlers}
       >
         <UICard
-          className={`p-4 cursor-grab active:cursor-grabbing bg-primary/10 ${isEditing || isSelected ? "border-primary bg-transparent" : ""}`}
+          className={`bg-primary/10 cursor-grab p-4 active:cursor-grabbing ${isEditing || isSelected ? "border-primary bg-transparent" : ""}`}
           onClick={onCardClick}
           onDoubleClick={onCardDoubleClick}
         >
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             {isEditing ? (
               <Input
                 ref={inputRef}
@@ -81,7 +81,7 @@ const Card = ({
             ) : (
               <div className="flex items-center gap-2">
                 <span
-                  className={`text-base sm:text-lg py-1 px-4 rounded-xl bg-primary/20 ${isEditing || isSelected ? "bg-secondary/20 dark:text-black" : ""}`}
+                  className={`bg-primary/20 rounded-xl px-4 py-1 text-base sm:text-lg ${isEditing || isSelected ? "bg-secondary/20 dark:text-black" : ""}`}
                 >
                   {card.order}
                 </span>
@@ -96,7 +96,7 @@ const Card = ({
                 e.stopPropagation();
                 onDeleteClick();
               }}
-              className="border border-black/20 dark:border-white/20 cursor-pointer"
+              className="cursor-pointer border border-black/20 dark:border-white/20"
             >
               <Trash2 className="size-4" />
             </Button>

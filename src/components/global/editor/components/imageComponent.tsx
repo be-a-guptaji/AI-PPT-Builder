@@ -25,11 +25,11 @@ const CustomImage = ({
   onContentChange,
 }: CustomImageProps) => {
   return (
-    <div className={`relative group size-full rounded-lg`}>
+    <div className={`group relative size-full rounded-lg`}>
       <Image
         src={src}
         alt={alt}
-        className={`object-cover rounded-lg size-full ${className}`}
+        className={`size-full rounded-lg object-cover ${className}`}
         width={isPreview ? 48 : 800}
         height={isPreview ? 48 : 800}
       />

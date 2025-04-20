@@ -50,7 +50,7 @@ const RecentOpen = ({ recentProjects }: { recentProjects: Project[] }) => {
                   <Button
                     variant={"link"}
                     onClick={() => handleClick(project.id, project.slides)}
-                    className="text-xs items-center justify-start cursor-pointer"
+                    className="cursor-pointer items-center justify-start text-xs"
                   >
                     <span>{project.title}</span>
                   </Button>

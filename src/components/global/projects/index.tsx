@@ -13,7 +13,7 @@ type ProjectsProps = {
 const Projects = ({ projects }: ProjectsProps) => {
   return (
     <motion.div
-      className="grid gird-cols-1 lg:grid-cols-4 sm:grid-cols-2 gap-4"
+      className="gird-cols-1 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
       variants={containerVaraints}
       initial="hidden"
       animate="visible"

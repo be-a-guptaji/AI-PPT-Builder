@@ -11,7 +11,7 @@ const Switch = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SwitchPrimitive.Root
     className={cn(
-      "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors duration-300 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input relative",
+      "peer focus-visible:ring-ring focus-visible:ring-offset-background data-[state=checked]:bg-primary data-[state=unchecked]:bg-input relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors duration-300 ease-in-out focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
       className
     )}
     {...props}
@@ -19,18 +19,18 @@ const Switch = React.forwardRef<
   >
     <Sun
       className={cn(
-        "size-4 absolute z-50 top-[10px] right-[12px] transition-opacity fill-black duration-300 ease-in-out",
-        "data-[state=checked]:opacity-100 data-[state=unchecked]:opacity-0 data-[state=checked]:fill-white data-[state=unchecked]:fill-black data-[state=checked]:stroke-gray-600 data-[state=unchecked]:stroke-white"
+        "absolute top-[10px] right-[12px] z-50 size-4 fill-black transition-opacity duration-300 ease-in-out",
+        "data-[state=checked]:fill-white data-[state=checked]:stroke-gray-600 data-[state=checked]:opacity-100 data-[state=unchecked]:fill-black data-[state=unchecked]:stroke-white data-[state=unchecked]:opacity-0"
       )}
     />
     <SwitchPrimitive.Thumb
       className={cn(
-        "pointer-events-none block size-7 rounded-full bg-background shadow-lg ring-0 transition-transform duration-300 ease-in-out data-[state=checked]:translate-x-[39px] data-[state=unchecked]:translate-x-0"
+        "bg-background pointer-events-none block size-7 rounded-full ring-0 shadow-lg transition-transform duration-300 ease-in-out data-[state=checked]:translate-x-[39px] data-[state=unchecked]:translate-x-0"
       )}
     />
     <Moon
       className={cn(
-        "size-4 absolute z-50 top-[10px] left-[10px] stroke-gray-600 fill-white transition-opacity duration-300 ease-in-out",
+        "absolute top-[10px] left-[10px] z-50 size-4 fill-white stroke-gray-600 transition-opacity duration-300 ease-in-out",
         "data-[state=checked]:opacity-100 data-[state=unchecked]:opacity-0"
       )}
     />

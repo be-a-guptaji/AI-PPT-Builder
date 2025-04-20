@@ -23,16 +23,16 @@ const LayoutPreviewItem = ({
     <button
       onClick={onClick}
       className={cn(
-        "flex flex-col items-center cursor-grab active:cursor-grabbing gap-2 p-2 rounded-lg hover:bg-primary/90 transition-all duration-200",
-        "text-center size-full",
-        "hover:scale-105 transform",
+        "hover:bg-primary/90 flex cursor-grab flex-col items-center gap-2 rounded-lg p-2 transition-all duration-200 active:cursor-grabbing",
+        "size-full text-center",
+        "transform hover:scale-105",
         isSelected && "ring-2 ring-blue-500"
       )}
     >
-      <div className="w-full aspect-video rounded-md border bg-gray-100 dark:bg-gray-700 p-2 shadow-sm hover:shadow-md transition-shadow duration-200">
+      <div className="aspect-video w-full rounded-md border bg-gray-100 p-2 shadow-sm transition-shadow duration-200 hover:shadow-md dark:bg-gray-700">
         <Icon />
       </div>
-      <span className="text-xs text-gray-500 font-medium">{name}</span>
+      <span className="text-xs font-medium text-gray-500">{name}</span>
     </button>
   );
 };

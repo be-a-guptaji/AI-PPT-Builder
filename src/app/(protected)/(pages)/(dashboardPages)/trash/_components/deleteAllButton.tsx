@@ -57,7 +57,7 @@ const DeleteAllButton = ({ Projects }: DeleteAllButtonProps) => {
   return (
     <AlertDialogBox
       discription="This will delete all projects. This action cannot be undone and you will not be able to recover them anymore."
-      className="bg-red-500 text-white dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700"
+      className="bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
       loading={loading}
       open={open}
       loadingText="Deleting"
@@ -67,9 +67,9 @@ const DeleteAllButton = ({ Projects }: DeleteAllButtonProps) => {
       <Button
         variant={"destructive"}
         size={"lg"}
-        className="bg-red-600 hover:bg-red-900 transition-all duration-200 cursor-pointer"
+        className="cursor-pointer bg-red-600 transition-all duration-200 hover:bg-red-900"
       >
-        <Trash className="size-4 mr-2" />
+        <Trash className="mr-2 size-4" />
         Delete All
       </Button>
     </AlertDialogBox>

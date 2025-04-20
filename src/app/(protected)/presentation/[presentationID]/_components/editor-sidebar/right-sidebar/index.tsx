@@ -57,11 +57,11 @@ const EditorSidebar = () => {
   });
 
   return (
-    <div className="fixed top-1/2 right-2 transform -translate-y-1/2 z-10">
+    <div className="fixed top-1/2 right-2 z-10 -translate-y-1/2 transform">
       <div
         className={cn(
-          "rounded-xl border-r-0 border border-background/30 shadow-lg p-2 flex flex-col items-center space-y-4 opacity-65 hover:opacity-100 transition-opacity duration-300",
-          open && "ring-2 ring-blue-500 opacity-100"
+          "border-background/30 flex flex-col items-center space-y-4 rounded-xl border border-r-0 p-2 opacity-65 shadow-lg transition-opacity duration-300 hover:opacity-100",
+          open && "opacity-100 ring-2 ring-blue-500"
         )}
         ref={popOverRef}
       >
@@ -70,7 +70,7 @@ const EditorSidebar = () => {
             <Button
               variant="ghost"
               size={"icon"}
-              className="size-10 rounded-full cursor-pointer m-0"
+              className="m-0 size-10 cursor-pointer rounded-full"
               onClick={(e) => {
                 handleOpen(e);
               }}
@@ -82,7 +82,7 @@ const EditorSidebar = () => {
           <PopoverContent
             side="left"
             align="center"
-            className="p-0 w-[480px] border-1 rounded-2xl relative right-6"
+            className="relative right-6 w-[480px] rounded-2xl border-1 p-0"
             style={{
               backgroundColor: currentTheme.backgroundColor,
               color: currentTheme.fontColor,
@@ -96,7 +96,7 @@ const EditorSidebar = () => {
             <Button
               variant="ghost"
               size={"icon"}
-              className="size-10 rounded-full cursor-pointer m-0"
+              className="m-0 size-10 cursor-pointer rounded-full"
               onClick={(e) => {
                 handleOpen(e);
               }}
@@ -108,17 +108,17 @@ const EditorSidebar = () => {
           <PopoverContent
             side="left"
             align="center"
-            className="p-0 w-[480px] border-1 rounded-2xl relative right-6"
+            className="relative right-6 w-[480px] rounded-2xl border-1 p-0"
             style={{
               backgroundColor: currentTheme.backgroundColor,
               color: currentTheme.fontColor,
             }}
           >
             <ScrollArea className="h-[400px]">
-              <div className="p-4 flex flex-col space-y-6">
+              <div className="flex flex-col space-y-6 p-4">
                 {component.map((group, index) => (
                   <div key={index} className="space-y-2">
-                    <h3 className="text-sm font-medium text-muted-foreground px-1">
+                    <h3 className="text-muted-foreground px-1 text-sm font-medium">
                       {group.name}
                     </h3>
                     <div className="grid grid-cols-3 gap-4">
@@ -137,7 +137,7 @@ const EditorSidebar = () => {
             <Button
               variant="ghost"
               size={"icon"}
-              className="size-10 rounded-full cursor-pointer m-0"
+              className="m-0 size-10 cursor-pointer rounded-full"
               onClick={(e) => {
                 handleOpen(e);
               }}
@@ -149,7 +149,7 @@ const EditorSidebar = () => {
           <PopoverContent
             side="left"
             align="center"
-            className="p-0 w-80 border-1 rounded-2xl relative right-6"
+            className="relative right-6 w-80 rounded-2xl border-1 p-0"
             style={{
               backgroundColor: currentTheme.backgroundColor,
               color: currentTheme.fontColor,

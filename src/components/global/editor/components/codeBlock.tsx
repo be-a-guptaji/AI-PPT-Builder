@@ -14,7 +14,7 @@ const CodeBlock = ({ className, code, language, onChange }: CodeBlockProps) => {
 
   return (
     <pre
-      className={cn("p-4 rounded-lg overflow-x-auto", className)}
+      className={cn("overflow-x-auto rounded-lg p-4", className)}
       style={{ backgroundColor: currentTheme.accentColor + "20" }}
     >
       <code className={`language-${language}`}>

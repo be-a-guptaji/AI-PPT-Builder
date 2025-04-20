@@ -56,7 +56,7 @@ const PresentationMode = ({ onClose }: PresentationModeProps) => {
   }, [slides.length, currentSlideIndex, setCurrentSlideIndex, onClose]);
 
   return (
-    <div className="fixed inset-0 bg-black flex justify-center items-center z-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
       <div
         className="relative size-full"
         style={{
@@ -72,7 +72,7 @@ const PresentationMode = ({ onClose }: PresentationModeProps) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.2 }}
             transition={{ duration: 0.5 }}
-            className={`size-full pointer-events-none ${slides[currentSlideIndex].className}`}
+            className={`pointer-events-none size-full ${slides[currentSlideIndex].className}`}
             style={{
               backgroundImage: currentTheme.gradientBackground,
               backgroundColor: currentTheme.slideBackgroundColor,
@@ -100,7 +100,7 @@ const PresentationMode = ({ onClose }: PresentationModeProps) => {
           <X className="size-4" />
         </Button>
 
-        <div className="absolute top-1/2 left-6 -translate-x-1/2 flex space-x-4 transform">
+        <div className="absolute top-1/2 left-6 flex -translate-x-1/2 transform space-x-4">
           <Button
             variant="outline"
             size="icon"
@@ -112,7 +112,7 @@ const PresentationMode = ({ onClose }: PresentationModeProps) => {
           </Button>
         </div>
 
-        <div className="absolute top-1/2 -right-2 -translate-x-1/2 flex space-x-4 transform">
+        <div className="absolute top-1/2 -right-2 flex -translate-x-1/2 transform space-x-4">
           <Button
             variant="outline"
             size="icon"

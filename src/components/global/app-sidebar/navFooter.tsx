@@ -53,23 +53,23 @@ const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <div className="flex flex-col gap-y-6 items-start group-data-[collapsible=icon]:hover">
+        <div className="group-data-[collapsible=icon]:hover flex flex-col items-start gap-y-6">
           {!prismaUser.subscription && (
-            <div className="flex flex-col items-start p-2 pb-3 gap-4 dark:bg-white/5 rounded-xl group-data-[collapsible=icon]:hidden bg-black/10">
+            <div className="flex flex-col items-start gap-4 rounded-xl bg-black/10 p-2 pb-3 group-data-[collapsible=icon]:hidden dark:bg-white/5">
               <div className="flex flex-col items-start gap-1">
                 <p className="text-base font-bold">
                   Get <span className="text-kraton">Creative AI</span>
                 </p>
-                <span className="text-sm dark:text-secondary-foreground/50">
+                <span className="dark:text-secondary-foreground/50 text-sm">
                   Unlock all features including AI and more
                 </span>
               </div>
-              <div className="w-full rounded-full p-[1px] bg-kraton-gradient">
+              <div className="bg-kraton-gradient w-full rounded-full p-[1px]">
                 <Button
                   variant={"default"}
                   size={"lg"}
                   onClick={handleUpgradeing}
-                  className="w-full bg-background/7 hover:bg-background text-primary rounded-full font-bold cursor-pointer transition-all duration-300 ease-in-out hover:opacity-80"
+                  className="bg-background/7 hover:bg-background text-primary w-full cursor-pointer rounded-full font-bold transition-all duration-300 ease-in-out hover:opacity-80"
                 >
                   {loading ? "Upgrading" : "Get Creative AI"}
                 </Button>
@@ -79,12 +79,12 @@ const NavFooter = ({ prismaUser }: { prismaUser: User }) => {
           <SignedIn>
             <SidebarMenuButton
               size={"lg"}
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground hover:bg-black/10 dark:hover:bg-white/10 border-2"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground border-2 hover:bg-black/10 dark:hover:bg-white/10"
             >
               <UserButton />
               <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
                 <span className="truncate font-semibold">{user?.fullName}</span>
-                <span className="truncate text-xs text-secondary-foreground/50">
+                <span className="text-secondary-foreground/50 truncate text-xs">
                   {user?.emailAddresses[0]?.emailAddress}
                 </span>
               </div>

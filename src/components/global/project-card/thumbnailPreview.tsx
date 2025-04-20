@@ -13,7 +13,7 @@ const ThumbnailPreview = ({ slide, theme }: ThumbnailPreviewProps) => {
   return (
     <div
       className={cn(
-        "w-full relative aspect-video rounded-lg overflow-hidden transition-all duration-200 p-2"
+        "relative aspect-video w-full overflow-hidden rounded-lg p-2 transition-all duration-200"
       )}
       style={{
         fontFamily: theme.fontFamily,
@@ -23,7 +23,7 @@ const ThumbnailPreview = ({ slide, theme }: ThumbnailPreviewProps) => {
       }}
     >
       {slide ? (
-        <div className="scale-[0.5] origin-top-left h-[200%] w-[200%] overflow-hidden">
+        <div className="h-[200%] w-[200%] origin-top-left scale-[0.5] overflow-hidden">
           <MasterRecursiveComponent
             slideId={slide.id}
             content={slide.content}
@@ -34,7 +34,7 @@ const ThumbnailPreview = ({ slide, theme }: ThumbnailPreviewProps) => {
           />
         </div>
       ) : (
-        <div className="w-full h-full bg-gray-400 flex items-center justify-center">
+        <div className="flex h-full w-full items-center justify-center bg-gray-400">
           <Image
             className="size-6 text-gray-500"
             aria-label="Descriptive text for the image"

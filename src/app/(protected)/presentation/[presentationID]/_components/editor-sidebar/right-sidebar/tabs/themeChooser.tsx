@@ -68,14 +68,14 @@ const ThemeChooser = () => {
 
   return (
     <ScrollArea className="h-[400px] rounded-2xl">
-      <div className="text-center font-bold my-4 mt-2">Themes</div>
-      <div className="flex flex-col space-y-4 items-center my-4">
+      <div className="my-4 mt-2 text-center font-bold">Themes</div>
+      <div className="my-4 flex flex-col items-center space-y-4">
         {themes.map((theme, index) => (
           <Button
             key={theme.name || index}
             variant={theme.name === currentTheme.name ? "default" : "outline"}
             className={cn(
-              "flex flex-col items-center justify-start px-4 w-11/12 h-auto cursor-pointer",
+              "flex h-auto w-11/12 cursor-pointer flex-col items-center justify-start px-4",
               theme.name === currentTheme.name && "border-kraton"
             )}
             style={{
@@ -94,14 +94,14 @@ const ThemeChooser = () => {
               }
             }}
           >
-            <div className="w-full flex items-center justify-between">
+            <div className="flex w-full items-center justify-between">
               <span className="text-xl font-bold">{theme.name}</span>
               <div
                 className="size-3 rounded-full"
                 style={{ backgroundColor: theme.accentColor }}
               />
             </div>
-            <div className="space-y-1 w-full">
+            <div className="w-full space-y-1">
               <div
                 className="text-2xl font-bold"
                 style={{ color: theme.accentColor }}

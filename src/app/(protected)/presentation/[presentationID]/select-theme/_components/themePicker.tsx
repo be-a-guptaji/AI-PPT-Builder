@@ -79,14 +79,14 @@ const ThemePicker = ({
 
   return (
     <div
-      className="w-[400px] overflow-x-hidden sticky top-0 h-screen flex flex-col"
+      className="sticky top-0 flex h-screen w-[400px] flex-col overflow-x-hidden"
       style={{
         backgroundColor:
           selectedTheme.sidebarColor || selectedTheme.backgroundColor,
         borderLeft: `1px solid ${selectedTheme.accentColor}20`,
       }}
     >
-      <div className="p-8 space-y-6 flex-shrink-0">
+      <div className="flex-shrink-0 space-y-6 p-8">
         <div className="space-y-2">
           <h2
             className="text-3xl font-bold tracking-tight"
@@ -108,7 +108,7 @@ const ThemePicker = ({
           </p>
         </div>
         <Button
-          className="w-full h-12 text-lg cursor-pointer font-medium shadow-lg hover:shadow-xl trasnsition-all duration-500"
+          className="trasnsition-all h-12 w-full cursor-pointer text-lg font-medium shadow-lg duration-500 hover:shadow-xl"
           style={{
             backgroundColor: selectedTheme.accentColor,
             color: selectedTheme.backgroundColor,
@@ -117,7 +117,7 @@ const ThemePicker = ({
           onClick={handleGenerateLayouts}
         >
           {isLoading ? (
-            <Loader2 className="mr-2 animate-spin size-4" />
+            <Loader2 className="mr-2 size-4 animate-spin" />
           ) : (
             <Wand2 className="mr-2 size-4" />
           )}
@@ -137,7 +137,7 @@ const ThemePicker = ({
               whileTap={{ scale: 0.98 }}
             >
               <Button
-                className="flex flex-col items-center justify-start p-6 w-full h-auto"
+                className="flex h-auto w-full flex-col items-center justify-start p-6"
                 style={{
                   fontFamily: theme.fontFamily,
                   color: theme.fontColor,
@@ -145,7 +145,7 @@ const ThemePicker = ({
                 }}
                 onClick={() => onThemeSelect(theme)}
               >
-                <div className="w-full flex items-center justify-between">
+                <div className="flex w-full items-center justify-between">
                   <span className="text-xl font-bold">{theme.name}</span>
                   <div
                     className="size-3 rounded-full"
@@ -154,7 +154,7 @@ const ThemePicker = ({
                     }}
                   />
                 </div>
-                <div className="space-y-1 w-full">
+                <div className="w-full space-y-1">
                   <div
                     className="text-2xl font-bold"
                     style={{ color: theme.accentColor }}

@@ -14,7 +14,7 @@ const AddCardButton = ({ onAddCard }: AddCardButtonProps) => {
 
   return (
     <motion.div
-      className="w-full relative overflow-hidden"
+      className="relative w-full overflow-hidden"
       initial={{ height: "0.5rem" }}
       animate={{
         height: showGap ? "2rem" : "0.5rem",
@@ -30,19 +30,19 @@ const AddCardButton = ({ onAddCard }: AddCardButtonProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2, delay: 0.1 }}
-            className="absolute inset-0 flex justify-center items-center"
+            className="absolute inset-0 flex items-center justify-center"
           >
-            <div className="w-[40%] h-[1px] bg-primary" />
+            <div className="bg-primary h-[1px] w-[40%]" />
             <Button
               variant={"outline"}
               size={"sm"}
               aria-label="Add a new card"
-              className="rounded-full size-8 p-0 bg-primary hover:bg-primary/90 cursor-pointer"
+              className="bg-primary hover:bg-primary/90 size-8 cursor-pointer rounded-full p-0"
               onClick={onAddCard}
             >
               <Plus className="size-4 text-black" />
             </Button>
-            <div className="w-[40%] h-[1px] bg-primary" />
+            <div className="bg-primary h-[1px] w-[40%]" />
           </motion.div>
         )}
       </AnimatePresence>

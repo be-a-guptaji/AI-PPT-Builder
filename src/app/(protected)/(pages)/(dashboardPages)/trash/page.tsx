@@ -12,13 +12,13 @@ const Page = async () => {
   }
 
   return (
-    <div className="flex flex-col gap-2 relative">
-      <div className="flex justify-between items-center mb-4">
+    <div className="relative flex flex-col gap-2">
+      <div className="mb-4 flex items-center justify-between">
         <div className="flex flex-col items-start">
-          <h1 className="text-2xl font-semibold dark:text-primary backdrop-blur-lg">
+          <h1 className="dark:text-primary text-2xl font-semibold backdrop-blur-lg">
             Trash
           </h1>
-          <p className="text-base font-normal dark:text-secondary-foreground/50">
+          <p className="dark:text-secondary-foreground/50 text-base font-normal">
             All your deleted projects
           </p>
         </div>

@@ -34,7 +34,7 @@ const createHeading = (displayName: string, defaultClassName: string) => {
       return (
         <textarea
           className={cn(
-            `w-full bg-transparent font-normal text-gray-900 placeholder:text-gray-300 focus:outline-none resize-none overflow-hidden leading-tight ${defaultClassName} ${previewClassName}`,
+            `w-full resize-none overflow-hidden bg-transparent leading-tight font-normal text-gray-900 placeholder:text-gray-300 focus:outline-none ${defaultClassName} ${previewClassName}`,
             className
           )}
           style={{

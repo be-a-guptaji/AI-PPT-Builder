@@ -53,13 +53,13 @@ const DragableSlidePreview = ({
     <div
       ref={ref}
       className={cn(
-        "relative cursor-pointer group",
+        "group relative cursor-pointer",
         index === currentSlide ? "before:bg-blue-500" : "before:bg-transparent",
         isDragging ? "opacity-50" : "opacity-100"
       )}
       onClick={() => setCurrentSlide(index)}
     >
-      <div className="pl-2 mb-4 relative">
+      <div className="relative mb-4 pl-2">
         <ScaledPreview
           slide={slide}
           isActive={index === currentSlide}

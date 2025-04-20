@@ -102,7 +102,7 @@ const ScratchPage = ({ onBack }: ScratchPageProps) => {
 
   return (
     <motion.div
-      className="space-y-6 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+      className="mx-auto w-full max-w-4xl space-y-6 px-4 sm:px-6 lg:px-8"
       variants={containerVaraints}
       initial="hidden"
       animate="visible"
@@ -112,17 +112,17 @@ const ScratchPage = ({ onBack }: ScratchPageProps) => {
         variant={"outline"}
         className="mb-4 cursor-pointer"
       >
-        <ChevronLeft className="size-4 mr-2" />
+        <ChevronLeft className="mr-2 size-4" />
         Back
       </Button>
-      <h1 className="text-2xl sm:text-3xl font-bold text-primary text-left">
+      <h1 className="text-primary text-left text-2xl font-bold sm:text-3xl">
         Prompt
       </h1>
       <motion.div
-        className="bg-primary/10 p-4 rounded-xl"
+        className="bg-primary/10 rounded-xl p-4"
         variants={itemVatiants}
       >
-        <div className="flex flex-col sm:flex-row justify-between gap-3 items-center rounded-xl">
+        <div className="flex flex-col items-center justify-between gap-3 rounded-xl sm:flex-row">
           <Input
             value={editText}
             onChange={(e) => {
@@ -130,11 +130,11 @@ const ScratchPage = ({ onBack }: ScratchPageProps) => {
             }}
             required
             placeholder="Enter a prompt and add to the cards . . . "
-            className="text-base sm:text-xl border-0 focus-visible:ring-0 shadow-none py-0 bg-transparent flex-grow"
+            className="flex-grow border-0 bg-transparent py-0 text-base shadow-none focus-visible:ring-0 sm:text-xl"
           />
           <div className="flex items-center gap-3">
             <div
-              className={`flex w-fit font-semibold shadow-xl border dark:border-white/20 border-black/20 min-w-28 px-4 py-1 rounded-lg justify-center items-center ${numberOfCards === 0 || numberOfCards >= 15 ? "text-red-500" : "text-primary"}`}
+              className={`flex w-fit min-w-28 items-center justify-center rounded-lg border border-black/20 px-4 py-1 font-semibold shadow-xl dark:border-white/20 ${numberOfCards === 0 || numberOfCards >= 15 ? "text-red-500" : "text-primary"}`}
             >
               {numberOfCards === 0 ? "No Cards" : `${numberOfCards} Cards`}
             </div>
@@ -165,7 +165,7 @@ const ScratchPage = ({ onBack }: ScratchPageProps) => {
       <Button
         onClick={handleAddCard}
         variant={"default"}
-        className="w-full bg-primary/10 dark:hover:bg-white/20 transition-all duration-300 cursor-pointer text-primary mt-4 text-lg h-12 hover:bg-black/50 disabled:pointer-events-none disabled:opacity-50"
+        className="bg-primary/10 text-primary mt-4 h-12 w-full cursor-pointer text-lg transition-all duration-300 hover:bg-black/50 disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-white/20"
         disabled={numberOfCards >= 15}
       >
         Add Cards
@@ -175,7 +175,7 @@ const ScratchPage = ({ onBack }: ScratchPageProps) => {
         <Button
           onClick={handleGenerate}
           variant={"default"}
-          className="w-full transition-all duration-300 cursor-pointer text-lg h-12 dark:bg-white text-black bg-black/5 dark:hover:bg-white/50 hover:bg-black/50"
+          className="h-12 w-full cursor-pointer bg-black/5 text-lg text-black transition-all duration-300 hover:bg-black/50 dark:bg-white dark:hover:bg-white/50"
         >
           Generate PPT
         </Button>

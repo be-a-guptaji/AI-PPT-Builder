@@ -7,7 +7,7 @@ import React from "react";
 const SellButton = () => {
   return (
     <Button
-      className="bg-primary/20 rounded-lg dark:hover:bg-white/30 transition-all duration-300 cursor-pointer text-primary font-semibold hover:bg-black/30"
+      className="bg-primary/20 text-primary cursor-pointer rounded-lg font-semibold transition-all duration-300 hover:bg-black/30 dark:hover:bg-white/30"
       size={"default"}
       onClick={() => {
         navigator.clipboard.writeText(

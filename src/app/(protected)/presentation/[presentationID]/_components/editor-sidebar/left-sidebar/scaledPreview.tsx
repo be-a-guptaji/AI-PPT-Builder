@@ -16,7 +16,7 @@ const ScaledPreview = ({ index, isActive, slide }: ScaledPreviewProps) => {
   return (
     <div
       className={cn(
-        "w-full relative aspect-video rounded-lg overflow-hidden transition-all duration-200 p-2 ring-2 ring-primary/20 ring-offset-2",
+        "ring-primary/20 relative aspect-video w-full overflow-hidden rounded-lg p-2 ring-2 ring-offset-2 transition-all duration-200",
         isActive
           ? "ring-2 ring-blue-500 ring-offset-2"
           : "hover:ring-2 hover:ring-gray-200 hover:ring-offset-2"
@@ -28,7 +28,7 @@ const ScaledPreview = ({ index, isActive, slide }: ScaledPreviewProps) => {
         backgroundImage: currentTheme.gradientBackground,
       }}
     >
-      <div className="scale-[0.5] origin-top-left overflow-hidden size-[200%]">
+      <div className="size-[200%] origin-top-left scale-[0.5] overflow-hidden">
         <MasterRecursiveComponent
           slideId={slide.id}
           content={slide.content}
@@ -39,8 +39,8 @@ const ScaledPreview = ({ index, isActive, slide }: ScaledPreviewProps) => {
 
       <div
         className={cn(
-          "absolute bottom-2 left-2 text-xs bg-gray-800 px-2 py-1 rounded",
-          isActive && "ring-2 ring-blue-500 ring-offset-2 !text-white"
+          "absolute bottom-2 left-2 rounded bg-gray-800 px-2 py-1 text-xs",
+          isActive && "!text-white ring-2 ring-blue-500 ring-offset-2"
         )}
         style={{ color: currentTheme.accentColor }}
       >

@@ -56,14 +56,14 @@ const CalloutBox = ({ children, type, className }: CalloutBoxProps) => {
   return (
     <div
       className={cn(
-        "p-4 rounded-lg border-l-4 flex items-start",
+        "flex items-start rounded-lg border-l-4 p-4",
         colors[type].bg,
         colors[type].border,
         colors[type].text,
         className
       )}
     >
-      <Icon className="size-5 mr-3 mt-0.5" />
+      <Icon className="mt-0.5 mr-3 size-5" />
       <div>{children}</div>
     </div>
   );

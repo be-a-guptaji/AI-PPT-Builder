@@ -46,16 +46,16 @@ const RecentPrompts = () => {
   };
 
   return (
-    <motion.div variants={containerVaraints} className="space-y-4 !mt-20">
+    <motion.div variants={containerVaraints} className="!mt-20 space-y-4">
       <motion.h2
         variants={itemVatiants}
-        className="text-2xl font-semibold text-center"
+        className="text-center text-2xl font-semibold"
       >
         Your Recent Prompts
       </motion.h2>
       <motion.div
         variants={containerVaraints}
-        className="space-y-2 w-full lg:max-w-[80%] mx-auto"
+        className="mx-auto w-full space-y-2 lg:max-w-[80%]"
       >
         {prompts.map((prompt) => (
           <motion.div
@@ -63,21 +63,21 @@ const RecentPrompts = () => {
             variants={itemVatiants}
             className="cursor-default"
           >
-            <Card className="p-4 flex items-center justify-between hover:bg-accent/50 transition-colors duration-300">
+            <Card className="hover:bg-accent/50 flex items-center justify-between p-4 transition-colors duration-300">
               <div className="max-w-[70%]">
-                <h3 className="font-semibold text-xl line-clamp-1">
+                <h3 className="line-clamp-1 text-xl font-semibold">
                   {prompt?.title}
                 </h3>
-                <p className="font-semibold text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm font-semibold">
                   {timeAgo(prompt?.createdAt)}
                 </p>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-sm text-kraton">Creative AI</span>
+                <span className="text-kraton text-sm">Creative AI</span>
                 <Button
                   variant={"default"}
                   size={"sm"}
-                  className="rounded-xl bg-primary/20 dark:hover:bg-gray-700 hover:bg-gray-200 text-primary cursor-pointer"
+                  className="bg-primary/20 text-primary cursor-pointer rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700"
                   onClick={() => handleEdit(prompt?.id)}
                 >
                   Edit

@@ -146,7 +146,7 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
 
   return (
     <motion.div
-      className="space-y-6 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+      className="mx-auto w-full max-w-4xl space-y-6 px-4 sm:px-6 lg:px-8"
       variants={containerVaraints}
       initial="hidden"
       animate="visible"
@@ -160,11 +160,11 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
         variant={"outline"}
         className="mb-4 cursor-pointer"
       >
-        <ChevronLeft className="size-4 mr-2" />
+        <ChevronLeft className="mr-2 size-4" />
         Back
       </Button>
-      <motion.div variants={itemVatiants} className="text-center space-y-2">
-        <h1 className="text-4xl font-bold text-primary">
+      <motion.div variants={itemVatiants} className="space-y-2 text-center">
+        <h1 className="text-primary text-4xl font-bold">
           Generate with <span className="text-kraton">Creative AI</span>
         </h1>
         <p className="text-secondary-foreground/50">
@@ -173,9 +173,9 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
       </motion.div>
       <motion.div
         variants={itemVatiants}
-        className="bg-primary/10 p-4 rounded-xl"
+        className="bg-primary/10 rounded-xl p-4"
       >
-        <div className="flex flex-col sm:flex-row justify-between gap-3 items-center rounded-xl">
+        <div className="flex flex-col items-center justify-between gap-3 rounded-xl sm:flex-row">
           <Input
             value={currentAIPrompt}
             onChange={(e) => {
@@ -183,11 +183,11 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
             }}
             required
             placeholder="Enter a prompt and add to the cards . . . "
-            className="text-base sm:text-xl border-0 focus-visible:ring-0 shadow-none py-0 bg-transparent flex-grow"
+            className="flex-grow border-0 bg-transparent py-0 text-base shadow-none focus-visible:ring-0 sm:text-xl"
           />
           <div className="flex items-center gap-3">
             <div
-              className={`flex w-fit font-semibold shadow-xl border dark:border-white/20 border-black/20 min-w-28 px-4 py-1 rounded-lg justify-center items-center ${numberOfCards === 0 || numberOfCards >= 15 ? "text-red-500" : "text-primary"}`}
+              className={`flex w-fit min-w-28 items-center justify-center rounded-lg border border-black/20 px-4 py-1 font-semibold shadow-xl dark:border-white/20 ${numberOfCards === 0 || numberOfCards >= 15 ? "text-red-500" : "text-primary"}`}
             >
               {numberOfCards === 0 ? "No Cards" : `${numberOfCards} Cards`}
             </div>
@@ -203,15 +203,15 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
           </div>
         </div>
       </motion.div>
-      <div className="w-full flex items-center justify-center">
+      <div className="flex w-full items-center justify-center">
         <Button
-          className="font-medium text-lg flex gap-2 items-center cursor-pointer"
+          className="flex cursor-pointer items-center gap-2 text-lg font-medium"
           onClick={generateOutlines}
           disabled={isGenerating}
         >
           {isGenerating ? (
             <>
-              <Loader2 className="animate-spin size-4" />
+              <Loader2 className="size-4 animate-spin" />
               Generating
             </>
           ) : (
@@ -236,14 +236,14 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
       />
       {outlines.length > 0 && (
         <Button
-          className="w-full transition-all duration-300 cursor-pointer text-lg h-12 dark:bg-white text-black bg-black/5 dark:hover:bg-white/50 hover:bg-black/50 my-8"
+          className="my-8 h-12 w-full cursor-pointer bg-black/5 text-lg text-black transition-all duration-300 hover:bg-black/50 dark:bg-white dark:hover:bg-white/50"
           onClick={handleGenerate}
           disabled={isGenerating || numberOfCards === 0 || numberOfCards > 15}
           variant={"default"}
         >
           {isGenerating ? (
             <>
-              <Loader2 className="animate-spin size-4 mr-2" />
+              <Loader2 className="mr-2 size-4 animate-spin" />
               Generating
             </>
           ) : (

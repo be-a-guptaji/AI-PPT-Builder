@@ -3,13 +3,13 @@ import React from "react";
 
 const NotFound = () => {
   return (
-    <div className="flex flex-col min-h-[70vh] w-full items-center justify-center gap-12">
+    <div className="flex min-h-[70vh] w-full flex-col items-center justify-center gap-12">
       <FlaskConicalOffIcon className="size-48" />
       <div className="flex flex-col items-center justify-center text-center">
-        <p className="text-3xl font-semibold text-primary">
+        <p className="text-primary text-3xl font-semibold">
           Nothing to see here
         </p>
-        <p className="text-base font-normal text-secondary-foreground/50">
+        <p className="text-secondary-foreground/50 text-base font-normal">
           No such product existed create one with{" "}
           <span className="text-kraton font-bold tracking-wide">
             Creative AI

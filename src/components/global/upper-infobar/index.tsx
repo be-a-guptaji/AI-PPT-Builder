@@ -8,13 +8,13 @@ import NewProjectButton from "./newProjectButton";
 
 const UpperInfobar = ({ user }: { user: User }) => {
   return (
-    <header className="sticky top-0 z-10 flex flex-col shrink-0 items-center lg:justify-between justify-center gap-4 bg-background p-4 lg:flex-row">
-      <div className="w-full flex items-center justify-start md:gap-6 gap-4">
+    <header className="bg-background sticky top-0 z-10 flex shrink-0 flex-col items-center justify-center gap-4 p-4 lg:flex-row lg:justify-between">
+      <div className="flex w-full items-center justify-start gap-4 md:gap-6">
         <SidebarTrigger className="-ml-1 cursor-pointer" />
         <Separator orientation="vertical" className="mr-2 h-4" />
         <SearchBar />
       </div>
-      <div className="w-full max-w-[95%] flex items-center lg:justify-end justify-between gap-6 lg:mx-16 sm:mx-16">
+      <div className="flex w-full max-w-[95%] items-center justify-between gap-6 sm:mx-16 lg:mx-16 lg:justify-end">
         <TheamSwicher />
         <NewProjectButton user={user} />
       </div>

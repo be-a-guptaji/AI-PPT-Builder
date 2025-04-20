@@ -72,7 +72,7 @@ export const DropZone: React.FC<DropZoneProps> = ({
       )}
     >
       {isOver && canDrop && (
-        <div className="h-full flex items-center justify-center text-green-600">
+        <div className="flex h-full items-center justify-center text-green-600">
           Drop Here
         </div>
       )}
@@ -143,7 +143,7 @@ export const DragableSlide: React.FC<DragableSlideProps> = ({
     <div
       ref={ref}
       className={cn(
-        "w-full rounded-lg shadow-lg relative p-0 min-h-[400px] max-h-[800px]",
+        "relative max-h-[800px] min-h-[400px] w-full rounded-lg p-0 shadow-lg",
         "shadow-xl transition-shadow duration-300",
         "flex flex-col",
         index === currentSlide ? "ring-2 ring-blue-500 ring-offset-2" : "",
@@ -281,16 +281,16 @@ const Editor = ({ isEditable }: EditorProps) => {
   }, [slides, isEditable, project, saveSlides]);
 
   return (
-    <div className="flex-1 flex flex-col h-full max-w-3xl mx-auto px-4 mb-20">
+    <div className="mx-auto mb-20 flex h-full max-w-3xl flex-1 flex-col px-4">
       {isLoading ? (
-        <div className="w-full px-4 flex flex-col space-y-2 mt-8">
+        <div className="mt-8 flex w-full flex-col space-y-2 px-4">
           <Skeleton className="h-52 w-full" />
           <Skeleton className="h-52 w-full" />
           <Skeleton className="h-52 w-full" />
         </div>
       ) : (
-        <ScrollArea className="flex-1 mt-8">
-          <div className="px-4 pb-4 space-y-4 pt-2">
+        <ScrollArea className="mt-8 flex-1">
+          <div className="space-y-4 px-4 pt-2 pb-4">
             {isEditable && (
               <DropZone index={0} isEditable={isEditable} onDrop={handleDrop} />
             )}

@@ -41,13 +41,13 @@ const ThemePreview = () => {
         style={{ backgroundColor: selectedTheme.accentColor + "10" }}
       >
         <h3
-          className="text-xl font-semibold mb-4"
+          className="mb-4 text-xl font-semibold"
           style={{ color: selectedTheme.accentColor }}
         >
           Quick Start Guide
         </h3>
         <ol
-          className="list-decimal list-inside space-y-2"
+          className="list-inside list-decimal space-y-2"
           style={{ color: selectedTheme.accentColor }}
         >
           <li>Choose a theme</li>
@@ -57,7 +57,7 @@ const ThemePreview = () => {
         </ol>
       </div>
       <Button
-        className="w-full h-12 text-lg font-medium cursor-pointer"
+        className="h-12 w-full cursor-pointer text-lg font-medium"
         style={{
           backgroundColor: selectedTheme.accentColor,
           color: selectedTheme.fontColor,
@@ -71,7 +71,7 @@ const ThemePreview = () => {
 
   const mainCardContent = (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div
           className="rounded-xl p-6"
           style={{
@@ -93,9 +93,9 @@ const ThemePreview = () => {
           </p>
         </div>
       </div>
-      <div className="flex md:flex-wrap gap-4">
+      <div className="flex gap-4 md:flex-wrap">
         <Button
-          className="px-6 h-12 text-lg font-medium cursor-pointer w-full"
+          className="h-12 w-full cursor-pointer px-6 text-lg font-medium"
           style={{
             backgroundColor: selectedTheme.accentColor,
             color: selectedTheme.fontColor,
@@ -105,7 +105,7 @@ const ThemePreview = () => {
           Primary Button
         </Button>
         <Button
-          className="px-6 h-12 text-lg font-medium cursor-pointer w-full"
+          className="h-12 w-full cursor-pointer px-6 text-lg font-medium"
           style={{
             fontFamily: selectedTheme.fontFamily,
             color: selectedTheme.fontColor,
@@ -126,13 +126,13 @@ const ThemePreview = () => {
         style={{ backgroundColor: selectedTheme.accentColor + "10" }}
       >
         <h3
-          className="text-xl font-semibold mb-4"
+          className="mb-4 text-xl font-semibold"
           style={{ color: selectedTheme.accentColor }}
         >
           Theme Features
         </h3>
         <ul
-          className="list-disc list-inside space-y-2"
+          className="list-inside list-disc space-y-2"
           style={{ color: selectedTheme.accentColor }}
         >
           <li>Responsive design</li>
@@ -143,7 +143,7 @@ const ThemePreview = () => {
       </div>
       <Button
         variant={"outline"}
-        className="w-full h-12 text-lg font-medium cursor-pointer"
+        className="h-12 w-full cursor-pointer text-lg font-medium"
         style={{
           backgroundColor: selectedTheme.backgroundColor,
           color: selectedTheme.fontColor,
@@ -158,19 +158,19 @@ const ThemePreview = () => {
   if (isLoading) {
     return (
       <>
-        <div className="size-full h-screen flex flex-col items-center justify-center dark:text-white text-black gap-6">
-          <Loader2 className="animate-spin size-8" />
-          <p className="text-xl font-semibold text-center dark:text-white text-black animate-pulse">
+        <div className="flex size-full h-screen flex-col items-center justify-center gap-6 text-black dark:text-white">
+          <Loader2 className="size-8 animate-spin" />
+          <p className="animate-pulse text-center text-xl font-semibold text-black dark:text-white">
             Get ready to witness a stunning experience!
           </p>
-          <p className="text-lg font-normal text-center dark:text-white text-black animate-pulse">
+          <p className="animate-pulse text-center text-lg font-normal text-black dark:text-white">
             We&apos;re preparing something special just for you on{" "}
-            <span className="font-bold text-xl text-kraton">
+            <span className="text-kraton text-xl font-bold">
               {`${project?.title || "Your Selected Topic"}`}
             </span>
             .
           </p>
-          <p className="text-lg font-normal text-center dark:text-white text-black animate-pulse">
+          <p className="animate-pulse text-center text-lg font-normal text-black dark:text-white">
             Sit back, relax, and let us handle the heavy lifting. We promise
             it&apos;ll be worth the wait!
           </p>
@@ -181,7 +181,7 @@ const ThemePreview = () => {
 
   return (
     <div
-      className="h-screen w-full flex"
+      className="flex h-screen w-full"
       style={{
         backgroundColor: selectedTheme.backgroundColor,
         color: selectedTheme.accentColor,
@@ -189,10 +189,10 @@ const ThemePreview = () => {
       }}
     >
       <div className="flex-grow overflow-y-auto">
-        <div className="p-12 flex flex-col items-center min-h-screen">
+        <div className="flex min-h-screen flex-col items-center p-12">
           <Button
             variant={"outline"}
-            className="mb-12 self-start cursor-pointer"
+            className="mb-12 cursor-pointer self-start"
             size={"lg"}
             style={{
               backgroundColor: selectedTheme.accentColor,
@@ -204,7 +204,7 @@ const ThemePreview = () => {
             <ArrowLeft className="mr-2 size-5" />
             Back
           </Button>
-          <div className="w-full flex justify-center items-center relative flex-grow">
+          <div className="relative flex w-full flex-grow items-center justify-center">
             <ThemeCard
               title="Quick Start"
               description="Get up and running in no time"

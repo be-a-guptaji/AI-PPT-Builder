@@ -60,13 +60,13 @@ const UserSettings = ({ User }: UserSettingsProps) => {
   };
 
   return (
-    <div className="border-2 rounded-md px-8 py-12 bg-black/30 dark:bg-white/10 mb-12 mr-16">
-      <div className="text-2xl flex justify-between items-center mx-12">
+    <div className="mr-16 mb-12 rounded-md border-2 bg-black/30 px-8 py-12 dark:bg-white/10">
+      <div className="mx-12 flex items-center justify-between text-2xl">
         <div className="cursor-default">
-          <h1 className="text-2xl font-semibold dark:text-primary backdrop-blur-lg">
+          <h1 className="dark:text-primary text-2xl font-semibold backdrop-blur-lg">
             {User.name}
           </h1>
-          <div className="text-sm font-normal dark:text-secondary-foreground/50">
+          <div className="dark:text-secondary-foreground/50 text-sm font-normal">
             {User.email}
           </div>
         </div>
@@ -75,18 +75,18 @@ const UserSettings = ({ User }: UserSettingsProps) => {
           alt="User PFP"
           width={24}
           height={24}
-          className="rounded-full size-12"
+          className="size-12 rounded-full"
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 mt-8">
+      <div className="mt-8 grid grid-cols-1 gap-4">
         <div className="w-full">
           <div className="ml-2 font-semibold text-white">
             Lemon Squeezy Api Key
           </div>
           <input
             type="text"
-            className="flex items-center h-12 w-full justify-between px-8 py-4 rounded bg-black/60 text-white"
+            className="flex h-12 w-full items-center justify-between rounded bg-black/60 px-8 py-4 text-white"
             value={lemonSqueezyAPIKey}
             onChange={(e) => setLemonSqueezyAPIKey(e.target.value)}
           />
@@ -96,7 +96,7 @@ const UserSettings = ({ User }: UserSettingsProps) => {
           <div className="ml-2 font-semibold text-white">Store ID</div>
           <input
             type="text"
-            className="flex items-center h-12 w-full justify-between px-8 py-4 rounded bg-black/60 text-white"
+            className="flex h-12 w-full items-center justify-between rounded bg-black/60 px-8 py-4 text-white"
             value={storeID}
             onChange={(e) => setStoreID(e.target.value)}
           />
@@ -106,7 +106,7 @@ const UserSettings = ({ User }: UserSettingsProps) => {
           <div className="ml-2 font-semibold text-white">Web Hook Secret</div>
           <input
             type="text"
-            className="flex items-center h-12 w-full justify-between px-8 py-4 rounded bg-black/60 text-white"
+            className="flex h-12 w-full items-center justify-between rounded bg-black/60 px-8 py-4 text-white"
             value={webhookSecret}
             onChange={(e) => setWebhookSecret(e.target.value)}
           />
@@ -117,7 +117,7 @@ const UserSettings = ({ User }: UserSettingsProps) => {
           <input
             type="text"
             className={cn(
-              "flex items-center h-12 w-full justify-between px-8 py-4 rounded bg-black/60 cursor-default text-white",
+              "flex h-12 w-full cursor-default items-center justify-between rounded bg-black/60 px-8 py-4 text-white",
               User.subscription && "text-green-500"
             )}
             value={User.subscription ? "Subscribed" : "Not Subscribed"}
@@ -129,7 +129,7 @@ const UserSettings = ({ User }: UserSettingsProps) => {
           <div className="ml-2 font-semibold text-white">Joined On</div>
           <input
             type="text"
-            className="flex items-center h-12 w-full justify-between px-8 py-4 rounded bg-black/60 cursor-default text-white"
+            className="flex h-12 w-full cursor-default items-center justify-between rounded bg-black/60 px-8 py-4 text-white"
             value={new Date(User.createdAt).toLocaleDateString()}
             readOnly
           />
@@ -139,21 +139,21 @@ const UserSettings = ({ User }: UserSettingsProps) => {
           <div className="ml-2 font-semibold text-white">Updated On</div>
           <input
             type="text"
-            className="flex items-center h-12 w-full justify-between px-8 py-4 rounded bg-black/60 cursor-default text-white"
+            className="flex h-12 w-full cursor-default items-center justify-between rounded bg-black/60 px-8 py-4 text-white"
             value={new Date(User.updatedAt).toLocaleDateString()}
             readOnly
           />
         </div>
 
-        <div className="w-full flex flex-col md:flex-row gap-4 mt-8">
+        <div className="mt-8 flex w-full flex-col gap-4 md:flex-row">
           <Button
-            className="flex items-center h-12 w-full justify-center px-8 py-4 rounded bg-red-600 cursor-pointer text-white font-bold tracking-widest transition-colors duration-200 hover:bg-red-700"
+            className="flex h-12 w-full cursor-pointer items-center justify-center rounded bg-red-600 px-8 py-4 font-bold tracking-widest text-white transition-colors duration-200 hover:bg-red-700"
             onClick={handleReset}
           >
             Discard Changes
           </Button>
           <Button
-            className="flex items-center h-12 w-full justify-center px-8 py-4 rounded bg-green-600 cursor-pointer text-white font-bold tracking-widest transition-colors duration-200 hover:bg-green-700"
+            className="flex h-12 w-full cursor-pointer items-center justify-center rounded bg-green-600 px-8 py-4 font-bold tracking-widest text-white transition-colors duration-200 hover:bg-green-700"
             onClick={handleSave}
           >
             Save

@@ -35,7 +35,7 @@ const ListItem: React.FC<ListItemProps> = ({
     onChange={(e) => onChange(index, e.target.value)}
     onKeyDown={(e) => onKeyDown(e, index)}
     style={{ color: fontColor }}
-    className="bg-transparent outline-none w-full py-1"
+    className="w-full bg-transparent py-1 outline-none"
     readOnly={!isEditable}
   />
 );
@@ -88,7 +88,7 @@ const NumberedList: React.FC<ListProps> = ({
 
   return (
     <ol
-      className={cn("list-decimal list-inside space-y-1", className)}
+      className={cn("list-inside list-decimal space-y-1", className)}
       style={{ color: currentTheme.fontColor }}
     >
       {items.map((item, index) => (
@@ -155,7 +155,7 @@ export const BulletList: React.FC<ListProps> = ({
 
   return (
     <ul
-      className={cn("list-disc pl-5 space-y-1", className)}
+      className={cn("list-disc space-y-1 pl-5", className)}
       style={{ color: currentTheme.fontColor }}
     >
       {items.map((item, index) => (

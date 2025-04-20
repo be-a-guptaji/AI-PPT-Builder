@@ -6,7 +6,7 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="h-screen w-screen grid place-content-center">
+    <div className="grid h-screen w-screen place-content-center">
       {children}
     </div>
   );

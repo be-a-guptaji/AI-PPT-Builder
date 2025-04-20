@@ -28,17 +28,17 @@ export default function Home() {
 
   return (
     <motion.div
-      className="h-screen w-screen flex flex-col justify-center items-center cursor-default gap-10 bg-gradient-to-br from-indigo-100 via-purple-300 via-pink-300 to-yellow-400"
+      className="flex h-screen w-screen cursor-default flex-col items-center justify-center gap-10 bg-gradient-to-br from-indigo-100 via-pink-300 via-purple-300 to-yellow-400"
       {...fadeIn}
     >
       <motion.div
-        className="text-9xl font-bold text-kraton drop-shadow-lg tracking-widest"
+        className="text-kraton text-9xl font-bold tracking-widest drop-shadow-lg"
         {...slideDown}
       >
         Kraton
       </motion.div>
       <motion.div
-        className="text-center text-lg text-gray-700 max-w-xl font-semibold"
+        className="max-w-xl text-center text-lg font-semibold text-gray-700"
         {...slideUp}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
@@ -48,15 +48,15 @@ export default function Home() {
       <motion.div
         {...slideUp}
         transition={{ duration: 0.6, delay: 0.6 }}
-        className="hover:scale-105 flex justify-between items-center transition-all duration-300 group hover:shadow-lg"
+        className="group flex items-center justify-between transition-all duration-300 hover:scale-105 hover:shadow-lg"
       >
         <Button
-          className="cursor-pointer size-full bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500 shadow-md text-2xl transition-colors duration-300"
+          className="size-full cursor-pointer bg-gradient-to-r from-blue-500 to-purple-600 text-2xl text-white shadow-md transition-colors duration-300 hover:from-purple-600 hover:to-blue-500"
           aria-label="Start using Kraton"
           onClick={() => router.push("/dashboard")}
         >
           Let&apos;s go{" "}
-          <ArrowUp className="ml-2 group-hover:animate-bounce transition-transform duration-300 rotate-90" />
+          <ArrowUp className="ml-2 rotate-90 transition-transform duration-300 group-hover:animate-bounce" />
         </Button>
       </motion.div>
     </motion.div>

@@ -11,7 +11,7 @@ const NewProjectButton = ({ user }: { user: User }) => {
 
   return (
     <Button
-      className="flex items-center gap-2 justify-center cursor-pointer transition-all duration-300 dark:hover:bg-white/60 hover:bg-black/75 dark:disabled:bg-white/50 disabled:bg-black/50"
+      className="flex cursor-pointer items-center justify-center gap-2 transition-all duration-300 hover:bg-black/75 disabled:bg-black/50 dark:hover:bg-white/60 dark:disabled:bg-white/50"
       size={"default"}
       disabled={!user.subscription}
       onClick={() => router.push("/create-page")}

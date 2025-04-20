@@ -15,7 +15,7 @@ const BlockQuote = ({ children, className, ...props }: BlockQuoteProps) => {
   return (
     <blockquote
       className={cn(
-        "pl-4 border-l-4 italic",
+        "border-l-4 pl-4 italic",
         "my-4 py-2",
         "text-gray-700 dark:text-gray-300",
         className
