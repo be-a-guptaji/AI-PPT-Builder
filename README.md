@@ -2,9 +2,9 @@
 
 ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)
-![Next.js](https://img.shields.io/badge/Next.js-15-blue?style=flat-square\&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square\&logo=typescript)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38B2AC?style=flat-square\&logo=tailwindcss)
+![Next.js](https://img.shields.io/badge/Next.js-15-blue?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38B2AC?style=flat-square&logo=tailwindcss)
 
 ---
 
@@ -18,13 +18,13 @@ This project was built with **Next.js, Clerk, Prisma, and Lemon Squeezy** to ens
 
 ## ✨ Key Features
 
-* 🔑 **Clerk Authentication** – Secure login and signup.
-* 🧠 **AI Outline Generator** – Turn prompts into structured slides.
-* 🎨 **Themes & Layouts** – Choose from prebuilt or AI-generated themes.
-* 🖼 **AI-Powered Images** – Generate visuals using **DALL·E**.
-* 🖱 **Drag-and-Drop Editor** – Fully customizable.
-* 💾 **Save & Manage Projects** – Keep all your presentations in one place.
-* 💳 **Monetization** – Integrated with **Lemon Squeezy**.
+- 🔑 **Clerk Authentication** – Secure login and signup.
+- 🧠 **AI Outline Generator** – Turn prompts into structured slides.
+- 🎨 **Themes & Layouts** – Choose from prebuilt or AI-generated themes.
+- 🖼 **AI-Powered Images** – Generate visuals using **DALL·E**.
+- 🖱 **Drag-and-Drop Editor** – Fully customizable.
+- 💾 **Save & Manage Projects** – Keep all your presentations in one place.
+- 💳 **Monetization** – Integrated with **Lemon Squeezy**.
 
 ---
 
@@ -70,28 +70,48 @@ This project was built with **Next.js, Clerk, Prisma, and Lemon Squeezy** to ens
 
 ## 🏗️ Architecture
 
+The system architecture is built to balance **performance, scalability, and modularity**. It follows a **client-server model** with clear responsibilities:
+
+- **Frontend (Next.js + TailwindCSS + ShadCN UI):** Renders the dashboard, editor, and presentation views. Handles client-side logic and state with **Zustand**.
+- **Backend (Next.js API Routes):** Handles slide generation requests, image creation, and data persistence.
+- **AI Integration (OpenAI GPT + DALL·E):** Powers content generation (outlines, text, images).
+- **Database (Prisma + PostgreSQL):** Stores user accounts, projects, slides, and history.
+- **Authentication (Clerk):** Provides secure user login and session management.
+- **Payments (Lemon Squeezy):** Handles subscriptions and monetization for premium features.
+
 ```mermaid
-graph LR
-    A[User] -->|Login| B[Clerk Auth]
-    B --> C[Dashboard]
-    C --> D[AI Outline Generator]
-    D --> E[AI Layout + DALL·E Images]
-    E --> F[Editor]
-    F --> G[Save to DB via Prisma]
-    G --> H[(PostgreSQL)]
-    F --> I[Lemon Squeezy Payment]
+graph TD
+    subgraph Client
+    U[User Browser] --> F[Next.js Frontend]
+    end
+
+    subgraph Backend
+    F --> API[Next.js API Routes]
+    API --> AI[OpenAI GPT & DALL·E]
+    API --> DB[(PostgreSQL via Prisma)]
+    end
+
+    subgraph Services
+    F --> Clerk[Clerk Auth]
+    API --> LS[Lemon Squeezy]
+    end
+
+    U -->|Login| Clerk
+    Clerk --> F
+    U -->|Buy Premium| LS
+    LS --> API
 ```
 
 ---
 
 ## 🛠 Built With
 
-* **Frontend:** Next.js 15, TypeScript, TailwindCSS, ShadCN UI
-* **Backend:** Prisma ORM, PostgreSQL
-* **AI:** OpenAI GPT + DALL·E
-* **Auth:** Clerk
-* **Payments:** Lemon Squeezy
-* **State Management:** Zustand
+- **Frontend:** Next.js 15, TypeScript, TailwindCSS, ShadCN UI
+- **Backend:** Prisma ORM, PostgreSQL
+- **AI:** OpenAI GPT + DALL·E
+- **Auth:** Clerk
+- **Payments:** Lemon Squeezy
+- **State Management:** Zustand
 
 ---
 
@@ -99,11 +119,11 @@ graph LR
 
 ### Prerequisites
 
-* Node.js 18+
-* PostgreSQL instance
-* OpenAI API Key
-* Clerk API Key
-* Lemon Squeezy API Key
+- Node.js 18+
+- PostgreSQL instance
+- OpenAI API Key
+- Clerk API Key
+- Lemon Squeezy API Key
 
 ### Installation
 
@@ -124,6 +144,33 @@ CLERK_SECRET_KEY=your_clerk_secret
 LEMON_SQUEEZY_API_KEY=your_api_key
 ```
 
+### Database Setup (Prisma)
+
+1. Install Prisma CLI:
+```bash
+npm install prisma --save-dev
+```
+
+2. Initialize Prisma:
+```bash
+npx prisma init
+```
+
+3. Generate Prisma client:
+```bash
+npx prisma generate
+```
+
+4. Push database schema to PostgreSQL:
+```bash
+npx prisma db push
+```
+
+5. (Optional) Open Prisma Studio to explore/manage DB:
+```bash
+npx prisma studio
+```
+
 ### Run
 
 ```bash
@@ -136,13 +183,13 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ## 🛣️ Roadmap
 
-* [x] AI Slide Generator
-* [x] AI Themes & Images
-* [x] Clerk Authentication
-* [x] Lemon Squeezy Integration
-* [ ] Team Collaboration
-* [ ] Export as PPTX/PDF
-* [ ] Cloud Deployment (Vercel/AWS)
+- [x] AI Slide Generator
+- [x] AI Themes & Images
+- [x] Clerk Authentication
+- [x] Lemon Squeezy Integration
+- [ ] Team Collaboration
+- [ ] Export as PPTX/PDF
+- [ ] Cloud Deployment (Vercel/AWS)
 
 ---
 
@@ -154,5 +201,5 @@ MIT License © 2025 Aryan Baadlas
 
 ## 📬 Contact
 
-👨‍💻 **Aryan Baadlas**
-📧 **[aryanbaadlas@gmail.com](mailto:aryanbaadlas@gmail.com)**
+👨‍💻 **Aryan Baadlas**  
+📧 **aryanbaadlas@gmail.com**
