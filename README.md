@@ -318,35 +318,35 @@ graph TD
     %% CLIENT LAYER
     %% ==============================
     subgraph Client
-    U[User Browser] --> F[Next.js Frontend]
+    U[🖥️ User Browser] --> F[💻 Next.js Frontend]
     end
 
     %% ==============================
     %% BACKEND & API LAYER
     %% ==============================
     subgraph Backend
-    F --> API[Next.js API Routes]
-    API --> AI[OpenAI GPT & DALL·E]
-    API --> DB[(PostgreSQL via Prisma)]
+    F --> API[⚙️ Next.js API Routes]
+    API --> AI[🤖 OpenAI GPT & 🎨 DALL·E]
+    API --> DB[(🗄️ PostgreSQL via Prisma)]
     end
 
     %% ==============================
     %% SERVICES LAYER
     %% ==============================
     subgraph Services
-    F --> Clerk[Clerk Authentication]
-    API --> LS[Lemon Squeezy Payments]
+    F --> Clerk[🔐 Clerk Authentication]
+    API --> LS[💳 Lemon Squeezy Payments]
     end
 
     %% ==============================
     %% FLOWS
     %% ==============================
-    U -->|Login / Sign Up| Clerk
-    Clerk -->|Auth Response| F
-    U -->|Buy Premium Plan| LS
-    LS -->|Subscription Verified| API
-    API -->|Generate Content| AI
-    API -->|Store / Retrieve Data| DB
+    U -->|🔑 Login / Sign Up| Clerk
+    Clerk -->|✅ Auth Response| F
+    U -->|💰 Buy Premium Plan| LS
+    LS -->|📜 Subscription Verified| API
+    API -->|✨ Generate Content| AI
+    API -->|💾 Store / Retrieve Data| DB
 
     %% ==============================
     %% STYLING
