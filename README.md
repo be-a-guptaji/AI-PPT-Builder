@@ -70,8 +70,9 @@ This project was built with **Next.js, Clerk, Prisma, and Lemon Squeezy** to ens
 
 ## 📁 Directory Structure
 
-```mermaid
+The project is organized as follows:
 
+```
 Directory structure:
 └── ai-ppt-builder/
     ├── README.md
@@ -290,14 +291,13 @@ Directory structure:
             └── useStartScratchStore.tsx
 ```
 
-### Key Folders:
+### Key Folders and Files:
 
-- **/app/api** → Backend APIs for authentication, users, and servers.
-- **/models** → Prisma schemas.
-- **/components** → UI components.
-- **/lib** → Helpers.
-- **/hooks** → Zustand state hooks.
-- **/public** → Static assets.
+- **/components**: Contains reusable.
+- **/pages**: Includes the main routes for pages like login, createve page, and ppt pages.
+- **/api**: Server-side route handlers for database interactions and ppt creation.
+- **/prisma**: Prisma schema and client for database interaction.
+- **/styles**: TailwindCSS styles and global styling.
 
 ---
 
