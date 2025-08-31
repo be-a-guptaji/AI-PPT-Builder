@@ -288,8 +288,6 @@ Directory structure:
             ├── usePromptStore.tsx
             ├── useSlideStore.tsx
             └── useStartScratchStore.tsx
-
-
 ```
 
 ### Key Folders:
