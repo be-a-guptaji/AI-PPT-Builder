@@ -68,6 +68,241 @@ This project was built with **Next.js, Clerk, Prisma, and Lemon Squeezy** to ens
 
 ---
 
+## 📁 Directory Structure
+
+```mermaid
+
+Directory structure:
+└── ai-ppt-builder/
+    ├── README.md
+    ├── components.json
+    ├── eslint.config.mjs
+    ├── LICENSE
+    ├── next.config.ts
+    ├── package.json
+    ├── postcss.config.mjs
+    ├── tsconfig.json
+    ├── .env.samples
+    ├── .prettierignore
+    ├── .prettierrc.json
+    ├── prisma/
+    │   └── schema.prisma
+    ├── public/
+    │   └── slide.webp
+    └── src/
+        ├── middleware.ts
+        ├── actions/
+        │   ├── chatGPT.ts
+        │   ├── lemonSqueezy.ts
+        │   ├── openAI.ts
+        │   ├── projects.ts
+        │   └── user.ts
+        ├── app/
+        │   ├── globals.css
+        │   ├── layout.tsx
+        │   ├── page.tsx
+        │   ├── (auth)/
+        │   │   ├── layout.tsx
+        │   │   ├── callback/
+        │   │   │   ├── loading.tsx
+        │   │   │   └── page.tsx
+        │   │   ├── sign-in/
+        │   │   │   └── [[...sign-in]]/
+        │   │   │       └── page.tsx
+        │   │   └── sign-up/
+        │   │       └── [[...sign-up]]/
+        │   │           └── page.tsx
+        │   ├── (protected)/
+        │   │   ├── layout.tsx
+        │   │   ├── (pages)/
+        │   │   │   ├── layout.tsx
+        │   │   │   └── (dashboardPages)/
+        │   │   │       ├── create-page/
+        │   │   │       │   ├── page.tsx
+        │   │   │       │   └── _components/
+        │   │   │       │       ├── renderPage.tsx
+        │   │   │       │       ├── common/
+        │   │   │       │       │   ├── addCardButton.tsx
+        │   │   │       │       │   ├── card.tsx
+        │   │   │       │       │   └── cardList.tsx
+        │   │   │       │       ├── create-page/
+        │   │   │       │       │   ├── createPage.tsx
+        │   │   │       │       │   └── createPageSkeleton.tsx
+        │   │   │       │       ├── generate-ai/
+        │   │   │       │       │   ├── creativeAI.tsx
+        │   │   │       │       │   └── recentPrompts.tsx
+        │   │   │       │       └── scratch/
+        │   │   │       │           └── scratchPage.tsx
+        │   │   │       ├── dashboard/
+        │   │   │       │   └── page.tsx
+        │   │   │       ├── settings/
+        │   │   │       │   ├── page.tsx
+        │   │   │       │   └── _components/
+        │   │   │       │       └── userSettings.tsx
+        │   │   │       ├── share/
+        │   │   │       │   └── [shareID]/
+        │   │   │       │       └── page.tsx
+        │   │   │       ├── templates/
+        │   │   │       │   ├── page.tsx
+        │   │   │       │   └── [templates]/
+        │   │   │       │       └── page.tsx
+        │   │   │       └── trash/
+        │   │   │           ├── page.tsx
+        │   │   │           └── _components/
+        │   │   │               └── deleteAllButton.tsx
+        │   │   └── presentation/
+        │   │       ├── layout.tsx
+        │   │       ├── page.tsx
+        │   │       └── [presentationID]/
+        │   │           ├── page.tsx
+        │   │           ├── _components/
+        │   │           │   ├── editor/
+        │   │           │   │   ├── dropZone.tsx
+        │   │           │   │   ├── editor.tsx
+        │   │           │   │   └── masterRecursiveComponent.tsx
+        │   │           │   ├── editor-sidebar/
+        │   │           │   │   ├── left-sidebar/
+        │   │           │   │   │   ├── dragableSlidePreview.tsx
+        │   │           │   │   │   ├── layoutPreview.tsx
+        │   │           │   │   │   └── scaledPreview.tsx
+        │   │           │   │   └── right-sidebar/
+        │   │           │   │       ├── index.tsx
+        │   │           │   │       └── tabs/
+        │   │           │   │           ├── layoutChooser.tsx
+        │   │           │   │           ├── themeChooser.tsx
+        │   │           │   │           └── components-tabs/
+        │   │           │   │               ├── componentPreview.tsx
+        │   │           │   │               └── layoutPreviewItem.tsx
+        │   │           │   └── navbar/
+        │   │           │       ├── navbar.tsx
+        │   │           │       └── presentationMode.tsx
+        │   │           └── select-theme/
+        │   │               ├── page.tsx
+        │   │               └── _components/
+        │   │                   ├── themeCard.tsx
+        │   │                   ├── themePicker.tsx
+        │   │                   └── themePreview.tsx
+        │   └── api/
+        │       └── webhook/
+        │           └── subscriptions/
+        │               └── route.ts
+        ├── components/
+        │   ├── global/
+        │   │   ├── alert-dialog/
+        │   │   │   └── index.tsx
+        │   │   ├── app-sidebar/
+        │   │   │   ├── index.tsx
+        │   │   │   ├── navFooter.tsx
+        │   │   │   ├── navMain.tsx
+        │   │   │   └── recentOpen.tsx
+        │   │   ├── editor/
+        │   │   │   └── components/
+        │   │   │       ├── blockQuote.tsx
+        │   │   │       ├── calloutBox.tsx
+        │   │   │       ├── codeBlock.tsx
+        │   │   │       ├── columnComponent.tsx
+        │   │   │       ├── divider.tsx
+        │   │   │       ├── headings.tsx
+        │   │   │       ├── imageComponent.tsx
+        │   │   │       ├── listComponent.tsx
+        │   │   │       ├── paragraph.tsx
+        │   │   │       ├── tableComponet.tsx
+        │   │   │       ├── tableOfContents.tsx
+        │   │   │       └── uploadImage.tsx
+        │   │   ├── mode-toggle/
+        │   │   │   └── index.tsx
+        │   │   ├── not-found/
+        │   │   │   └── index.tsx
+        │   │   ├── project-card/
+        │   │   │   ├── index.tsx
+        │   │   │   └── thumbnailPreview.tsx
+        │   │   ├── projects/
+        │   │   │   └── index.tsx
+        │   │   └── upper-infobar/
+        │   │       ├── index.tsx
+        │   │       ├── newProjectButton.tsx
+        │   │       ├── sellButton.tsx
+        │   │       └── upperInfoSearchBar.tsx
+        │   └── ui/
+        │       ├── accordion.tsx
+        │       ├── alert-dialog.tsx
+        │       ├── alert.tsx
+        │       ├── aspect-ratio.tsx
+        │       ├── avatar.tsx
+        │       ├── badge.tsx
+        │       ├── breadcrumb.tsx
+        │       ├── button.tsx
+        │       ├── calendar.tsx
+        │       ├── card.tsx
+        │       ├── carousel.tsx
+        │       ├── chart.tsx
+        │       ├── checkbox.tsx
+        │       ├── collapsible.tsx
+        │       ├── command.tsx
+        │       ├── context-menu.tsx
+        │       ├── dialog.tsx
+        │       ├── drawer.tsx
+        │       ├── dropdown-menu.tsx
+        │       ├── form.tsx
+        │       ├── hover-card.tsx
+        │       ├── input-otp.tsx
+        │       ├── input.tsx
+        │       ├── label.tsx
+        │       ├── menubar.tsx
+        │       ├── navigation-menu.tsx
+        │       ├── pagination.tsx
+        │       ├── popover.tsx
+        │       ├── progress.tsx
+        │       ├── radio-group.tsx
+        │       ├── resizable.tsx
+        │       ├── scroll-area.tsx
+        │       ├── select.tsx
+        │       ├── separator.tsx
+        │       ├── sheet.tsx
+        │       ├── sidebar.tsx
+        │       ├── skeleton.tsx
+        │       ├── slider.tsx
+        │       ├── sonner.tsx
+        │       ├── switch.tsx
+        │       ├── table.tsx
+        │       ├── tabs.tsx
+        │       ├── textarea.tsx
+        │       ├── toggle-group.tsx
+        │       ├── toggle.tsx
+        │       └── tooltip.tsx
+        ├── hooks/
+        │   └── use-mobile.ts
+        ├── lib/
+        │   ├── axios.ts
+        │   ├── constant.ts
+        │   ├── IconsComponent.tsx
+        │   ├── prisma.ts
+        │   ├── slideComponents.ts
+        │   ├── slideLayouts.ts
+        │   ├── types.ts
+        │   └── utils.ts
+        ├── provider/
+        │   └── theme-provider.tsx
+        └── store/
+            ├── useCreativeAIStore.tsx
+            ├── usePromptStore.tsx
+            ├── useSlideStore.tsx
+            └── useStartScratchStore.tsx
+
+
+```
+
+### Key Folders:
+
+- **/app/api** → Backend APIs for authentication, users, and servers.
+- **/models** → Prisma schemas.
+- **/components** → UI components.
+- **/lib** → Helpers.
+- **/hooks** → Zustand state hooks.
+- **/public** → Static assets.
+
+---
+
 ## 🏗️ Architecture
 
 The system architecture is built to balance **performance, scalability, and modularity**. It follows a **client-server model** with clear responsibilities:
