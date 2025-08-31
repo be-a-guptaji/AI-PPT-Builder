@@ -314,25 +314,58 @@ The system architecture is built to balance **performance, scalability, and modu
 
 ```mermaid
 graph TD
+    %% ==============================
+    %% CLIENT LAYER
+    %% ==============================
     subgraph Client
     U[User Browser] --> F[Next.js Frontend]
     end
 
+    %% ==============================
+    %% BACKEND & API LAYER
+    %% ==============================
     subgraph Backend
     F --> API[Next.js API Routes]
     API --> AI[OpenAI GPT & DALL·E]
     API --> DB[(PostgreSQL via Prisma)]
     end
 
+    %% ==============================
+    %% SERVICES LAYER
+    %% ==============================
     subgraph Services
-    F --> Clerk[Clerk Auth]
-    API --> LS[Lemon Squeezy]
+    F --> Clerk[Clerk Authentication]
+    API --> LS[Lemon Squeezy Payments]
     end
 
-    U -->|Login| Clerk
-    Clerk --> F
-    U -->|Buy Premium| LS
-    LS --> API
+    %% ==============================
+    %% FLOWS
+    %% ==============================
+    U -->|Login / Sign Up| Clerk
+    Clerk -->|Auth Response| F
+    U -->|Buy Premium Plan| LS
+    LS -->|Subscription Verified| API
+    API -->|Generate Content| AI
+    API -->|Store / Retrieve Data| DB
+
+    %% ==============================
+    %% STYLING
+    %% ==============================
+    classDef client fill:#6ac6b7,stroke:#000,stroke-width:2px,color:#000,font-weight:bold;
+    classDef backend fill:#f1a4cb,stroke:#000,stroke-width:2px,color:#000,font-weight:bold;
+    classDef services fill:#82c7f9,stroke:#000,stroke-width:2px,color:#000,font-weight:bold;
+    classDef user fill:#ffcc00,stroke:#000,stroke-width:2px,color:#000,font-weight:bold;
+    classDef db fill:#f1e1a4,stroke:#000,stroke-width:2px,color:#000,font-weight:bold;
+    classDef ai fill:#c6a0f6,stroke:#000,stroke-width:2px,color:#000,font-weight:bold;
+
+    %% Apply Classes
+    class U user;
+    class F client;
+    class API backend;
+    class DB db;
+    class AI ai;
+    class Clerk,LS services;
+
 ```
 
 ---
