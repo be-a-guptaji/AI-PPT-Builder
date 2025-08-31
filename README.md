@@ -469,3 +469,9 @@ MIT License © 2025 Aryan Baadlas
 
 👨‍💻 **Aryan Baadlas**  
 📧 **aryanbaadlas@gmail.com**
+
+---
+
+### ⭐ Show some love!
+
+If you like this project, **give it a star ⭐ on GitHub**!
