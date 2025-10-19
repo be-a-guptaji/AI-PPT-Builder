@@ -37,4 +37,6 @@ const Switch = React.forwardRef<
   </SwitchPrimitive.Root>
 ));
 
+Switch.displayName = "Switch";
+
 export default Switch;

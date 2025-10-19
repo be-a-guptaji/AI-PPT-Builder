@@ -1,4 +1,4 @@
-import { Home, LayoutTemplate, Settings, Trash } from "lucide-react";
+import { Home, Settings, Trash } from "lucide-react";
 import { ComponentGroup, LayoutGroup, Theme } from "./types";
 import {
   BlankCardIcon,

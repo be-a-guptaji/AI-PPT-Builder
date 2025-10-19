@@ -4,19 +4,15 @@ import { Button } from "@/components/ui/button";
 import { useSlideStore } from "@/store/useSlideStore";
 import { Forward, Home, Play } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import PresentationMode from "./presentationMode";
-import { cn } from "@/lib/utils";
-import { toggleSellable } from "@/actions/projects";
-import { useRouter } from "next/navigation";
 
 type NavbarProps = {
   presentationID: string;
 };
 
 const Navbar = ({ presentationID }: NavbarProps) => {
-  const router = useRouter();
   const [isPresentationMode, setIsPresentationMode] = useState(false);
   const { currentTheme, project } = useSlideStore();
   // const [isSellable, setIsSellable] = useState(project?.isSellable || false)

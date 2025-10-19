@@ -13,10 +13,8 @@ type LayoutPreviewItemProps = {
 
 const LayoutPreviewItem = ({
   Icon,
-  comopnent,
   isSelected,
   name,
-  type,
   onClick,
 }: LayoutPreviewItemProps) => {
   return (

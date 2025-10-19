@@ -413,26 +413,31 @@ LEMON_SQUEEZY_API_KEY=your_api_key
 ### Database Setup (Prisma)
 
 1. Install Prisma CLI:
+
 ```bash
 npm install prisma --save-dev
 ```
 
 2. Initialize Prisma:
+
 ```bash
 npx prisma init
 ```
 
 3. Generate Prisma client:
+
 ```bash
 npx prisma generate
 ```
 
 4. Push database schema to PostgreSQL:
+
 ```bash
 npx prisma db push
 ```
 
 5. (Optional) Open Prisma Studio to explore/manage DB:
+
 ```bash
 npx prisma studio
 ```
