@@ -77,7 +77,7 @@ export interface OutlineCard {
 
 export interface ReturnProps {
   status: number;
-  data?: any;
+  data?: unknown;
   error?: string;
 }
 

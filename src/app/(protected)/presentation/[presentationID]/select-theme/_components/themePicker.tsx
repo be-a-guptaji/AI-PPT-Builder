@@ -2,7 +2,7 @@ import { generateLayout } from "@/actions/chatGPT";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Theme } from "@/lib/types";
+import { Slide, Theme } from "@/lib/types";
 import { useSlideStore } from "@/store/useSlideStore";
 import { Loader2, Wand2 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
@@ -65,7 +65,7 @@ const ThemePicker = ({
 
       router.push(`/presentation/${project?.id}`);
 
-      setSlides(response.data);
+      setSlides(response.data as Slide[]);
     } catch (error) {
       console.error("Error generating layouts:", error);
 

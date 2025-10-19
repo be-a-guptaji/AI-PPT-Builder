@@ -16,6 +16,7 @@ import { OutlineCard } from "@/lib/types";
 import { v4 } from "uuid";
 import { createProject } from "@/actions/projects";
 import { useSlideStore } from "@/store/useSlideStore";
+import { Project } from "@prisma/client";
 
 type CreativeAIProps = {
   onBack: () => void;
@@ -58,20 +59,24 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
 
     const response = await generateCreativePrompt(currentAIPrompt);
 
-    if (response.status === 200 && response.data.outlines) {
-      const cardData: OutlineCard[] = [];
+    if (response.status === 200) {
+      const data = response.data as { outlines: string[] };
 
-      response.data.outlines.map((outline: string, index: number) => {
-        const newCard: OutlineCard = {
-          id: v4(),
-          title: outline,
-          order: index + 1,
-        };
-        cardData.push(newCard);
-      });
+      if (data?.outlines) {
+        const cardData: OutlineCard[] = [];
 
-      addMultipleOutlines(cardData);
-      setNumberOfCards(cardData.length);
+        data.outlines.map((outline: string, index: number) => {
+          const newCard: OutlineCard = {
+            id: v4(),
+            title: outline,
+            order: index + 1,
+          };
+          cardData.push(newCard);
+        });
+
+        addMultipleOutlines(cardData);
+        setNumberOfCards(cardData.length);
+      }
 
       toast.success("Success", {
         description: "Outlines generated successfully.",
@@ -105,13 +110,15 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
         return;
       }
 
-      setProject(response.data);
+      const projectData = response.data as Project;
+
+      setProject(projectData);
 
       addPrompts({
-        id: response.data.id,
-        title: response.data.title,
+        id: projectData.id,
+        title: projectData.title,
         outlines: outlines,
-        createdAt: response.data.createdAt.toISOString(),
+        createdAt: projectData.createdAt.toISOString(),
       });
 
       toast.success("Project created successfully.", {
@@ -121,7 +128,7 @@ const CreateAI = ({ onBack }: CreativeAIProps) => {
       setCurrentAIPrompt("");
       resetOutlines();
 
-      router.push(`/presentation/${response.data.id}/select-theme`);
+      router.push(`/presentation/${projectData.id}/select-theme`);
     } catch (error) {
       console.error("Error creating project:", error);
 

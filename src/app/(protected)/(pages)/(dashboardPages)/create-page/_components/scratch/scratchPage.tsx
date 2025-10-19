@@ -14,6 +14,7 @@ import CardList from "../common/cardList";
 import { motion } from "framer-motion";
 import { containerVaraints, itemVatiants } from "@/lib/constant";
 import { v4 } from "uuid";
+import { Project } from "@prisma/client";
 
 type ScratchPageProps = {
   onBack: () => void;
@@ -74,14 +75,16 @@ const ScratchPage = ({ onBack }: ScratchPageProps) => {
     }
 
     if (response.data) {
-      setProject(response.data);
+      const projectData = response.data as Project;
+
+      setProject(projectData);
       resetOutlines();
 
       toast.success("Project created successfully.", {
         description: "Redirecting to your presntation.",
       });
 
-      router.push(`/presentation/${response.data.id}/select-theme`);
+      router.push(`/presentation/${projectData.id}/select-theme`);
     } else {
       toast.error("Oops!", {
         description: "Failed to create project.",

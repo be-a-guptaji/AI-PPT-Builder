@@ -131,7 +131,7 @@ const ProjectCard = ({
         addTemplateToUser(projectId);
       }
 
-      router.push(res.data);
+      router.push(res.data as string);
 
       toast.success("Payment Successful", {
         description: "You can now use the template",

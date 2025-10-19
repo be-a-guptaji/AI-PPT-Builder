@@ -94,14 +94,16 @@ export const buyTemplate = async (projectId: string): Promise<ReturnProps> => {
     // Retrieve project details
     const project = await getProjectById(projectId);
 
-    if (project.status !== 200) {
+    if (project.status !== 200 || !project.data) {
       throw new Error(`Failed to retrieve project: ${project.error}`);
     }
+
+    const projectData = project.data as { userId: string; variantId?: string };
 
     // Retrieve owner details using userId from the project
     const ownerDetails = await client.user.findUnique({
       where: {
-        id: project.data.userId,
+        id: projectData.userId,
       },
     });
 
@@ -150,7 +152,7 @@ export const buyTemplate = async (projectId: string): Promise<ReturnProps> => {
             variant: {
               data: {
                 type: "variants",
-                id: project.data.variantId,
+                id: projectData.variantId,
               },
             },
           },

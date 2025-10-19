@@ -5,6 +5,7 @@ import { ContentItem, ContentType, ReturnProps, Slide } from "@/lib/types";
 import { currentUser } from "@clerk/nextjs/server";
 import { v4 as uuidv4 } from "uuid";
 import { openai } from "./openAI";
+import { Prisma } from "@prisma/client";
 export const generateCreativePrompt = async (
   userPrompt: string
 ): Promise<ReturnProps> => {
@@ -390,7 +391,7 @@ export const generateLayout = async (
         id: projectId,
       },
       data: {
-        slides: layouts.data,
+        slides: layouts.data as Prisma.InputJsonValue,
         themeName: theme,
       },
     });

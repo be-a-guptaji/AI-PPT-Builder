@@ -3,11 +3,13 @@ import DeleteAllButton from "./_components/deleteAllButton";
 import { getDeletedProjects } from "@/actions/projects";
 import NotFound from "@/components/global/not-found";
 import Projects from "@/components/global/projects";
+import { Project } from "@prisma/client";
 
 const Page = async () => {
   const deletedProjects = await getDeletedProjects();
+  const projectData = deletedProjects.data as Project[];
 
-  if (!deletedProjects.data || deletedProjects.data.length === 0) {
+  if (!deletedProjects.data || projectData.length === 0) {
     return <NotFound />;
   }
 
@@ -23,11 +25,11 @@ const Page = async () => {
           </p>
         </div>
 
-        <DeleteAllButton Projects={deletedProjects.data} />
+        <DeleteAllButton Projects={projectData} />
       </div>
 
-      {deletedProjects.data.length > 0 ? (
-        <Projects projects={deletedProjects.data} />
+      {projectData.length > 0 ? (
+        <Projects projects={projectData} />
       ) : (
         <NotFound />
       )}

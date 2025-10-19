@@ -1,10 +1,12 @@
 import { getAllProjects } from "@/actions/projects";
 import NotFound from "@/components/global/not-found";
 import Projects from "@/components/global/projects";
+import { Project } from "@prisma/client";
 import React from "react";
 
 const DashboardPage = async () => {
   const allProjects = await getAllProjects();
+  const projectData = allProjects.data as Project[];
 
   return (
     <div className="relative flex w-full flex-col gap-6 p-4 md:p-4">
@@ -19,8 +21,8 @@ const DashboardPage = async () => {
         </div>
       </div>
 
-      {allProjects.data && allProjects.data.length > 0 ? (
-        <Projects projects={allProjects.data} />
+      {allProjects.data && projectData.length > 0 ? (
+        <Projects projects={projectData} />
       ) : (
         <NotFound />
       )}

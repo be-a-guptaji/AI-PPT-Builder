@@ -20,12 +20,12 @@ const UploadImage = ({ contentId, onContentChange }: UploadImageProps) => {
     size: number;
     isImage: boolean;
     mimeType: string;
-    metadata: undefined;
+    metadata: Record<string, unknown> | null;
     file: File | Blob | null;
     externalUrl: string | null;
     uploadProgress: number;
     fullPath: string | null;
-    source: undefined;
+    source: string | null;
   }) => {
     const cdnUrl = event.externalUrl || event.fullPath;
 
