@@ -35,7 +35,7 @@ const AppSidebar = ({
         >
           <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
             <Avatar className="size-10 rounded-full">
-              <AvatarImage src="/logo.jpg" alt="Kraton" />
+              <AvatarImage src="/logo.png" alt="Kraton" />
               <AvatarFallback className="rounded-lg">Kraton</AvatarFallback>
             </Avatar>
           </div>

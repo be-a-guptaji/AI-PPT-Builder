@@ -47,7 +47,7 @@ export const data = {
   user: {
     name: "Aryan Baadlas",
     email: "aryanbaadals@gmail.com",
-    avatar: "/logo.jpg",
+    avatar: "/logo.png",
   },
 
   navMain: [
